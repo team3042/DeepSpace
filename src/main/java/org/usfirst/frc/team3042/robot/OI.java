@@ -5,9 +5,6 @@ import org.usfirst.frc.team3042.lib.Path;
 import org.usfirst.frc.team3042.robot.commands.DrivetrainAuton_Drive;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroStraight;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroTurn;
-import org.usfirst.frc.team3042.robot.commands.LightRing_On;
-import org.usfirst.frc.team3042.robot.commands.Spinner_SetPosition;
-import org.usfirst.frc.team3042.robot.commands.Spinner_SetSpeed;
 import org.usfirst.frc.team3042.robot.commands.LineTracker_PrintLines;
 
 /** OI ************************************************************************
@@ -16,8 +13,8 @@ import org.usfirst.frc.team3042.robot.commands.LineTracker_PrintLines;
  */
 public class OI {	
 	/** Configuration Constants ***********************************************/
-	private static final boolean IS_PBOT = RobotMap.IS_PBOT;
-	private static final boolean IS_ARTEMIS = RobotMap.IS_ARTEMIS;
+	private static final boolean IS_MRBEAST = RobotMap.IS_MRBEAST;
+	private static final boolean IS_PEWDIEPIE = RobotMap.IS_PEWDIEPIE;
 	private static final int USB_GAMEPAD = RobotMap.USB_GAMEPAD;
 	private static final int USB_JOY_LEFT = RobotMap.USB_JOYSTICK_LEFT;
 	private static final int USB_JOY_RIGHT = RobotMap.USB_JOYSTICK_RIGHT;
@@ -70,12 +67,10 @@ public class OI {
 			driveAxisRight = GAMEPAD_RIGHT_Y_AXIS;
 		}
 		
-		/** PBOT Controls *****************************************************/
-		if (IS_PBOT) {
+		/** MRBEAST Controls *****************************************************/
+		if (IS_MRBEAST) {
 			//gamepad.A.toggleWhenPressed(new LightRing_On());
 			gamepad.A.toggleWhenPressed(new LineTracker_PrintLines());
-			gamepad.LB.toggleWhenPressed(new Spinner_SetPosition());
-			gamepad.RB.toggleWhenPressed(new Spinner_SetSpeed());
 			
 			gamepad.X.whenPressed(new Drivetrain_GyroStraight(72.0, 24.0));
 			
@@ -99,9 +94,9 @@ public class OI {
 			//gamepad.Y.whenPressed(new Drivetrain_GyroTurn(270.0));
 		}
 		
-		/** Artemis Controls **************************************************/
-		if (IS_ARTEMIS) {
-			
+		/** PewDiePie Controls **************************************************/
+		if (IS_PEWDIEPIE) {
+
 		}
 	}
 	

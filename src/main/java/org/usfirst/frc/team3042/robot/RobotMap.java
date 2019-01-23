@@ -9,13 +9,12 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
  */
 public class RobotMap {
 	/** Robot selector ********************************************************/
-	public static enum Bot {PBOT, ARTEMIS;}
+	public static enum Bot {PEWDIEPIE, MRBEAST;}
 	// Set the bot to which you intend to push code.
-	private static Bot currentBot = Bot.PBOT;
+	private static Bot currentBot = Bot.MRBEAST;
 
-	public static final boolean IS_PBOT 	= (currentBot == Bot.PBOT);
-	public static final boolean IS_ARTEMIS = (currentBot == Bot.ARTEMIS);
-	
+	public static final boolean IS_PEWDIEPIE = (currentBot == Bot.PEWDIEPIE);
+	public static final boolean IS_MRBEAST = (currentBot == Bot.MRBEAST);
 	
 	/** Robot Size Parameters *************************************************
 	 * The units of the wheel diameter determine the units of the position 
@@ -23,13 +22,13 @@ public class RobotMap {
 	 * in inches, position will be in inches and speed in inches per second.
 	 */
 	public static final double WHEEL_DIAMETER = 4.0;
-	public static final double ROBOT_WIDTH = (IS_PBOT) ? 15.0 : 0.0;
+	public static final double ROBOT_WIDTH = (IS_MRBEAST) ? 15.0 : 0.0;
 	
 	
 	/** USB ports *************************************************************/					
 	public static final int USB_JOYSTICK_LEFT 	= 0;
 	public static final int USB_JOYSTICK_RIGHT 	= 1;
-	public static final int USB_GAMEPAD 		= IS_PBOT ? 0 : 2;
+	public static final int USB_GAMEPAD 		= IS_MRBEAST ? 0 : 2;
 
 
 	/** PWM ports *************************************************************/
@@ -38,28 +37,23 @@ public class RobotMap {
 	
 	
 	/** CAN ID numbers ********************************************************/
-	public static final int CAN_LEFT_MOTOR 	= 		IS_PBOT 	? 3 :
-													IS_ARTEMIS 	? 0 : 0;
-	public static final int CAN_RIGHT_MOTOR = 		IS_PBOT 	? 9 :
-													IS_ARTEMIS 	? 0 : 0;
-	public static final int CAN_LEFT_FOLLOWER = 	IS_ARTEMIS 	? 0 : 0;
-	public static final int CAN_RIGHT_FOLLOWER = 	IS_ARTEMIS 	? 0 : 0;
-	public static final int CAN_SPINNER 	= 		IS_PBOT		? 10 :
-													IS_ARTEMIS 	? 0 : 0;
+	public static final int CAN_LEFT_MOTOR 	= 		IS_MRBEAST 	? 3 : 0;
+	public static final int CAN_RIGHT_MOTOR = 		IS_MRBEAST 	? 9 : 0;
+	public static final int CAN_LEFT_FOLLOWER = 	IS_MRBEAST 	? 0 : 0;
+	public static final int CAN_RIGHT_FOLLOWER = 	IS_MRBEAST 	? 0 : 0;
 	
 	
 	/** PCM channels **********************************************************/
-	public static final int LIGHT_RING_CHANNEL = 1;
 	
 
 	/** SPI ports *************************************************************/
-	public static final int LINE_TRACKER_PIXY_PORT = (IS_PBOT)? 0: 0;
+	public static final int LINE_TRACKER_PIXY_PORT = (IS_MRBEAST)? 0: 0;
 	//note that the Gyroscope uses the myRIO Expansion Port (MXP) and is defined in the SPI class (edu.wpi.first.wpilibj.SPI)
 	//notes for dummies: the MXP is the big boy smack center of the RoboRio (where the gyro ALWAYS goes);
 	//see http://www.ni.com/pdf/manuals/374474a.pdf for additional info on the RoboRio
 	
 	/** OI Settings ***********************************************************/
-	public static final boolean USE_JOYSTICKS = !IS_PBOT;
+	public static final boolean USE_JOYSTICKS = !IS_MRBEAST;
 	public static final double JOYSTICK_DRIVE_SCALE = 0.5;
 	public static final double TRIGGER_SPINNER_SCALE = 0.1;
 	public static final double JOYSTICK_DEAD_ZONE = 0.0;

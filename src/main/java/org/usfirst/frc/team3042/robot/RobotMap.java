@@ -61,17 +61,15 @@ public class RobotMap {
 
 	/** Drivetrain Settings ***************************************************/
 	public static final boolean HAS_DRIVETRAIN = true;
-	public static final boolean HAS_FOLLOWERS = !IS_PBOT;
+	public static final boolean HAS_FOLLOWERS = true;
 	public static final NeutralMode DRIVETRAIN_BRAKE_MODE = NeutralMode.Brake;
-	public static final boolean REVERSE_LEFT_MOTOR = 	(IS_PBOT) ? true : false;
-	public static final boolean REVERSE_RIGHT_MOTOR = 	(IS_PBOT) ? false: false;
+	public static final boolean REVERSE_LEFT_MOTOR = 	(IS_MRBEAST) ? true : false;
+	public static final boolean REVERSE_RIGHT_MOTOR = 	(IS_MRBEAST) ? false: false;
 	// Maximum Acceleration given in power per second
 	public static final double ACCELERATION_MAX = 1.5;
-	public static final double kF_DRIVE_LEFT = 	(IS_PBOT) 		?  0.1817180616740088 :
-												(IS_ARTEMIS) 	? 0.0 : 0.0;
-	public static final double kF_DRIVE_RIGHT = (IS_PBOT) 		?  0.16686239968682717 :
-												(IS_ARTEMIS) 	? 0.0 : 0.0;
-	
+	public static final double kF_DRIVE_LEFT = 	(IS_MRBEAST) ? 0.1817180616740088 : 0;
+	public static final double kF_DRIVE_RIGHT = (IS_MRBEAST) ? 0.16686239968682717 : 0;
+
 	
 	/** Drivetrain Encoder Settings *******************************************/
 	public static final boolean HAS_ENCODERS = true;
@@ -80,21 +78,17 @@ public class RobotMap {
 	public static final int COUNTS_PER_REVOLUTION = 1440;
 	//How often the encoders update on the CAN, in milliseconds
 	public static final int ENCODER_FRAME_RATE = 10;
-	public static final boolean SENSOR_PHASE_LEFT = 	(IS_PBOT) ? false: false;
-	public static final boolean SENSOR_PHASE_RIGHT = 	(IS_PBOT) ? false: false;
+	public static final boolean SENSOR_PHASE_LEFT = false;
+	public static final boolean SENSOR_PHASE_RIGHT = false;
 	
 	
 	/** Drivetrain Autonomous Settings ****************************************/
 	public static final boolean HAS_AUTON = HAS_ENCODERS;
 	public static final int AUTON_PROFILE = 0;
-	public static final double kP_AUTON = 		(IS_PBOT) 		? 0.4 :
-												(IS_ARTEMIS) 	? 0.0 : 0.0;
-	public static final double kI_AUTON = 		(IS_PBOT) 		? 0.0 :
-												(IS_ARTEMIS) 	? 0.0 : 0.0;
-	public static final double kD_AUTON = 		(IS_PBOT) 		? 0.8 :
-												(IS_ARTEMIS) 	? 0.0 : 0.0;
-	public static final int I_ZONE_AUTON =		(IS_PBOT)		? 0 :
-												(IS_ARTEMIS)	? 0 : 0;
+	public static final double kP_AUTON =  (IS_MRBEAST) ? 0.4 : 0;
+	public static final double kI_AUTON =  (IS_MRBEAST) ? 0.0 : 0;
+	public static final double kD_AUTON =  (IS_MRBEAST) ? 0.8 : 0;
+	public static final int I_ZONE_AUTON = (IS_MRBEAST) ? 0 : 0;
 	//The rate of pushing motion profile points to the talon, in ms
 	public static final int AUTON_FRAME_RATE = 10;
 	//Parameters for calibrating the F-gain
@@ -121,70 +115,10 @@ public class RobotMap {
 	public static final double MAX_SPEED_GYRO = 0.4;
 	
 	
-	/** Spinner Settings ******************************************************/
-	public static final boolean HAS_SPINNER = IS_PBOT;
-	public static final NeutralMode SPINNER_BRAKE_MODE = NeutralMode.Brake;
-	public static final boolean REVERSE_SPINNER = false;
-	
-	
-	/** Spinner Encoder Settings **********************************************/
-	public static final boolean HAS_SPINNER_ENCODER = HAS_SPINNER;
-	public static final int SPINNER_ENCODER_FRAME_RATE = 10;
-	public static final int SPINNER_ENCODER_COUNTS_PER_REV = 4096;
-	public static final boolean REVERSE_SPINNER_ENCODER = false;
-	public static final boolean SPINNER_SENSOR_PHASE = false;
-	
-	
-	/** Spinner Closed-Loop Settings ******************************************/
-	public static final boolean HAS_SPINNER_CLOSED_LOOP = HAS_SPINNER;
-	public static final int SPINNER_POSITION_PROFILE = 0;
-	public static final double kP_SPINNER_POSITION = 0.51;
-	public static final double kI_SPINNER_POSITION = 0.0;
-	public static final double kD_SPINNER_POSITION = 5.1;
-	public static final double kF_SPINNER_POSITION = 0.0; //Should be set to zero
-	public static final int I_ZONE_SPINNER_POSITION = 0;
-	public static final int SPINNER_SPEED_PROFILE = 1;
-	public static final double kP_SPINNER_SPEED = 0.05;
-	public static final double kI_SPINNER_SPEED = 0.0;
-	public static final double kD_SPINNER_SPEED = 0.5;
-	public static final double kF_SPINNER_SPEED = 0.036;
-	public static final int I_ZONE_SPINNER_SPEED = 0;
-	public static final double SPINNER_DEFAULT_POSITION = 1.0; //revolutions
-	public static final double SPINNER_DEFAULT_SPEED = 500; //RPM
-	public static final double SPINNER_CALIBRATE_POWER = 0.2;
-	public static final double SPINNER_CALIBRATE_TIME = 10.0; //seconds
-	public static final int SPINNER_COUNT_AVERAGE = 20;
-	public static final int SPINNER_TIMEOUT = 0; // timeout in ms; set to zero
-	public static final int SPINNER_PIDIDX = 0; // used for cascading PID; set to zero
-	public static final int SPINNER_CRUISE = 500; //RPM
-	public static final int SPINNER_ACCEL = 500; //RPM per sec
-	
-	
-	/** PanTilt Settings ******************************************************/
-	public static final boolean HAS_PAN_TILT = false;
-	//PWM bounds are for the HS-5685MH servo
-	public static final double SERVO_PWM_MAX = 2.25;
-	public static final double SERVO_PWM_MIN = 0.76;
-	public static final double PAN_MIN = 0.25;
-	public static final double PAN_CENTER = 0.430;
-	public static final double PAN_MAX = 0.7;
-	public static final double TILT_MIN = 0.0;
-	public static final double TILT_CENTER 	= 0.515;
-	public static final double TILT_MAX = 0.7;
-	//The change in servo position per second when driven with the POV buttons
-	public static final double SERVO_SPEED = 0.25;
-	//Reverse the direction of the servos if they don't match the controls
-	public static final boolean REVERSE_PAN = false;
-	public static final boolean REVERSE_TILT = false;
-	
-	
 	/** Gyroscope Settings ****************************************************/
 	public static final boolean HAS_GYROSCOPE = true;
 	public static final double GYROSCOPE_SCALE = 0.25;
 	
-	
-	/** LEDRing Settings ******************************************************/
-	public static final boolean HAS_LIGHT_RING = true;
 
 	/** LineTracker Settings ******************************************************/
 	public static final boolean HAS_LINE_TRACKER = true;

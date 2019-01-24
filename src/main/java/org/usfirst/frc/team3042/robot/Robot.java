@@ -2,6 +2,7 @@ package org.usfirst.frc.team3042.robot;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.commands.ExampleCommand;
+import org.usfirst.frc.team3042.robot.subsystems.DSN_Drive;
 import org.usfirst.frc.team3042.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team3042.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team3042.robot.subsystems.Gyroscope;
@@ -28,6 +29,7 @@ public class Robot extends TimedRobot {
 	private static final boolean HAS_DRIVETRAIN = RobotMap.HAS_DRIVETRAIN;
 	private static final boolean HAS_GYROSCOPE = RobotMap.HAS_GYROSCOPE;
 	private static final boolean HAS_LINE_TRACKER = RobotMap.HAS_LINE_TRACKER;
+	private static final boolean HAS_DSN_Drive = RobotMap.HAS_DSN_Drive;
 	
 	
 	/** Create Subsystems *****************************************************/
@@ -35,6 +37,7 @@ public class Robot extends TimedRobot {
 	public static final Drivetrain 	drivetrain 	= (HAS_DRIVETRAIN) 	? new Drivetrain() 	: null;
 	public static final Gyroscope 	gyroscope 	= (HAS_GYROSCOPE) 	? new Gyroscope() 	: null;
 	public static final LineTracker lineTracker = (HAS_LINE_TRACKER) ? new LineTracker()  : null;
+	public static final DSN_Drive DSN_Drive = (HAS_DSN_Drive) ? new DSN_Drive()  : null;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 

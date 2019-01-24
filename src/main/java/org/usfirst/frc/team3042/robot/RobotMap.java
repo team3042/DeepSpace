@@ -58,6 +58,9 @@ public class RobotMap {
 	public static final double TRIGGER_SPINNER_SCALE = 0.1;
 	public static final double JOYSTICK_DEAD_ZONE = 0.0;
 
+	/** DSN Settings **********************************************************/
+	public static final boolean HAS_DSN_Drive = true;
+
 
 	/** Drivetrain Settings ***************************************************/
 	public static final boolean HAS_DRIVETRAIN = true;

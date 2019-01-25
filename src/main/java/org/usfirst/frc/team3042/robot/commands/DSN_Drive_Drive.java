@@ -3,31 +3,31 @@ package org.usfirst.frc.team3042.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team3042.lib.Log;
+import org.usfirst.frc.team3042.robot.OI;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.DSN_Drive;
+import org.usfirst.frc.team3042.robot.subsystems.DSN_Drive;;
 
 
-/** ExampleCommand ************************************************************
- * A template for commands.
- */
-public class DSN_Drive_Backward extends Command {
+/** DSN_Drive_Drive *************************************************************/
+public class DSN_Drive_Drive extends Command {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL = RobotMap.LOG_EXAMPLE_SUBSYSTEM;
+	private static final Log.Level LOG_LEVEL = RobotMap.LOG_DSN_DRIVE;
 	
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	DSN_Drive DSN_Drive = Robot.DSN_Drive;
+	DSN_Drive dsn_drive = Robot.dsn_drive;
+	OI oi = Robot.oi;
 	
 	
-	/** ExampleCommand ********************************************************
+	/** DSN_Drive_Drove ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public DSN_Drive_Backward() {
+	public DSN_Drive_Drive() {
 		log.add("Constructor", Log.Level.TRACE);
 		
-		requires(DSN_Drive);
+		requires(dsn_drive);
 	}
 
 	
@@ -36,6 +36,8 @@ public class DSN_Drive_Backward extends Command {
 	 */
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
+		
+		dsn_drive.stop();
 	}
 
 	
@@ -43,6 +45,9 @@ public class DSN_Drive_Backward extends Command {
 	 * Called repeatedly when this Command is scheduled to run
 	 */
 	protected void execute() {
+		double power = oi.getTriggerDifference();
+		
+		dsn_drive.setPower(power);
 	}
 	
 	
@@ -59,6 +64,7 @@ public class DSN_Drive_Backward extends Command {
 	 */
 	protected void end() {
 		log.add("End", Log.Level.TRACE);
+		terminate();
 	}
 
 	
@@ -68,5 +74,12 @@ public class DSN_Drive_Backward extends Command {
 	 */
 	protected void interrupted() {
 		log.add("Interrupted", Log.Level.TRACE);
+		terminate();
+	}
+	
+	
+	/** Graceful End **********************************************************/
+	private void terminate() {
+		dsn_drive.stop();
 	}
 }

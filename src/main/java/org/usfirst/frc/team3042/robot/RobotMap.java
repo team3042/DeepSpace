@@ -41,6 +41,7 @@ public class RobotMap {
 	public static final int CAN_RIGHT_MOTOR = 		IS_MRBEAST 	? 9 : 0;
 	public static final int CAN_LEFT_FOLLOWER = 	IS_MRBEAST 	? 0 : 0;
 	public static final int CAN_RIGHT_FOLLOWER = 	IS_MRBEAST 	? 0 : 0;
+	public static final int CAN_DSN =           IS_MRBEAST  ? 10 : 0;
 	
 	
 	/** PCM channels **********************************************************/
@@ -59,7 +60,9 @@ public class RobotMap {
 	public static final double JOYSTICK_DEAD_ZONE = 0.0;
 
 	/** DSN Settings **********************************************************/
-	public static final boolean HAS_DSN_Drive = true;
+	public static final boolean HAS_DSN_DRIVE = true;
+	public static final boolean HAS_DSN_ENCODER = true;
+	public static final boolean HAS_DSN_CLOSED_LOOP = true;
 
 
 	/** Drivetrain Settings ***************************************************/
@@ -151,4 +154,5 @@ public class RobotMap {
 	public static final Log.Level	LOG_LIGHT_RING				= Log.Level.TRACE;
 	public static final Log.Level   LOG_LINE_TRACKER			= Log.Level.TRACE;
 	public static final Log.Level	LOG_EXAMPLE_SUBSYSTEM 		= Log.Level.TRACE;
+	public static final Log.Level	LOG_DSN_DRIVE               = Log.Level.TRACE;
 }

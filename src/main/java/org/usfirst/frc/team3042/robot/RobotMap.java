@@ -61,6 +61,9 @@ public class RobotMap {
 	/** DSN Settings **********************************************************/
 	public static final boolean HAS_DSN_Drive = true;
 
+	/** Arm Winch Settings ****************************************************/
+	public static final boolean HAS_ARM_WINCH = true;
+
 
 	/** Drivetrain Settings ***************************************************/
 	public static final boolean HAS_DRIVETRAIN = true;

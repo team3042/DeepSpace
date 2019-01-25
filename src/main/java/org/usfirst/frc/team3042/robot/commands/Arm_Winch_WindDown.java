@@ -6,7 +6,6 @@ import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Arm_Winch;
-import org.usfirst.frc.team3042.robot.subsystems.ExampleSubsystem;
 
 
 /** ExampleCommand ************************************************************
@@ -14,11 +13,11 @@ import org.usfirst.frc.team3042.robot.subsystems.ExampleSubsystem;
  */
 public class Arm_Winch_WindDown extends Command {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL = RobotMap.LOG_EXAMPLE_SUBSYSTEM;
+	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM_WINCH;
 
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	ExampleSubsystem exampleSubsystem = Robot.exampleSubsystem;
+	Arm_Winch arm_Winch = Robot.Arm_Winch;
 
 	/** ExampleCommand ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
@@ -26,7 +25,7 @@ public class Arm_Winch_WindDown extends Command {
 	public Arm_Winch_WindDown() {
 		log.add("Constructor", Log.Level.TRACE);
 		
-		requires(Arm_Winch.java);
+		requires(arm_Winch);
 	}
 
 	

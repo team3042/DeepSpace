@@ -3,6 +3,7 @@ package org.usfirst.frc.team3042.robot.subsystems;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Release;
+import edu.wpi.first.wpilibj.Solenoid;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -18,6 +19,7 @@ public class DSN_Holder extends Subsystem {
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
+	private Solenoid dsnSolenoid = new Solenoid(RobotMap.DSN_SOLENOID);
 	
 	
 	/** DSN_Holder ******************************************************
@@ -25,8 +27,22 @@ public class DSN_Holder extends Subsystem {
 	 */
 	public DSN_Holder() {
 		log.add("Constructor", LOG_LEVEL);
+
 	}
+
+	public void dsnRelease() {
+
+		dsnSolenoid.set(true);
+
+	}
+
 	
+
+	public void dsnEngage() {
+
+		dsnSolenoid.set(false);
+
+	}
 	
 	/** initDefaultCommand ****************************************************
 	 * Set the default command for the subsystem.

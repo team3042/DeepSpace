@@ -62,6 +62,7 @@ public class RobotMap {
 	/** DSN Settings **********************************************************/
 	public static final boolean HAS_DSN_DRIVE = true;
 	public static final boolean HAS_DSN_WINCH = true;
+	public static final boolean HAS_DSN_HOLDER = true;
 
 	/** Drivetrain Settings ***************************************************/
 	public static final boolean HAS_DRIVETRAIN = true;
@@ -153,5 +154,6 @@ public class RobotMap {
 	public static final Log.Level   LOG_LINE_TRACKER			= Log.Level.TRACE;
 	public static final Log.Level	LOG_EXAMPLE_SUBSYSTEM 		= Log.Level.TRACE;
 	public static final Log.Level	LOG_DSN_DRIVE               = Log.Level.TRACE;
+	public static final Log.Level   LOG_DSN_HOLDER              = Log.Level.TRACE;
 	public static final Log.Level	LOG_DSN_WINCH               = Log.Level.TRACE;
 }

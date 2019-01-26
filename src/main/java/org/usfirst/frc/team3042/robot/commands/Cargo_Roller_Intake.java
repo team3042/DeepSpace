@@ -18,7 +18,7 @@ public class Cargo_Roller_Intake extends Command {
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	Cargo_Roller cargo_Roller = Robot.cargo_roller;
+	Cargo_Roller cargo_roller = Robot.cargo_roller;
 	
 	
 	/** Cargo_Roller_Intake ********************************************************
@@ -27,7 +27,7 @@ public class Cargo_Roller_Intake extends Command {
 	public Cargo_Roller_Intake() {
 		log.add("Constructor", Log.Level.TRACE);
 		
-		requires(cargo_Roller);
+		requires(cargo_roller);
 	}
 
 	

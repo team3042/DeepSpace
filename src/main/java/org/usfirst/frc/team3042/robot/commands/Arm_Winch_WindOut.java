@@ -8,10 +8,8 @@ import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Arm_Winch;
 
 
-/** Arm_Winch_WindUp **********************************************************/
-public class Arm_Winch_WindUp extends Command {
-
-
+/** Arm_Winch_WindOut *********************************************************/
+public class Arm_Winch_WindOut extends Command {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM_WINCH;
 	
@@ -21,38 +19,38 @@ public class Arm_Winch_WindUp extends Command {
 	Arm_Winch arm_Winch = Robot.Arm_Winch;
 	
 	
-	/** Arm_Winch_WindUp ******************************************************/
-	public Arm_Winch_WindUp() {
+	/** Arm_Winch_WindOut *****************************************************/
+	public Arm_Winch_WindOut() {
 		log.add("Constructor", Log.Level.TRACE);
 		
 		requires(arm_Winch);
 	}
 
 	
-	/** initialize ***********************************************************/
+	/** initialize ************************************************************/
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
 	}
 
 	
-	/** execute *************************************************************/
+	/** execute ***************************************************************/
 	protected void execute() {
 	}
 	
 	
-	/** isFinished **********************************************************/
+	/** isFinished ************************************************************/
 	protected boolean isFinished() {
 		return false;
 	}
 
 	
-	/** end *****************************************************************/
+	/** end *******************************************************************/
 	protected void end() {
 		log.add("End", Log.Level.TRACE);
 	}
 
 	
-	/** interrupted ********************************************************/
+	/** interrupted ***********************************************************/
 	protected void interrupted() {
 		log.add("Interrupted", Log.Level.TRACE);
 	}

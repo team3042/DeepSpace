@@ -6,10 +6,7 @@ import org.usfirst.frc.team3042.robot.commands.Arm_Winch_WindUp;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * ExampleSubsystem ********************************************************** A
- * subsystem template
- */
+/*** Arm_Winch ****************************************************************/
 public class Arm_Winch extends Subsystem {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM_WINCH;
@@ -19,18 +16,12 @@ public class Arm_Winch extends Subsystem {
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
 
-	/**
-	 * ExampleSubsystem ******************************************************
-	 * 
-	 */
+	/** Arm_Winch *************************************************************/
 	public Arm_Winch() {
 		log.add("Constructor", LOG_LEVEL);
 	}
 
-	/**
-	 * initDefaultCommand **************************************************** Set
-	 * the default command for the subsystem.
-	 */
+	/** initDefaultCommand ****************************************************/
 	public void initDefaultCommand() {
 		setDefaultCommand(new Arm_Winch_WindUp());
 	}

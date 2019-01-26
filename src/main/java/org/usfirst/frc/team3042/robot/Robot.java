@@ -5,6 +5,7 @@ import org.usfirst.frc.team3042.robot.commands.ExampleCommand;
 import org.usfirst.frc.team3042.robot.subsystems.DSN_Drive;
 import org.usfirst.frc.team3042.robot.subsystems.DSN_Winch;
 import org.usfirst.frc.team3042.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team3042.robot.subsystems.Elevator;
 import org.usfirst.frc.team3042.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team3042.robot.subsystems.Gyroscope;
 import org.usfirst.frc.team3042.robot.subsystems.LineTracker;
@@ -32,6 +33,7 @@ public class Robot extends TimedRobot {
 	private static final boolean HAS_LINE_TRACKER = RobotMap.HAS_LINE_TRACKER;
 	private static final boolean HAS_DSN_DRIVE = RobotMap.HAS_DSN_DRIVE;
 	private static final boolean HAS_DSN_WINCH = RobotMap.HAS_DSN_WINCH;
+	private static final boolean HAS_ELEVATOR = RobotMap.HAS_ELEVATOR;
 	
 	
 	/** Create Subsystems *****************************************************/
@@ -41,6 +43,7 @@ public class Robot extends TimedRobot {
 	public static final LineTracker lineTracker = (HAS_LINE_TRACKER) ? new LineTracker()  : null;
 	public static final DSN_Drive dsn_drive = (HAS_DSN_DRIVE) ? new DSN_Drive()  : null;
 	public static final DSN_Winch dsn_winch = (HAS_DSN_WINCH) ? new DSN_Winch()  : null;
+	public static final Elevator elevator = (HAS_ELEVATOR) ? new Elevator()  : null;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 

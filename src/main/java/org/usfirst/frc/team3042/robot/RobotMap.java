@@ -42,6 +42,7 @@ public class RobotMap {
 	public static final int CAN_LEFT_FOLLOWER = 	IS_MRBEAST 	? 0 : 0;
 	public static final int CAN_RIGHT_FOLLOWER = 	IS_MRBEAST 	? 0 : 0;
 	public static final int CAN_DSN =           IS_MRBEAST  ? 10 : 0;
+	public static final int CAN_ELEVATOR_TALON = 	IS_MRBEAST ? 13 : 17;
 	
 	
 	/** PCM channels **********************************************************/
@@ -63,12 +64,16 @@ public class RobotMap {
 	public static final boolean HAS_DSN_DRIVE = true;
 	public static final boolean HAS_DSN_WINCH = true;
 
+	/** Elevator Settings **********************************************************/
+	public static final boolean HAS_ELEVATOR = true;
+
 	/** Drivetrain Settings ***************************************************/
 	public static final boolean HAS_DRIVETRAIN = true;
 	public static final boolean HAS_FOLLOWERS = true;
 	public static final NeutralMode DRIVETRAIN_BRAKE_MODE = NeutralMode.Brake;
 	public static final boolean REVERSE_LEFT_MOTOR = 	(IS_MRBEAST) ? true : false;
 	public static final boolean REVERSE_RIGHT_MOTOR = 	(IS_MRBEAST) ? false: false;
+	public static final int PIDIDX = 0; //pidIdx - 0 for Primary closed-loop. 1 for cascaded closed-loop. See Phoenix-Documentation for how to interpret.
 	// Maximum Acceleration given in power per second
 	public static final double ACCELERATION_MAX = 1.5;
 	public static final double kF_DRIVE_LEFT = 	(IS_MRBEAST) ? 0.1817180616740088 : 0;
@@ -154,4 +159,5 @@ public class RobotMap {
 	public static final Log.Level	LOG_EXAMPLE_SUBSYSTEM 		= Log.Level.TRACE;
 	public static final Log.Level	LOG_DSN_DRIVE               = Log.Level.TRACE;
 	public static final Log.Level	LOG_DSN_WINCH               = Log.Level.TRACE;
+	public static final Log.Level	LOG_ELEVATOR              = Log.Level.TRACE;
 }

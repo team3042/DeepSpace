@@ -160,4 +160,10 @@ public class RobotMap {
 	public static final Log.Level	LOG_DSN_DRIVE               = Log.Level.TRACE;
 	public static final Log.Level   LOG_DSN_HOLDER              = Log.Level.TRACE;
 	public static final Log.Level	LOG_DSN_WINCH               = Log.Level.TRACE;
+	public static final Log.Level   LOG_PANEL_SLIDER			= Log.Level.TRACE;
+	public static final Log.Level   LOG_PANEL_GRIPPER			= Log.Level.TRACE;
+	public static final Log.Level	LOG_HOOK_HOLDER 		    = Log.Level.TRACE;
+	public static final Log.Level	LOG_ARM_DRIVE               = Log.Level.TRACE;
+	public static final Log.Level   LOG_ARM_POT                 = Log.Level.TRACE;
+	public static final Log.Level	LOG_CARGO_ROLLER            = Log.Level.TRACE;
 }

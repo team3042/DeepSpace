@@ -6,7 +6,9 @@ import org.usfirst.frc.team3042.robot.commands.Arm_Winch_WindUp;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/*** Arm_Winch ****************************************************************/
+/*** Arm_Winch ***************************************************************
+ * Subsystem that controls the winch on the front of the robot and pulls the arm down in endgame for the climbing the hab
+*/
 public class Arm_Winch extends Subsystem {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM_WINCH;

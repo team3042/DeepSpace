@@ -8,7 +8,9 @@ import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Arm_Winch;
 
 
-/** Arm_Winch_WindUp **********************************************************/
+/** Arm_Winch_WindUp *********************************************************
+ * Winds up the arm winch
+*/
 public class Arm_Winch_WindUp extends Command {
 
 
@@ -18,7 +20,7 @@ public class Arm_Winch_WindUp extends Command {
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	Arm_Winch arm_Winch = Robot.Arm_Winch;
+	Arm_Winch arm_Winch = Robot.arm_winch;
 	
 	
 	/** Arm_Winch_WindUp ******************************************************/

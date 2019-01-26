@@ -10,6 +10,12 @@ import org.usfirst.frc.team3042.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team3042.robot.subsystems.Gyroscope;
 import org.usfirst.frc.team3042.robot.subsystems.DSN_Holder;
 import org.usfirst.frc.team3042.robot.subsystems.LineTracker;
+import org.usfirst.frc.team3042.robot.subsystems.Cargo_Roller;
+import org.usfirst.frc.team3042.robot.subsystems.Panel_Gripper;
+import org.usfirst.frc.team3042.robot.subsystems.Panel_Slider;
+import org.usfirst.frc.team3042.robot.subsystems.Hook_Holder;
+import org.usfirst.frc.team3042.robot.subsystems.Arm_Drive;
+import org.usfirst.frc.team3042.robot.subsystems.Arm_POT;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -35,7 +41,13 @@ public class Robot extends TimedRobot {
 	private static final boolean HAS_DSN_DRIVE = RobotMap.HAS_DSN_DRIVE;
 	private static final boolean HAS_DSN_HOLDER = RobotMap.HAS_DSN_HOLDER;
 	private static final boolean HAS_DSN_WINCH = RobotMap.HAS_DSN_WINCH;
-  private static final boolean HAS_ARM_WINCH = RobotMap.HAS_ARM_WINCH;
+	private static final boolean HAS_ARM_WINCH = RobotMap.HAS_ARM_WINCH;
+	private static final boolean HAS_HOOK_HOLDER = RobotMap.HAS_GYROSCOPE;
+	private static final boolean HAS_PANEL_SLIDER = RobotMap.HAS_LINE_TRACKER;
+	private static final boolean HAS_PANEL_GRIPPER = RobotMap.HAS_DSN_DRIVE;
+	private static final boolean HAS_CARGO_ROLLER = RobotMap.HAS_DSN_HOLDER;
+	private static final boolean HAS_ARM_DRIVE = RobotMap.HAS_DSN_WINCH;
+    private static final boolean HAS_ARM_POT = RobotMap.HAS_ARM_WINCH;  
 	
 	
 	/** Create Subsystems *****************************************************/
@@ -46,7 +58,13 @@ public class Robot extends TimedRobot {
 	public static final DSN_Drive dsn_drive = (HAS_DSN_DRIVE) ? new DSN_Drive()  : null;
 	public static final DSN_Winch dsn_winch = (HAS_DSN_WINCH) ? new DSN_Winch()  : null;
 	public static final DSN_Holder dsn_holder = (HAS_DSN_HOLDER) ? new DSN_Holder()  : null;
-  public static final Arm_Winch Arm_Winch = (HAS_ARM_WINCH) ? new Arm_Winch() : null;
+    public static final Arm_Winch arm_winch = (HAS_ARM_WINCH) ? new Arm_Winch() : null;
+    public static final Cargo_Roller 	cargo_roller 	= (HAS_CARGO_ROLLER) 	? new Cargo_Roller() 	: null;
+	public static final Panel_Slider panel_slider = (HAS_PANEL_SLIDER) ? new Panel_Slider()  : null;
+	public static final Arm_Drive arm_drive = (HAS_ARM_DRIVE) ? new Arm_Drive()  : null;
+	public static final Hook_Holder hook_holder = (HAS_HOOK_HOLDER) ? new Hook_Holder()  : null;
+	public static final Panel_Gripper panel_gripper = (HAS_PANEL_GRIPPER) ? new Panel_Gripper()  : null;
+    public static final Arm_POT arm_pot = (HAS_ARM_POT) ? new Arm_POT() : null;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 

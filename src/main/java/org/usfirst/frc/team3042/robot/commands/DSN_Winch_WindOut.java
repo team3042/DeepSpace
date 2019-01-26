@@ -1,33 +1,33 @@
-package org.usfirst.frc.team3042.robot.commands;
+ package org.usfirst.frc.team3042.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.DSN_Drive;
+import org.usfirst.frc.team3042.robot.subsystems.DSN_Winch;
 
 
-/** ExampleCommand ************************************************************
- * A template for commands.
+/** DSN_Winch_WindOut ************************************************************
+ * Winds out the winch
  */
-public class DSN_Drive_Backward extends Command {
+public class DSN_Winch_WindOut extends Command {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL = RobotMap.LOG_EXAMPLE_SUBSYSTEM;
+	private static final Log.Level LOG_LEVEL = RobotMap.LOG_DSN_WINCH;
 	
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	DSN_Drive DSN_Drive = Robot.DSN_Drive;
+	DSN_Winch dsn_winch = Robot.dsn_winch;
 	
 	
-	/** ExampleCommand ********************************************************
+	/** DSN_Winch_WindOut ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public DSN_Drive_Backward() {
+	public DSN_Winch_WindOut() {
 		log.add("Constructor", Log.Level.TRACE);
 		
-		requires(DSN_Drive);
+		requires(dsn_winch);
 	}
 
 	

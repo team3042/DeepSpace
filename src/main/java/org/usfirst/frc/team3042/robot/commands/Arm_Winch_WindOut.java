@@ -8,7 +8,9 @@ import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Arm_Winch;
 
 
-/** Arm_Winch_WindOut *********************************************************/
+/** Arm_Winch_WindOut ********************************************************
+ * Winds out the arm winch
+*/
 public class Arm_Winch_WindOut extends Command {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM_WINCH;

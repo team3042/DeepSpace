@@ -66,6 +66,11 @@ public class RobotMap {
 
 	/** Elevator Settings **********************************************************/
 	public static final boolean HAS_ELEVATOR = true;
+	public static final int ELEVATOR_INTAKE_POSITION = IS_MRBEAST 		? 200 : 200;
+	public static final double ELEVATOR_LOWER_VELOCITY = IS_MRBEAST ? 0.041 : -0.1;
+	public static final int ELEVATOR_MAX_POSITION = IS_MRBEAST          ? 37000 : 37000;
+	public static final int ELEVATOR_MIN_POSITION = IS_MRBEAST          ? 0 : 0;
+	public static final double ELEVATOR_POSITION_CONTROL_RANGE = IS_MRBEAST ? 300 : 300;
 
 	/** Drivetrain Settings ***************************************************/
 	public static final boolean HAS_DRIVETRAIN = true;

@@ -1,4 +1,4 @@
- package org.usfirst.frc.team3042.robot.commands;
+package org.usfirst.frc.team3042.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,7 +9,7 @@ import org.usfirst.frc.team3042.robot.subsystems.Elevator;
 
 
 /** Elevator_Cargo_Hold ************************************************************
- * Holds cargo in position
+ * Holds hatch panels in position
  */
 public class Elevator_Cargo_Hold extends Command {
 	/** Configuration Constants ***********************************************/
@@ -19,6 +19,7 @@ public class Elevator_Cargo_Hold extends Command {
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
 	Elevator elevator = Robot.elevator;
+	boolean toldToMoveDown;
 	
 	
 	/** Elevator_Cargo_Hold ********************************************************
@@ -36,6 +37,17 @@ public class Elevator_Cargo_Hold extends Command {
 	 */
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
+
+		int goalPos = elevator.getCurrentGoalPos();
+    		int currentPos = Robot.elevator.getPosition();
+    		
+    		if (goalPos > currentPos) {
+    			elevator.setTalonPositionMagic(goalPos);
+    			toldToMoveDown = false;
+    		} else {
+    			elevator.setPower(RobotMap.ELEVATOR_LOWER_VELOCITY);
+    			toldToMoveDown = true;
+    		}
 	}
 
 	
@@ -43,6 +55,26 @@ public class Elevator_Cargo_Hold extends Command {
 	 * Called repeatedly when this Command is scheduled to run
 	 */
 	protected void execute() {
+		int goalPos = Robot.elevator.getCurrentGoalPos();
+		int currentPos = Robot.elevator.getPosition();
+    	
+		if(toldToMoveDown && goalPos != RobotMap.ELEVATOR_INTAKE_POSITION){//falls to the bottom of the control range to avoid driving the motor downward
+			if(goalPos - RobotMap.ELEVATOR_POSITION_CONTROL_RANGE < currentPos){
+				Robot.elevator.setPower(RobotMap.ELEVATOR_LOWER_VELOCITY);
+			} else {
+				toldToMoveDown = false;
+			}
+		} else if (Math.abs(goalPos - currentPos) < RobotMap.ELEVATOR_POSITION_CONTROL_RANGE){
+			if (goalPos == RobotMap.ELEVATOR_INTAKE_POSITION) {
+				Robot.elevator.setPower(0);
+			} else {
+				Robot.elevator.setTalonPosition(goalPos);
+			}
+		} else if (goalPos > currentPos) {
+			Robot.elevator.setTalonPositionMagic(goalPos);
+		} else {
+			Robot.elevator.setPower(RobotMap.ELEVATOR_LOWER_VELOCITY);
+		}
 	}
 	
 	

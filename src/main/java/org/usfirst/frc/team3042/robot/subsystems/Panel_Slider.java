@@ -2,7 +2,7 @@ package org.usfirst.frc.team3042.robot.subsystems;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.commands.ExampleCommand;
+import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Backward;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -30,6 +30,6 @@ public class Panel_Slider extends Subsystem {
 	 * Set the default command for the subsystem.
 	 */
 	public void initDefaultCommand() {
-		setDefaultCommand(new ExampleCommand());
+		setDefaultCommand(new Panel_Slider_Backward());
 	}
 }

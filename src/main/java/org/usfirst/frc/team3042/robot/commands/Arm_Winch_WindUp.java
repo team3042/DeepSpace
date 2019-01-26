@@ -18,7 +18,7 @@ public class Arm_Winch_WindUp extends Command {
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	Arm_Winch arm_Winch = Robot.Arm_Winch;
+	Arm_Winch arm_Winch = Robot.arm_winch;
 	
 	
 	/** Arm_Winch_WindUp ******************************************************/

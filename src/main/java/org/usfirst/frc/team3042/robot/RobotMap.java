@@ -41,8 +41,10 @@ public class RobotMap {
 	public static final int CAN_RIGHT_MOTOR = 		IS_MRBEAST 	? 9 : 0;
 	public static final int CAN_LEFT_FOLLOWER = 	IS_MRBEAST 	? 0 : 0;
 	public static final int CAN_RIGHT_FOLLOWER = 	IS_MRBEAST 	? 0 : 0;
-	public static final int CAN_DSN =           IS_MRBEAST  ? 10 : 0;
-	
+	public static final int CAN_DSN =           	IS_MRBEAST  ? 10 : 0;
+
+	/** Solenoid ID numbers****************************************************/
+	public static final int DSN_SOLENOID =			IS_MRBEAST  ? 0 : 0;
 	
 	/** PCM channels **********************************************************/
 	

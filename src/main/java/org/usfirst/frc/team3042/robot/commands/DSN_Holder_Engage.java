@@ -8,10 +8,10 @@ import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.DSN_Holder;
 
 
-/** DSN_Holder_Release ************************************************************
+/** DSN_Holder_Engage ************************************************************
  * A template for commands.
  */
-public class DSN_Holder_Release extends Command {
+public class DSN_Holder_Engage extends Command {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_DSN_HOLDER;
 	
@@ -21,14 +21,14 @@ public class DSN_Holder_Release extends Command {
 	DSN_Holder dsn_holder = Robot.dsn_holder;
 	
 	
-	/** DSN_Holder_Release ********************************************************
+	/** DSN_Holder_Engage ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public DSN_Holder_Release() {
+	public DSN_Holder_Engage() {
 		log.add("Constructor", Log.Level.TRACE);
-		
-		dsn_holder.dsnRelease();
 
+		dsn_holder.dsnEngage();
+		
 		requires(dsn_holder);
 	}
 

@@ -37,12 +37,13 @@ public class RobotMap {
 	
 	
 	/** CAN ID numbers ********************************************************/
-	public static final int CAN_ELEVATOR_TALON = 	IS_JUNO ? 13 : 17;
+	public static final int CAN_ELEVATOR_TALON = 	IS_JUNO     ? 13 : 17;
 	public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 3 : 0;
 	public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 9 : 0;
 	public static final int CAN_LEFT_FOLLOWER = 	IS_JUNO 	? 0 : 0;
 	public static final int CAN_RIGHT_FOLLOWER = 	IS_JUNO 	? 0 : 0;
-	public static final int CAN_DSN =           	IS_JUNO  ? 10 : 0;
+	public static final int CAN_DSN =           	IS_JUNO     ? 10 : 0;
+	public static final int CAN_CARGO_ROLLER =      IS_JUNO     ? 0 : 0;
 
 	/** Solenoid ID numbers****************************************************/
 	public static final int DSN_SOLENOID =			IS_JUNO  ? 0 : 0;
@@ -81,6 +82,8 @@ public class RobotMap {
 
 	/** Cargo Roller Settings ****************************************************/
 	public static final boolean HAS_CARGO_ROLLER = true;
+	public static final double INTAKEPOWER = 0.75;
+	public static final double EXTAKEPOWER = 0.75;
 
 	/** Elevator Settings **********************************************************/
 	public static final boolean HAS_ELEVATOR = true;

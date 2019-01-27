@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
 	private static final boolean HAS_PANEL_GRIPPER = RobotMap.HAS_PANEL_GRIPPER;
 	private static final boolean HAS_CARGO_ROLLER = RobotMap.HAS_CARGO_ROLLER;
 	private static final boolean HAS_ARM_DRIVE = RobotMap.HAS_ARM_DRIVE;
-   private static final boolean HAS_ARM_POT = RobotMap.HAS_ARM_POT;  
+    private static final boolean HAS_ARM_POT = RobotMap.HAS_ARM_POT;  
 	
 	
 	/** Create Subsystems *****************************************************/

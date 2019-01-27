@@ -8,10 +8,10 @@ import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Elevator;
 
 
-/** Elevator_Panel_Hold ************************************************************
- * Holds hatch panels in position
+/** Elevator_Hold_Position ************************************************************
+ * Holds the elevator in the position it is in
  */
-public class Elevator_Panel_Hold extends Command {
+public class Elevator_Hold_Position extends Command {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ELEVATOR;
 	
@@ -22,10 +22,10 @@ public class Elevator_Panel_Hold extends Command {
 	boolean toldToMoveDown;
 	
 	
-	/** Elevator_Panel_Hold ********************************************************
+	/** Elevator_Hold_Position ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public Elevator_Panel_Hold() {
+	public Elevator_Hold_Position() {
 		log.add("Constructor", Log.Level.TRACE);
 		
 		requires(elevator);

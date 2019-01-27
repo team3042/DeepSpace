@@ -84,11 +84,25 @@ public class RobotMap {
 
 	/** Elevator Settings **********************************************************/
 	public static final boolean HAS_ELEVATOR = true;
-	public static final int ELEVATOR_INTAKE_POSITION = IS_JUNO 		? 200 : 200;
 	public static final double ELEVATOR_LOWER_VELOCITY = IS_JUNO ? 0.041 : -0.1;
+	public static final double ELEVATOR_POSITION_CONTROL_RANGE =IS_JUNO ? 300 : 300;
+	public static final int ELEVATOR_INTAKE_POSITION = IS_JUNO 		? 200 : 200;
+	public static final int ELEVATOR_LOW_SCALE_POSITION = IS_JUNO 	? 25000 : 25000;
+	public static final int ELEVATOR_MID_SCALE_POSITION = IS_JUNO    ? 31000 : 31000;
+	public static final int ELEVATOR_HIGH_SCALE_POSITION = IS_JUNO 	? 36000 : 36000;
 	public static final int ELEVATOR_MAX_POSITION = IS_JUNO          ? 37000 : 37000;
 	public static final int ELEVATOR_MIN_POSITION = IS_JUNO          ? 0 : 0;
-	public static final double ELEVATOR_POSITION_CONTROL_RANGE =IS_JUNO ? 300 : 300;
+	public static final int ELEVATOR_MANUAL_SPEED = IS_JUNO 	? 5 : 5;
+	public static final double ELEVATOR_MAX_SPEED = IS_JUNO			? 1000 : 1000;
+	public static final double ELEVATOR_KP = IS_JUNO 	? 0.5 : 0.5;
+	public static final double ELEVATOR_KI = IS_JUNO 	? 0 : 0;
+	public static final double ELEVATOR_KD = IS_JUNO 	? 15.0 : 15.0;
+	public static final double ELEVATOR_KF = IS_JUNO 	? 0.5 : 0.5;
+	public static final int ELEVATOR_I_ZONE = IS_JUNO 	? 0 : 0;
+	public static final int ELEVATOR_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 3500 : 8000;
+	public static final int ELEVATOR_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 4000 : 8000;
+	public static final boolean ELEVATOR_REVERSE = true;
+	public static final int ELEVATOR_SPROCKET_CIRCUMFERENCE = IS_JUNO ? 4 : 4;
 
 	/** Drivetrain Settings ***************************************************/
 	public static final boolean HAS_DRIVETRAIN = true;
@@ -97,10 +111,13 @@ public class RobotMap {
 	public static final int PIDIDX = 0; //pidIdx - 0 for Primary closed-loop. 1 for cascaded closed-loop. See Phoenix-Documentation for how to interpret.
 	public static final boolean REVERSE_LEFT_MOTOR = 	(IS_JUNO) ? true : false;
 	public static final boolean REVERSE_RIGHT_MOTOR = 	(IS_JUNO) ? false: false;
-	// Maximum Acceleration given in power per second
-	public static final double ACCELERATION_MAX = 1.5;
+	public static final int TALON_ERROR_TIMEOUT = 0;// measured in Ms
+	public static final int SLOTIDX_1 = 0;
 	public static final double kF_DRIVE_LEFT = 	(IS_JUNO) ? 0.1817180616740088 : 0;
 	public static final double kF_DRIVE_RIGHT = (IS_JUNO) ? 0.16686239968682717 : 0;
+	// Maximum Acceleration given in power per second
+	public static final double ACCELERATION_MAX = 1.5;
+	
 
 	
 	/** Drivetrain Encoder Settings *******************************************/

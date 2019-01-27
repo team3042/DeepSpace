@@ -61,18 +61,21 @@ public class Robot extends TimedRobot {
 	public static final DSN_Winch dsn_winch = (HAS_DSN_WINCH) ? new DSN_Winch()  : null;
 	public static final Elevator elevator = (HAS_ELEVATOR) ? new Elevator()  : null;
 	public static final DSN_Holder dsn_holder = (HAS_DSN_HOLDER) ? new DSN_Holder()  : null;
-  public static final Arm_Winch arm_winch = (HAS_ARM_WINCH) ? new Arm_Winch() : null;
-  public static final Cargo_Roller 	cargo_roller 	= (HAS_CARGO_ROLLER) 	? new Cargo_Roller() 	: null;
+    public static final Arm_Winch arm_winch = (HAS_ARM_WINCH) ? new Arm_Winch() : null;
+    public static final Cargo_Roller 	cargo_roller 	= (HAS_CARGO_ROLLER) 	? new Cargo_Roller() 	: null;
 	public static final Panel_Slider panel_slider = (HAS_PANEL_SLIDER) ? new Panel_Slider()  : null;
 	public static final Arm_Drive arm_drive = (HAS_ARM_DRIVE) ? new Arm_Drive()  : null;
 	public static final Hook_Holder hook_holder = (HAS_HOOK_HOLDER) ? new Hook_Holder()  : null;
 	public static final Panel_Gripper panel_gripper = (HAS_PANEL_GRIPPER) ? new Panel_Gripper()  : null;
-  public static final Arm_POT arm_pot = (HAS_ARM_POT) ? new Arm_POT() : null;
+    public static final Arm_POT arm_pot = (HAS_ARM_POT) ? new Arm_POT() : null;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	
 	public static OI oi;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<Command>();
+
+	public static boolean elevatorEmergencyMode = false;
 
 	CameraServer camera1;
 	CameraServer camera2;

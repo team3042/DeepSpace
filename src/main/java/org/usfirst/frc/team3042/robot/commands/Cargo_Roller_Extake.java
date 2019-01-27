@@ -36,6 +36,7 @@ public class Cargo_Roller_Extake extends Command {
 	 */
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
+		cargo_roller.extake();
 	}
 
 	

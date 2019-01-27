@@ -5,29 +5,29 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team3042.robot.subsystems.Panel_Gripper;;
 
 
-/** ExampleCommand ************************************************************
- * A template for commands.
+/** Panel_Intake ************************************************************
+ * Intakes panels
  */
-public class ExampleCommand extends Command {
+public class Panel_Intake extends Command {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL = RobotMap.LOG_EXAMPLE_SUBSYSTEM;
+	private static final Log.Level LOG_LEVEL = RobotMap.LOG_PANEL_GRIPPER;
 	
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	ExampleSubsystem exampleSubsystem = Robot.exampleSubsystem;
+	Panel_Gripper panel_gripper = Robot.panel_gripper;
 	
 	
-	/** ExampleCommand ********************************************************
+	/** Panel_Intake ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public ExampleCommand() {
+	public Panel_Intake() {
 		log.add("Constructor", Log.Level.TRACE);
 		
-		requires(exampleSubsystem);
+		requires(panel_gripper);
 	}
 
 	

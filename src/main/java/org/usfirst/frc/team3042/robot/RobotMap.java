@@ -43,7 +43,9 @@ public class RobotMap {
 	public static final int CAN_RIGHT_FOLLOWER = 	IS_MRBEAST 	? 0 : 0;
 	public static final int CAN_DSN =           IS_MRBEAST  ? 10 : 0;
 	public static final int CAN_ELEVATOR_TALON = 	IS_MRBEAST ? 13 : 17;
-	
+
+	/** Solenoid ID numbers****************************************************/
+	public static final int DSN_SOLENOID =			IS_MRBEAST  ? 0 : 0;
 	
 	/** PCM channels **********************************************************/
 	
@@ -61,8 +63,12 @@ public class RobotMap {
 	public static final double JOYSTICK_DEAD_ZONE = 0.0;
 
 	/** DSN Settings **********************************************************/
-	public static final boolean HAS_DSN_DRIVE = true;
+  public static final boolean HAS_DSN_DRIVE = true;
 	public static final boolean HAS_DSN_WINCH = true;
+	public static final boolean HAS_DSN_HOLDER = true;
+
+	/** Arm Winch Settings ****************************************************/
+	public static final boolean HAS_ARM_WINCH = true;
 
 	/** Elevator Settings **********************************************************/
 	public static final boolean HAS_ELEVATOR = true;
@@ -120,7 +126,6 @@ public class RobotMap {
 	public static final int AUTON_PIDIDX = 0; // used for cascading PID; set to zero
 	public static final int AUTON_HEADING = 0; //unimplemented feature; set to zero
 	
-	
 	/** Drivetrain Gyro Drive Settings ****************************************/
 	public static final double kP_GYRO = 0.01;
 	public static final double kI_GYRO = 0.0;
@@ -161,8 +166,16 @@ public class RobotMap {
 	public static final Log.Level	LOG_GYROSCOPE				= Log.Level.DEBUG;
 	public static final Log.Level	LOG_LIGHT_RING				= Log.Level.TRACE;
 	public static final Log.Level   LOG_LINE_TRACKER			= Log.Level.TRACE;
+	public static final Log.Level   LOG_ARM_WINCH			    = Log.Level.TRACE;
 	public static final Log.Level	LOG_EXAMPLE_SUBSYSTEM 		= Log.Level.TRACE;
 	public static final Log.Level	LOG_DSN_DRIVE               = Log.Level.TRACE;
+	public static final Log.Level   LOG_DSN_HOLDER              = Log.Level.TRACE;
 	public static final Log.Level	LOG_DSN_WINCH               = Log.Level.TRACE;
 	public static final Log.Level	LOG_ELEVATOR              = Log.Level.TRACE;
+	public static final Log.Level   LOG_PANEL_SLIDER			= Log.Level.TRACE;
+	public static final Log.Level   LOG_PANEL_GRIPPER			= Log.Level.TRACE;
+	public static final Log.Level	LOG_HOOK_HOLDER 		    = Log.Level.TRACE;
+	public static final Log.Level	LOG_ARM_DRIVE               = Log.Level.TRACE;
+	public static final Log.Level   LOG_ARM_POT                 = Log.Level.TRACE;
+	public static final Log.Level	LOG_CARGO_ROLLER            = Log.Level.TRACE;
 }

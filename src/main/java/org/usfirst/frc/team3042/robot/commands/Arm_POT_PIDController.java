@@ -5,29 +5,29 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team3042.robot.subsystems.Arm_POT;;
 
 
-/** ExampleCommand ************************************************************
- * A template for commands.
+/** Arm_POT_PIDController ************************************************************
+ * PID Controller for the intake arm
  */
-public class ExampleCommand extends Command {
+public class Arm_POT_PIDController extends Command {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL = RobotMap.LOG_EXAMPLE_SUBSYSTEM;
+	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM_POT;
 	
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	ExampleSubsystem exampleSubsystem = Robot.exampleSubsystem;
+	Arm_POT arm_POT = Robot.arm_pot;
 	
 	
-	/** ExampleCommand ********************************************************
+	/** Arm_POT_PIDController ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public ExampleCommand() {
+	public Arm_POT_PIDController() {
 		log.add("Constructor", Log.Level.TRACE);
 		
-		requires(exampleSubsystem);
+		requires(arm_POT);
 	}
 
 	

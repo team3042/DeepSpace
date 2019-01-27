@@ -5,29 +5,31 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team3042.robot.subsystems.DSN_Holder;
 
 
-/** ExampleCommand ************************************************************
+/** DSN_Holder_Release ************************************************************
  * A template for commands.
  */
-public class ExampleCommand extends Command {
+public class DSN_Holder_Release extends Command {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL = RobotMap.LOG_EXAMPLE_SUBSYSTEM;
+	private static final Log.Level LOG_LEVEL = RobotMap.LOG_DSN_HOLDER;
 	
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	ExampleSubsystem exampleSubsystem = Robot.exampleSubsystem;
+	DSN_Holder dsn_holder = Robot.dsn_holder;
 	
 	
-	/** ExampleCommand ********************************************************
+	/** DSN_Holder_Release ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public ExampleCommand() {
+	public DSN_Holder_Release() {
 		log.add("Constructor", Log.Level.TRACE);
 		
-		requires(exampleSubsystem);
+		dsn_holder.dsnRelease();
+
+		requires(dsn_holder);
 	}
 
 	

@@ -5,29 +5,29 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team3042.robot.subsystems.Cargo_Roller;;
 
 
-/** ExampleCommand ************************************************************
- * A template for commands.
+/** Cargo_Roller_Intake ************************************************************
+ * Intakes cargo 
  */
-public class ExampleCommand extends Command {
+public class Cargo_Roller_Intake extends Command {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL = RobotMap.LOG_EXAMPLE_SUBSYSTEM;
+	private static final Log.Level LOG_LEVEL = RobotMap.LOG_CARGO_ROLLER;
 	
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	ExampleSubsystem exampleSubsystem = Robot.exampleSubsystem;
+	Cargo_Roller cargo_roller = Robot.cargo_roller;
 	
 	
-	/** ExampleCommand ********************************************************
+	/** Cargo_Roller_Intake ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public ExampleCommand() {
+	public Cargo_Roller_Intake() {
 		log.add("Constructor", Log.Level.TRACE);
 		
-		requires(exampleSubsystem);
+		requires(cargo_roller);
 	}
 
 	

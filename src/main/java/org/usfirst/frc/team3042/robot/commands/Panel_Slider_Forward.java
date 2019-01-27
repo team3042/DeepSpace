@@ -5,29 +5,29 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team3042.robot.subsystems.Panel_Slider;
 
 
-/** ExampleCommand ************************************************************
- * A template for commands.
+/** Panel_Slider_Forward ************************************************************
+ * Slides the panel intake forward
  */
-public class ExampleCommand extends Command {
+public class Panel_Slider_Forward extends Command {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL = RobotMap.LOG_EXAMPLE_SUBSYSTEM;
+	private static final Log.Level LOG_LEVEL = RobotMap.LOG_PANEL_SLIDER;
 	
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	ExampleSubsystem exampleSubsystem = Robot.exampleSubsystem;
+	Panel_Slider panel_slider = Robot.panel_slider;
 	
 	
-	/** ExampleCommand ********************************************************
+	/** Panel_Slider_Forward ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public ExampleCommand() {
+	public Panel_Slider_Forward() {
 		log.add("Constructor", Log.Level.TRACE);
 		
-		requires(exampleSubsystem);
+		requires(panel_slider);
 	}
 
 	

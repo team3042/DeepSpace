@@ -5,29 +5,29 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team3042.robot.subsystems.Arm_Drive;;
 
 
-/** ExampleCommand ************************************************************
- * A template for commands.
+/** Arm_Up_Panel ************************************************************
+ * Brings the arm up to the holey thingy
  */
-public class ExampleCommand extends Command {
+public class Arm_Up_Panel extends Command {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL = RobotMap.LOG_EXAMPLE_SUBSYSTEM;
+	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM_DRIVE;
 	
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	ExampleSubsystem exampleSubsystem = Robot.exampleSubsystem;
+	Arm_Drive arm_drive = Robot.arm_drive;
 	
 	
-	/** ExampleCommand ********************************************************
+	/** Arm_Up_Panel ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public ExampleCommand() {
+	public Arm_Up_Panel() {
 		log.add("Constructor", Log.Level.TRACE);
 		
-		requires(exampleSubsystem);
+		requires(arm_drive);
 	}
 
 	

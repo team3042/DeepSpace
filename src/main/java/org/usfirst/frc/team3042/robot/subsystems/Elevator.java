@@ -22,9 +22,11 @@ public class Elevator extends Subsystem {
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ELEVATOR;
 	private TalonSRX elevatorTalon = new TalonSRX(RobotMap.CAN_ELEVATOR_TALON);
 	private final int INT_POS = RobotMap.ELEVATOR_INTAKE_POSITION;
-	private final int LOW_SCALE_POS = RobotMap.ELEVATOR_LOW_SCALE_POSITION;
-	private final int MID_SCALE_POS = RobotMap.ELEVATOR_MID_SCALE_POSITION;
-	private final int HIGH_SCALE_POS = RobotMap.ELEVATOR_HIGH_SCALE_POSITION;
+	private final int LOW_PANEL_POS = RobotMap.ELEVATOR_LOW_PANEL_POSITION;
+	private final int MID_PANEL_POS = RobotMap.ELEVATOR_MID_PANEL_POSITION;
+	private final int HIGH_PANEL_POS = RobotMap.ELEVATOR_HIGH_PANEL_POSITION;
+	private final int LOW_CARGO_POS = RobotMap.ELEVATOR_LOW_CARGO_POSITION;
+	private final int MID_CARGO_POS = RobotMap.ELEVATOR_MID_CARGO_POSITION;
 	private int MAX_POS = RobotMap.ELEVATOR_MAX_POSITION;
 	private int MIN_POS = RobotMap.ELEVATOR_MIN_POSITION;
 	private final int MANUAL_SPEED = RobotMap.ELEVATOR_MANUAL_SPEED;
@@ -44,7 +46,7 @@ public class Elevator extends Subsystem {
 	private Log log = new Log(LOG_LEVEL, getName());
 	private int currentGoalPos = INT_POS;
 	private int currentPreset = 0;
-	public static Position[] positionFromPreset = new Position[]{Position.INTAKE, Position.LOW_SCALE, Position.MID_SCALE, Position.HIGH_SCALE};
+	public static Position[] positionFromPreset = new Position[]{Position.INTAKE, Position.LOW_PANEL, Position.MID_PANEL, Position.HIGH_PANEL, Position.LOW_CARGO, Position.MID_CARGO};
 	public static final double maxSpeed = RobotMap.ELEVATOR_MAX_SPEED;
 	public int elevatorZero = 0;
 	
@@ -123,7 +125,7 @@ public class Elevator extends Subsystem {
 	}
 	
 	/**
-	 * use this method to set Elevator Position to a Position - INTAKE, SWITCH, LOW_SCALE, MID_SCALE, HIGH_SCALE;
+	 * use this method to set Elevator Position to a Position - INTAKE, LOW_PANEL, MID_PANEL, HIGH_PANEL, LOW_CARGO, MID_CARGO;
 	 * @param position
 	 */
 	public void setPosition(Position position) {
@@ -133,20 +135,30 @@ public class Elevator extends Subsystem {
 				currentGoalPos = INT_POS + elevatorZero; //setTalonPositionMagic(INT_POS - elevatorZero);
 				log.add("Intake position: " + INT_POS, Log.Level.DEBUG);
 				break;
-			case LOW_SCALE:
-				log.add("Low Scale", Log.Level.DEBUG);
-				currentGoalPos = LOW_SCALE_POS + elevatorZero; //setTalonPositionMagic(LOW_SCALE_POS - elevatorZero);
-				log.add("Low scale position: " + LOW_SCALE_POS, Log.Level.DEBUG);
+			case LOW_PANEL:
+				log.add("Low PANEL", Log.Level.DEBUG);
+				currentGoalPos = LOW_PANEL_POS + elevatorZero; //setTalonPositionMagic(LOW_PANEL_POS - elevatorZero);
+				log.add("Low PANEL position: " + LOW_PANEL_POS, Log.Level.DEBUG);
 				break;
-			case MID_SCALE:
-				log.add("Mid Scale", Log.Level.DEBUG);
-				currentGoalPos = MID_SCALE_POS + elevatorZero; //setTalonPositionMagic(MID_SCALE_POS - elevatorZero);
-				log.add("Mid scale position: " + MID_SCALE_POS, Log.Level.DEBUG);
+			case LOW_CARGO:
+				log.add("Low CARGO", Log.Level.DEBUG);
+				currentGoalPos = LOW_PANEL_POS + elevatorZero; //setTalonPositionMagic(LOW_CARGO_POS - elevatorZero);
+				log.add("Low CARGO position: " + LOW_CARGO_POS, Log.Level.DEBUG);
 				break;
-			case HIGH_SCALE:
-				log.add("High Scale", Log.Level.DEBUG);
-				currentGoalPos = HIGH_SCALE_POS + elevatorZero; //setTalonPositionMagic(HIGH_SCALE_POS - elevatorZero);
-				log.add("High scale position: " + HIGH_SCALE_POS, Log.Level.DEBUG);
+			case MID_PANEL:
+				log.add("Mid PANEL", Log.Level.DEBUG);
+				currentGoalPos = MID_PANEL_POS + elevatorZero; //setTalonPositionMagic(MID_PANEL_POS - elevatorZero);
+				log.add("Mid PANEL position: " + MID_PANEL_POS, Log.Level.DEBUG);
+				break;
+			case MID_CARGO:
+				log.add("Mid CARGO", Log.Level.DEBUG);
+				currentGoalPos = MID_PANEL_POS + elevatorZero; //setTalonPositionMagic(MID_CARGO_POS - elevatorZero);
+				log.add("Mid CARGO position: " + MID_CARGO_POS, Log.Level.DEBUG);
+				break;
+			case HIGH_PANEL:
+				log.add("High PANEL", Log.Level.DEBUG);
+				currentGoalPos = HIGH_PANEL_POS + elevatorZero; //setTalonPositionMagic(HIGH_PANEL_POS - elevatorZero);
+				log.add("High PANEL position: " + HIGH_PANEL_POS, Log.Level.DEBUG);
 				break;
 			default:
 				stop();
@@ -222,6 +234,6 @@ public class Elevator extends Subsystem {
 	}
 	
 	public static enum Position {
-		INTAKE, LOW_SCALE, MID_SCALE, HIGH_SCALE;
+		INTAKE, LOW_PANEL, LOW_CARGO, MID_PANEL, MID_CARGO, HIGH_PANEL;
 	}
 }

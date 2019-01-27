@@ -12,9 +12,9 @@ import org.usfirst.frc.team3042.robot.commands.LineTracker_PrintLines;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {	
-	/** Configuration Constants ***********************************************/
-	private static final boolean IS_MRBEAST = RobotMap.IS_MRBEAST;
-	private static final boolean IS_PEWDIEPIE = RobotMap.IS_PEWDIEPIE;
+	/** Configuration Constants **********************************************/
+	private static final boolean IS_JUNO = RobotMap.IS_JUNO;
+	private static final boolean IS_JUPITER = RobotMap.IS_JUPITER;
 	private static final int USB_GAMEPAD = RobotMap.USB_GAMEPAD;
 	private static final int USB_JOY_LEFT = RobotMap.USB_JOYSTICK_LEFT;
 	private static final int USB_JOY_RIGHT = RobotMap.USB_JOYSTICK_RIGHT;
@@ -67,8 +67,8 @@ public class OI {
 			driveAxisRight = GAMEPAD_RIGHT_Y_AXIS;
 		}
 		
-		/** MRBEAST Controls *****************************************************/
-		if (IS_MRBEAST) {
+		/** JUNO Controls *****************************************************/
+		if (IS_JUNO) {
 			//gamepad.A.toggleWhenPressed(new LightRing_On());
 			gamepad.A.toggleWhenPressed(new LineTracker_PrintLines());
 			
@@ -94,8 +94,8 @@ public class OI {
 			//gamepad.Y.whenPressed(new Drivetrain_GyroTurn(270.0));
 		}
 		
-		/** PewDiePie Controls **************************************************/
-		if (IS_PEWDIEPIE) {
+		/** JUPITER Controls **************************************************/
+		if (IS_JUPITER) {
 
 		}
 	}

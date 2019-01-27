@@ -42,12 +42,12 @@ public class Robot extends TimedRobot {
 	private static final boolean HAS_DSN_HOLDER = RobotMap.HAS_DSN_HOLDER;
 	private static final boolean HAS_DSN_WINCH = RobotMap.HAS_DSN_WINCH;
 	private static final boolean HAS_ARM_WINCH = RobotMap.HAS_ARM_WINCH;
-	private static final boolean HAS_HOOK_HOLDER = RobotMap.HAS_GYROSCOPE;
-	private static final boolean HAS_PANEL_SLIDER = RobotMap.HAS_LINE_TRACKER;
-	private static final boolean HAS_PANEL_GRIPPER = RobotMap.HAS_DSN_DRIVE;
-	private static final boolean HAS_CARGO_ROLLER = RobotMap.HAS_DSN_HOLDER;
-	private static final boolean HAS_ARM_DRIVE = RobotMap.HAS_DSN_WINCH;
-    private static final boolean HAS_ARM_POT = RobotMap.HAS_ARM_WINCH;  
+	private static final boolean HAS_HOOK_HOLDER = RobotMap.HAS_HOOK_HOLDER;
+	private static final boolean HAS_PANEL_SLIDER = RobotMap.HAS_PANEL_SLIDER;
+	private static final boolean HAS_PANEL_GRIPPER = RobotMap.HAS_PANEL_GRIPPER;
+	private static final boolean HAS_CARGO_ROLLER = RobotMap.HAS_CARGO_ROLLER;
+	private static final boolean HAS_ARM_DRIVE = RobotMap.HAS_ARM_DRIVE;
+    private static final boolean HAS_ARM_POT = RobotMap.HAS_ARM_POT;  
 	
 	
 	/** Create Subsystems *****************************************************/

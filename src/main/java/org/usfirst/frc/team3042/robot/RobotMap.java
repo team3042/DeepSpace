@@ -37,6 +37,7 @@ public class RobotMap {
 	
 	
 	/** CAN ID numbers ********************************************************/
+	public static final int CAN_ELEVATOR_TALON = 	IS_JUNO ? 13 : 17;
 	public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 3 : 0;
 	public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 9 : 0;
 	public static final int CAN_LEFT_FOLLOWER = 	IS_JUNO 	? 0 : 0;
@@ -81,10 +82,19 @@ public class RobotMap {
 	/** Cargo Roller Settings ****************************************************/
 	public static final boolean HAS_CARGO_ROLLER = true;
 
+	/** Elevator Settings **********************************************************/
+	public static final boolean HAS_ELEVATOR = true;
+	public static final int ELEVATOR_INTAKE_POSITION = IS_MRBEAST 		? 200 : 200;
+	public static final double ELEVATOR_LOWER_VELOCITY = IS_MRBEAST ? 0.041 : -0.1;
+	public static final int ELEVATOR_MAX_POSITION = IS_MRBEAST          ? 37000 : 37000;
+	public static final int ELEVATOR_MIN_POSITION = IS_MRBEAST          ? 0 : 0;
+	public static final double ELEVATOR_POSITION_CONTROL_RANGE = IS_MRBEAST ? 300 : 300;
+
 	/** Drivetrain Settings ***************************************************/
 	public static final boolean HAS_DRIVETRAIN = true;
 	public static final boolean HAS_FOLLOWERS = true;
 	public static final NeutralMode DRIVETRAIN_BRAKE_MODE = NeutralMode.Brake;
+	public static final int PIDIDX = 0; //pidIdx - 0 for Primary closed-loop. 1 for cascaded closed-loop. See Phoenix-Documentation for how to interpret.
 	public static final boolean REVERSE_LEFT_MOTOR = 	(IS_JUNO) ? true : false;
 	public static final boolean REVERSE_RIGHT_MOTOR = 	(IS_JUNO) ? false: false;
 	// Maximum Acceleration given in power per second
@@ -127,7 +137,6 @@ public class RobotMap {
 	public static final int AUTON_TIMEOUT = 0; // timeout in ms; set to zero
 	public static final int AUTON_PIDIDX = 0; // used for cascading PID; set to zero
 	public static final int AUTON_HEADING = 0; //unimplemented feature; set to zero
-	
 	
 	/** Drivetrain Gyro Drive Settings ****************************************/
 	public static final double kP_GYRO = 0.01;
@@ -174,6 +183,7 @@ public class RobotMap {
 	public static final Log.Level	LOG_DSN_DRIVE               = Log.Level.TRACE;
 	public static final Log.Level   LOG_DSN_HOLDER              = Log.Level.TRACE;
 	public static final Log.Level	LOG_DSN_WINCH               = Log.Level.TRACE;
+	public static final Log.Level	LOG_ELEVATOR              = Log.Level.TRACE;
 	public static final Log.Level   LOG_PANEL_SLIDER			= Log.Level.TRACE;
 	public static final Log.Level   LOG_PANEL_GRIPPER			= Log.Level.TRACE;
 	public static final Log.Level	LOG_HOOK_HOLDER 		    = Log.Level.TRACE;

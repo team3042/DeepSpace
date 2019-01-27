@@ -9,12 +9,12 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
  */
 public class RobotMap {
 	/** Robot selector ********************************************************/
-	public static enum Bot {PEWDIEPIE, MRBEAST;}
+	public static enum Bot {JUNO, JUPITER;}
 	// Set the bot to which you intend to push code.
-	private static Bot currentBot = Bot.MRBEAST;
+	private static Bot currentBot = Bot.JUNO;
 
-	public static final boolean IS_PEWDIEPIE = (currentBot == Bot.PEWDIEPIE);
-	public static final boolean IS_MRBEAST = (currentBot == Bot.MRBEAST);
+	public static final boolean IS_JUPITER = (currentBot == Bot.JUPITER);
+	public static final boolean IS_JUNO = (currentBot == Bot.JUNO);
 	
 	/** Robot Size Parameters *************************************************
 	 * The units of the wheel diameter determine the units of the position 
@@ -22,13 +22,13 @@ public class RobotMap {
 	 * in inches, position will be in inches and speed in inches per second.
 	 */
 	public static final double WHEEL_DIAMETER = 4.0;
-	public static final double ROBOT_WIDTH = (IS_MRBEAST) ? 15.0 : 0.0;
+	public static final double ROBOT_WIDTH = (IS_JUNO) ? 15.0 : 0.0;
 	
 	
 	/** USB ports *************************************************************/					
 	public static final int USB_JOYSTICK_LEFT 	= 0;
 	public static final int USB_JOYSTICK_RIGHT 	= 1;
-	public static final int USB_GAMEPAD 		= IS_MRBEAST ? 0 : 2;
+	public static final int USB_GAMEPAD 		= IS_JUNO ? 0 : 2;
 
 
 	/** PWM ports *************************************************************/
@@ -37,38 +37,50 @@ public class RobotMap {
 	
 	
 	/** CAN ID numbers ********************************************************/
-	public static final int CAN_LEFT_MOTOR 	= 		IS_MRBEAST 	? 3 : 0;
-	public static final int CAN_RIGHT_MOTOR = 		IS_MRBEAST 	? 9 : 0;
-	public static final int CAN_LEFT_FOLLOWER = 	IS_MRBEAST 	? 0 : 0;
-	public static final int CAN_RIGHT_FOLLOWER = 	IS_MRBEAST 	? 0 : 0;
-	public static final int CAN_DSN =           IS_MRBEAST  ? 10 : 0;
-	public static final int CAN_ELEVATOR_TALON = 	IS_MRBEAST ? 13 : 17;
+	public static final int CAN_ELEVATOR_TALON = 	IS_JUNO ? 13 : 17;
+	public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 3 : 0;
+	public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 9 : 0;
+	public static final int CAN_LEFT_FOLLOWER = 	IS_JUNO 	? 0 : 0;
+	public static final int CAN_RIGHT_FOLLOWER = 	IS_JUNO 	? 0 : 0;
+	public static final int CAN_DSN =           	IS_JUNO  ? 10 : 0;
 
 	/** Solenoid ID numbers****************************************************/
-	public static final int DSN_SOLENOID =			IS_MRBEAST  ? 0 : 0;
+	public static final int DSN_SOLENOID =			IS_JUNO  ? 0 : 0;
 	
 	/** PCM channels **********************************************************/
 	
 
 	/** SPI ports *************************************************************/
-	public static final int LINE_TRACKER_PIXY_PORT = (IS_MRBEAST)? 0: 0;
+	public static final int LINE_TRACKER_PIXY_PORT = (IS_JUNO)? 0: 0;
 	//note that the Gyroscope uses the myRIO Expansion Port (MXP) and is defined in the SPI class (edu.wpi.first.wpilibj.SPI)
 	//notes for dummies: the MXP is the big boy smack center of the RoboRio (where the gyro ALWAYS goes);
 	//see http://www.ni.com/pdf/manuals/374474a.pdf for additional info on the RoboRio
 	
 	/** OI Settings ***********************************************************/
-	public static final boolean USE_JOYSTICKS = !IS_MRBEAST;
+	public static final boolean USE_JOYSTICKS = !IS_JUNO;
 	public static final double JOYSTICK_DRIVE_SCALE = 0.5;
 	public static final double TRIGGER_SPINNER_SCALE = 0.1;
 	public static final double JOYSTICK_DEAD_ZONE = 0.0;
 
 	/** DSN Settings **********************************************************/
-  public static final boolean HAS_DSN_DRIVE = true;
+    public static final boolean HAS_DSN_DRIVE = true;
 	public static final boolean HAS_DSN_WINCH = true;
 	public static final boolean HAS_DSN_HOLDER = true;
 
-	/** Arm Winch Settings ****************************************************/
+	/** Arm Settings ****************************************************/
 	public static final boolean HAS_ARM_WINCH = true;
+	public static final boolean HAS_ARM_DRIVE = true;
+	public static final boolean HAS_ARM_POT = true;
+
+	/** Hook Holder Settings ****************************************************/
+	public static final boolean HAS_HOOK_HOLDER = true;
+
+	/** Panel Intake Settings ****************************************************/
+	public static final boolean HAS_PANEL_SLIDER = true;
+	public static final boolean HAS_PANEL_GRIPPER = true;
+
+	/** Cargo Roller Settings ****************************************************/
+	public static final boolean HAS_CARGO_ROLLER = true;
 
 	/** Elevator Settings **********************************************************/
 	public static final boolean HAS_ELEVATOR = true;
@@ -82,13 +94,13 @@ public class RobotMap {
 	public static final boolean HAS_DRIVETRAIN = true;
 	public static final boolean HAS_FOLLOWERS = true;
 	public static final NeutralMode DRIVETRAIN_BRAKE_MODE = NeutralMode.Brake;
-	public static final boolean REVERSE_LEFT_MOTOR = 	(IS_MRBEAST) ? true : false;
-	public static final boolean REVERSE_RIGHT_MOTOR = 	(IS_MRBEAST) ? false: false;
 	public static final int PIDIDX = 0; //pidIdx - 0 for Primary closed-loop. 1 for cascaded closed-loop. See Phoenix-Documentation for how to interpret.
+	public static final boolean REVERSE_LEFT_MOTOR = 	(IS_JUNO) ? true : false;
+	public static final boolean REVERSE_RIGHT_MOTOR = 	(IS_JUNO) ? false: false;
 	// Maximum Acceleration given in power per second
 	public static final double ACCELERATION_MAX = 1.5;
-	public static final double kF_DRIVE_LEFT = 	(IS_MRBEAST) ? 0.1817180616740088 : 0;
-	public static final double kF_DRIVE_RIGHT = (IS_MRBEAST) ? 0.16686239968682717 : 0;
+	public static final double kF_DRIVE_LEFT = 	(IS_JUNO) ? 0.1817180616740088 : 0;
+	public static final double kF_DRIVE_RIGHT = (IS_JUNO) ? 0.16686239968682717 : 0;
 
 	
 	/** Drivetrain Encoder Settings *******************************************/
@@ -105,10 +117,10 @@ public class RobotMap {
 	/** Drivetrain Autonomous Settings ****************************************/
 	public static final boolean HAS_AUTON = HAS_ENCODERS;
 	public static final int AUTON_PROFILE = 0;
-	public static final double kP_AUTON =  (IS_MRBEAST) ? 0.4 : 0;
-	public static final double kI_AUTON =  (IS_MRBEAST) ? 0.0 : 0;
-	public static final double kD_AUTON =  (IS_MRBEAST) ? 0.8 : 0;
-	public static final int I_ZONE_AUTON = (IS_MRBEAST) ? 0 : 0;
+	public static final double kP_AUTON =  (IS_JUNO) ? 0.4 : 0;
+	public static final double kI_AUTON =  (IS_JUNO) ? 0.0 : 0;
+	public static final double kD_AUTON =  (IS_JUNO) ? 0.8 : 0;
+	public static final int I_ZONE_AUTON = (IS_JUNO) ? 0 : 0;
 	//The rate of pushing motion profile points to the talon, in ms
 	public static final int AUTON_FRAME_RATE = 10;
 	//Parameters for calibrating the F-gain

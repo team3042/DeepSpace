@@ -3,14 +3,13 @@ package org.usfirst.frc.team3042.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team3042.lib.Log;
-import org.usfirst.frc.team3042.robot.OI;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.DSN_Drive;;
 
 
-/** DSN_Drive_Drive *************************************************************/
-public class DSN_Drive_Drive extends Command {
+/** DSN_Drive_Forward *************************************************************/
+public class DSN_Drive_Forward extends Command {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_DSN_DRIVE;
 	
@@ -18,15 +17,13 @@ public class DSN_Drive_Drive extends Command {
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
 	DSN_Drive dsn_drive = Robot.dsn_drive;
-	OI oi = Robot.oi;
 	
 	
-	/** DSN_Drive_Drove ********************************************************
+	/** DSN_Drive_Forward ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public DSN_Drive_Drive() {
+	public DSN_Drive_Forward() {
 		log.add("Constructor", Log.Level.TRACE);
-		
 		requires(dsn_drive);
 	}
 
@@ -36,8 +33,7 @@ public class DSN_Drive_Drive extends Command {
 	 */
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
-		
-		dsn_drive.stop();
+		dsn_drive.forward();
 	}
 
 	
@@ -45,9 +41,6 @@ public class DSN_Drive_Drive extends Command {
 	 * Called repeatedly when this Command is scheduled to run
 	 */
 	protected void execute() {
-		double power = oi.getTriggerDifference();
-		
-		dsn_drive.setPower(power);
 	}
 	
 	

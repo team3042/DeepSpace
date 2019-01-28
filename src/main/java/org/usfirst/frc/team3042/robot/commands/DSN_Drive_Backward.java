@@ -1,33 +1,30 @@
- package org.usfirst.frc.team3042.robot.commands;
+package org.usfirst.frc.team3042.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.Elevator;
+import org.usfirst.frc.team3042.robot.subsystems.DSN_Drive;;
 
 
-/** Elevator_Panel_Up ************************************************************
- * Raises hatch panels
- */
-public class Elevator_Panel_Up extends Command {
+/** DSN_Drive_Backward *************************************************************/
+public class DSN_Drive_Backward extends Command {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ELEVATOR;
+	private static final Log.Level LOG_LEVEL = RobotMap.LOG_DSN_DRIVE;
 	
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	Elevator elevator = Robot.elevator;
+	DSN_Drive dsn_drive = Robot.dsn_drive;
 	
 	
-	/** Elevator_Panel_Up ********************************************************
+	/** DSN_Drive_Backward ********************************************************
 	 * Required subsystems will cancel commands when this command is run.
 	 */
-	public Elevator_Panel_Up() {
+	public DSN_Drive_Backward() {
 		log.add("Constructor", Log.Level.TRACE);
-		
-		requires(elevator);
+		requires(dsn_drive);
 	}
 
 	
@@ -36,6 +33,7 @@ public class Elevator_Panel_Up extends Command {
 	 */
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
+		dsn_drive.backward();
 	}
 
 	
@@ -59,6 +57,7 @@ public class Elevator_Panel_Up extends Command {
 	 */
 	protected void end() {
 		log.add("End", Log.Level.TRACE);
+		terminate();
 	}
 
 	
@@ -68,5 +67,12 @@ public class Elevator_Panel_Up extends Command {
 	 */
 	protected void interrupted() {
 		log.add("Interrupted", Log.Level.TRACE);
+		terminate();
+	}
+	
+	
+	/** Graceful End **********************************************************/
+	private void terminate() {
+		dsn_drive.stop();
 	}
 }

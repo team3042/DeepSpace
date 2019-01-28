@@ -67,6 +67,8 @@ public class RobotMap {
     public static final boolean HAS_DSN_DRIVE = true;
 	public static final boolean HAS_DSN_WINCH = true;
 	public static final boolean HAS_DSN_HOLDER = true;
+	public static final double FORWARDPOWER = 0.75;
+	public static final double BACKWARDPOWER = 0.75;
 
 	/** Arm Settings ****************************************************/
 	public static final boolean HAS_ARM_WINCH = true;

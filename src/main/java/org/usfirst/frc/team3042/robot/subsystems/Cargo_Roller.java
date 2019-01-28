@@ -21,9 +21,9 @@ public class Cargo_Roller extends Subsystem {
 	private static final double EXTAKEPOWER = RobotMap.EXTAKEPOWER;
 
 	
-	/** Instance Variables ****************************************************/
+private TalonSRX motor = new TalonSRX(CAN_CARGO_ROLLER);	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	private TalonSRX motor = new TalonSRX(CAN_CARGO_ROLLER);
+	
 	
 	
 	/** Cargo_Roller ******************************************************

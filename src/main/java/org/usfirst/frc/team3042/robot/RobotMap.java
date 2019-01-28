@@ -47,6 +47,7 @@ public class RobotMap {
 
 	/** Solenoid ID numbers****************************************************/
 	public static final int DSN_SOLENOID =			IS_JUNO  ? 0 : 0;
+	public static final int HOOK_SOLENOID =			IS_JUNO  ? 1 : 1;
 	
 	/** PCM channels **********************************************************/
 	

@@ -26,8 +26,8 @@ public class Hook_Deploy extends Command {
 	 */
 	public Hook_Deploy() {
 		log.add("Constructor", Log.Level.TRACE);
-		
 		requires(hook_holder);
+		hook_holder.hookDeploy();
 	}
 
 	

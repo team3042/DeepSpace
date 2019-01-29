@@ -27,7 +27,6 @@ public class Hook_Deploy extends Command {
 	public Hook_Deploy() {
 		log.add("Constructor", Log.Level.TRACE);
 		requires(hook_holder);
-		hook_holder.hookDeploy();
 	}
 
 	
@@ -36,6 +35,7 @@ public class Hook_Deploy extends Command {
 	 */
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
+		hook_holder.hookDeploy();
 	}
 
 	
@@ -50,7 +50,7 @@ public class Hook_Deploy extends Command {
 	 * Make this return true when this Command no longer needs to run execute()
 	 */
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	

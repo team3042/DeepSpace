@@ -4,6 +4,7 @@ import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.commands.Panel_Intake;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -13,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Panel_Gripper extends Subsystem {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_PANEL_GRIPPER;
+	private Solenoid gripperSolenoid = new Solenoid(RobotMap.GRIPPER_SOLENOID);
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
@@ -24,7 +26,14 @@ public class Panel_Gripper extends Subsystem {
 	public Panel_Gripper() {
 		log.add("Constructor", LOG_LEVEL);
 	}
-	
+
+	public void intakePanel() {
+		gripperSolenoid.set(true);
+	}
+
+	public void releasePanel() {
+		gripperSolenoid.set(true);
+	}
 	
 	/** initDefaultCommand ****************************************************
 	 * Set the default command for the subsystem.

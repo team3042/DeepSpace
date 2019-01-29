@@ -26,7 +26,6 @@ public class Panel_Intake extends Command {
 	 */
 	public Panel_Intake() {
 		log.add("Constructor", Log.Level.TRACE);
-		
 		requires(panel_gripper);
 	}
 
@@ -36,6 +35,7 @@ public class Panel_Intake extends Command {
 	 */
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
+		panel_gripper.intakePanel();
 	}
 
 	
@@ -50,7 +50,7 @@ public class Panel_Intake extends Command {
 	 * Make this return true when this Command no longer needs to run execute()
 	 */
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	

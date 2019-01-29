@@ -7,7 +7,6 @@ import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Panel_Slider;
 
-
 /** Panel_Slider_Forward ************************************************************
  * Slides the panel intake forward
  */
@@ -26,7 +25,6 @@ public class Panel_Slider_Forward extends Command {
 	 */
 	public Panel_Slider_Forward() {
 		log.add("Constructor", Log.Level.TRACE);
-		
 		requires(panel_slider);
 	}
 
@@ -36,6 +34,7 @@ public class Panel_Slider_Forward extends Command {
 	 */
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
+		panel_slider.engageSlider();
 	}
 
 	
@@ -50,7 +49,7 @@ public class Panel_Slider_Forward extends Command {
 	 * Make this return true when this Command no longer needs to run execute()
 	 */
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	

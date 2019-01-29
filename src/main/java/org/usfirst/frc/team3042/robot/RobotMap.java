@@ -47,8 +47,10 @@ public class RobotMap {
 	public static final int CAN_ARM_WINCH =         IS_JUNO     ? 0 : 0;
 
 	/** Solenoid ID numbers****************************************************/
-	public static final int DSN_SOLENOID =			IS_JUNO  ? 0 : 0;
-	public static final int HOOK_SOLENOID =			IS_JUNO  ? 1 : 1;
+	public static final int DSN_SOLENOID =			(IS_JUNO)? 0 : 0;
+	public static final int HOOK_SOLENOID =			(IS_JUNO)? 1 : 1;
+	public static final int SLIDER_SOLENOID =		(IS_JUNO)? 3 : 2;
+	public static final int GRIPPER_SOLENOID =		(IS_JUNO)? 2 : 3;
 	
 	/** PCM channels **********************************************************/
 	

@@ -26,7 +26,6 @@ public class Panel_Release extends Command {
 	 */
 	public Panel_Release() {
 		log.add("Constructor", Log.Level.TRACE);
-		
 		requires(panel_gripper);
 	}
 
@@ -36,6 +35,7 @@ public class Panel_Release extends Command {
 	 */
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
+		panel_gripper.releasePanel();
 	}
 
 	
@@ -50,7 +50,7 @@ public class Panel_Release extends Command {
 	 * Make this return true when this Command no longer needs to run execute()
 	 */
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	

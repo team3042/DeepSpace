@@ -26,9 +26,6 @@ public class DSN_Holder_Engage extends Command {
 	 */
 	public DSN_Holder_Engage() {
 		log.add("Constructor", Log.Level.TRACE);
-
-		dsn_holder.dsnEngage();
-		
 		requires(dsn_holder);
 	}
 
@@ -38,6 +35,7 @@ public class DSN_Holder_Engage extends Command {
 	 */
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
+		dsn_holder.dsnEngage();
 	}
 
 	
@@ -52,7 +50,7 @@ public class DSN_Holder_Engage extends Command {
 	 * Make this return true when this Command no longer needs to run execute()
 	 */
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	

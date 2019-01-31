@@ -45,6 +45,7 @@ public class RobotMap {
 	public static final int CAN_DSN =           	IS_JUNO     ? 10 : 0;
 	public static final int CAN_CARGO_ROLLER =      IS_JUNO     ? 0 : 0;
 	public static final int CAN_ARM_WINCH =         IS_JUNO     ? 0 : 0;
+	public static final int CAN_DSN_WINCH =         IS_JUNO     ? 0 : 0;
 
 	/** Solenoid ID numbers****************************************************/
 	public static final int DSN_SOLENOID =			(IS_JUNO)? 0 : 0;
@@ -73,11 +74,13 @@ public class RobotMap {
 	public static final boolean HAS_DSN_HOLDER = true;
 	public static final double FORWARDPOWER = 0.75;
 	public static final double BACKWARDPOWER = 0.75;
+	public static final double DSNWINDUPPOWER = 0.75;
+	public static final double DSNWINDOUTPOWER = 0.75;
 
 	/** Arm Settings ****************************************************/
 	public static final boolean HAS_ARM_WINCH = true;
-	public static final double WINDUPPOWER = 0.75;
-	public static final double WINDOUTPOWER = 0.75;
+	public static final double ARMWINDUPPOWER = 0.75;
+	public static final double ARMWINDOUTPOWER = 0.75;
 	public static final boolean HAS_ARM_DRIVE = true;
 	public static final boolean HAS_ARM_POT = true;
 

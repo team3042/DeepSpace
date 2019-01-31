@@ -26,7 +26,6 @@ public class DSN_Winch_WindUp extends Command {
 	 */
 	public DSN_Winch_WindUp() {
 		log.add("Constructor", Log.Level.TRACE);
-		
 		requires(dsn_winch);
 	}
 
@@ -36,6 +35,7 @@ public class DSN_Winch_WindUp extends Command {
 	 */
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
+		dsn_winch.windup();
 	}
 
 	
@@ -50,7 +50,7 @@ public class DSN_Winch_WindUp extends Command {
 	 * Make this return true when this Command no longer needs to run execute()
 	 */
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	

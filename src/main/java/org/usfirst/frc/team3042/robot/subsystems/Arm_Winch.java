@@ -16,8 +16,8 @@ public class Arm_Winch extends Subsystem {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM_WINCH;
 	private static final int CAN_ARM_WINCH = RobotMap.CAN_ARM_WINCH;
-	private static final double WINDUPPOWER = RobotMap.WINDUPPOWER;
-	private static final double WINDOUTPOWER = RobotMap.WINDOUTPOWER;
+	private static final double WINDUPPOWER = RobotMap.ARMWINDUPPOWER;
+	private static final double WINDOUTPOWER = RobotMap.ARMWINDOUTPOWER;
 
 	public static final Subsystem java = null;
 

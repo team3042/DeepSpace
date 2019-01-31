@@ -18,20 +18,21 @@ public class Arm_Winch_WindOut extends Command {
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	Arm_Winch arm_Winch = Robot.arm_winch;
+	Arm_Winch arm_winch = Robot.arm_winch;
 	
 	
 	/** Arm_Winch_WindOut *****************************************************/
 	public Arm_Winch_WindOut() {
 		log.add("Constructor", Log.Level.TRACE);
 		
-		requires(arm_Winch);
+		requires(arm_winch);
 	}
 
 	
 	/** initialize ************************************************************/
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
+		arm_winch.windout();
 	}
 
 	
@@ -42,7 +43,7 @@ public class Arm_Winch_WindOut extends Command {
 	
 	/** isFinished ************************************************************/
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	

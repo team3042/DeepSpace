@@ -101,15 +101,6 @@ public class RobotMap {
 	public static final int ARM_POSITION_CONTROL_RANGE = IS_JUNO	? 30 : 20;
 	public static final int ARM_POSITION_WAIT_TOLLERANCE = IS_JUNO ? 30 : 30;
 
-	/** Arm Potentiometer Settings **********************************************/
-	public static final boolean HAS_ARM_POT = HAS_ARM;
-	public static final int ARM_POT_FRAME_RATE = 10;
-	public static final int ARM_POT_COUNTS_PER_REV = 4096;
-	public static final boolean REVERSE_ARM_POT = false;
-	public static final boolean ARM_SENSOR_PHASE = false;
-	public static final int ARM_TIMEOUT = 0; // timeout in ms; set to zero
-	public static final int ARM_PIDIDX = 0; // used for cascading PID; set to zero
-
 	/** Hook Holder Settings ****************************************************/
 	public static final boolean HAS_HOOK_HOLDER = true;
 

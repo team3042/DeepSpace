@@ -7,6 +7,7 @@ import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroStraight;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroTurn;
 import org.usfirst.frc.team3042.robot.commands.Elevator_CyclePositions;
 import org.usfirst.frc.team3042.robot.commands.LineTracker_PrintLines;
+import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Forward;
 import org.usfirst.frc.team3042.robot.triggers.POVButton;
 
 /** OI ************************************************************************
@@ -71,9 +72,8 @@ public class OI {
 		
 		/** JUNO Controls *****************************************************/
 		if (IS_JUNO) {
-			//gamepad.A.toggleWhenPressed(new LightRing_On());
-			gamepad.A.toggleWhenPressed(new LineTracker_PrintLines());
-			
+			gamepad.RT.whileActive(new Panel_Slider_Forward());
+
 			gamepad.X.whenPressed(new Drivetrain_GyroStraight(72.0, 24.0));
 
 			gamepad.POVUp.whenActive(new Elevator_CyclePositions(POVButton.UP));

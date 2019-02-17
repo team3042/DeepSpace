@@ -3,6 +3,7 @@ package org.usfirst.frc.team3042.robot.subsystems;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.commands.Elevator_Hold_Position;
+import org.usfirst.frc.team3042.robot.commands.Elevator_Stop;
 import org.usfirst.frc.team3042.robot.triggers.POVButton;
 
 import com.ctre.phoenix.motion.MotionProfileStatus;
@@ -56,7 +57,7 @@ public class Elevator extends Subsystem {
     	
     	//setDefaultCommand(new Elevator_Test());
     	//setDefaultCommand(new Elevator_Stop());
-    	setDefaultCommand(new Elevator_Hold_Position());
+    	setDefaultCommand(new Elevator_Stop());
     }
     
     public Elevator(){

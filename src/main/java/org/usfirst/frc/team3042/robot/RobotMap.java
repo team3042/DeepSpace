@@ -28,7 +28,7 @@ public class RobotMap {
 	/** USB ports *************************************************************/					
 	public static final int USB_JOYSTICK_LEFT 	= 0;
 	public static final int USB_JOYSTICK_RIGHT 	= 1;
-	public static final int USB_GAMEPAD 		= IS_JUNO ? 0 : 2;
+	public static final int USB_GAMEPAD 		= 2;
 
 
 	/** PWM ports *************************************************************/
@@ -42,12 +42,6 @@ public class RobotMap {
 	public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 19 : 0;
 	public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 15 : 8;
 	public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 2  : 7;
-	//public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 15 : 0;
-	//public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 2 : 0;
-	//public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 17 : 8;
-	//public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 19  : 7;
-
-
 	public static final int CAN_DSN =           	IS_JUNO     ? 1  : 0;
 	public static final int CAN_CARGO_ROLLER =      IS_JUNO     ? 18 : 0;
 	public static final int CAN_ARM_WINCH =         IS_JUNO     ? 14 : 0;
@@ -117,8 +111,8 @@ public class RobotMap {
 
 	/** Cargo Roller Settings ****************************************************/
 	public static final boolean HAS_CARGO_ROLLER = true;
-	public static final double INTAKEPOWER = 0.75;
-	public static final double EXTAKEPOWER = 0.75;
+	public static final double INTAKEPOWER = 0.30;
+	public static final double EXTAKEPOWER = 0.30;
 
 	/** Elevator Settings **********************************************************/
 	public static final boolean HAS_ELEVATOR = true;

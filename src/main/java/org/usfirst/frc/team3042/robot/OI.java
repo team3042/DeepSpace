@@ -2,19 +2,25 @@ package org.usfirst.frc.team3042.robot;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.lib.Path;
+import org.usfirst.frc.team3042.robot.commands.Arm_Winch_WindOut;
+import org.usfirst.frc.team3042.robot.commands.Arm_Winch_WindUp;
+import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Extake;
+import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Intake;
 import org.usfirst.frc.team3042.robot.commands.DrivetrainAuton_Drive;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroStraight;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroTurn;
 import org.usfirst.frc.team3042.robot.commands.Elevator_CyclePositions;
+import org.usfirst.frc.team3042.robot.commands.Elevator_Test;
 import org.usfirst.frc.team3042.robot.commands.LineTracker_PrintLines;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Forward;
 import org.usfirst.frc.team3042.robot.triggers.POVButton;
 
-/** OI ************************************************************************
+/**
+ * OI ************************************************************************
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI {	
+public class OI {
 	/** Configuration Constants **********************************************/
 	private static final boolean IS_JUNO = RobotMap.IS_JUNO;
 	private static final boolean IS_JUPITER = RobotMap.IS_JUPITER;
@@ -31,72 +37,74 @@ public class OI {
 	private static final int GAMEPAD_LEFT_TRIGGER = Gamepad.LEFT_TRIGGER;
 	private static final int GAMEPAD_RIGHT_TRIGGER = Gamepad.RIGHT_TRIGGER;
 	private static final double ROBOT_WIDTH = RobotMap.ROBOT_WIDTH;
-	
-	
+
 	/** Instance Variables ****************************************************/
 	Log log = new Log(RobotMap.LOG_OI, "OI");
 	public Gamepad gamepad, joyLeft, joyRight;
 	int driveAxisLeft, driveAxisRight;
 
-
-	/** OI ********************************************************************
+	/**
+	 * OI ********************************************************************
 	 * Assign commands to the buttons and triggers
 	 * 
-	 * Example Commands:
-	 * gamepad.A.whenPressed(new ExampleCommand());
-	 * gamepad.B.toggleWhenPressed(new ExampleCommand());
-	 * gamepad.X.whileHeld(new ExampleCommand());
-	 * gamepad.Y.whenReleased(new ExampleCommand());
-	 * gamepad.LT.toggleWhenActive(new ExampleCommand());
-	 * gamepad.RT.whenActive(new ExampleCommand());
-	 * gamepad.POVUp.whileActive(new ExampleCommand());
+	 * Example Commands: gamepad.A.whenPressed(new ExampleCommand());
+	 * gamepad.B.toggleWhenPressed(new ExampleCommand()); gamepad.X.whileHeld(new
+	 * ExampleCommand()); gamepad.Y.whenReleased(new ExampleCommand());
+	 * gamepad.LT.toggleWhenActive(new ExampleCommand()); gamepad.RT.whenActive(new
+	 * ExampleCommand()); gamepad.POVUp.whileActive(new ExampleCommand());
 	 */
 	public OI() {
 		log.add("OI Constructor", Log.Level.TRACE);
-		
+
 		gamepad = new Gamepad(USB_GAMEPAD);
-		
+
 		/** Setup Driving Controls ********************************************/
 		if (USE_JOYSTICKS) {
 			joyLeft = new Gamepad(USB_JOY_LEFT);
 			joyRight = new Gamepad(USB_JOY_RIGHT);
 			driveAxisLeft = JOYSTICK_Y_AXIS;
 			driveAxisRight = JOYSTICK_Y_AXIS;
-		}
-		else {
+		} else {
 			joyLeft = gamepad;
 			joyRight = gamepad;
 			driveAxisLeft = GAMEPAD_LEFT_Y_AXIS;
 			driveAxisRight = GAMEPAD_RIGHT_Y_AXIS;
 		}
-		
+
 		/** JUNO Controls *****************************************************/
 		if (IS_JUNO) {
-		//	gamepad.RT.whileActive(new Panel_Slider_Forward());
+			// gamepad.RT.whileActive(new Panel_Slider_Forward());
 
-		//	gamepad.X.whenPressed(new Drivetrain_GyroStraight(72.0, 24.0));
+			// gamepad.X.whenPressed(new Drivetrain_GyroStraight(72.0, 24.0));
 
-		//	gamepad.POVUp.whenActive(new Elevator_CyclePositions(POVButton.UP));
-		//	gamepad.POVDown.whenActive(new Elevator_CyclePositions(POVButton.DOWN));
-			
-		//	double turnRadius = 1.5 * ROBOT_WIDTH;
-		//	Path testPath = new Path();
-		//	testPath.addStraight(36.0, 18.0);
-		//	testPath.addRightTurn(90.0, turnRadius, 21.0);
-		//	testPath.addLeftTurn(120, turnRadius, 21.0);
-		//	testPath.addLeftTurn(120, turnRadius, -21.0);
-		//	testPath.addRightTurn(90.0, turnRadius, -21.0);
-		//	testPath.addStraight(36.0, -18.0);
-		//	gamepad.B.whenPressed(new DrivetrainAuton_Drive(testPath));
-		//	
-		//	double turnInPlace = 0.5 * ROBOT_WIDTH;
-		//	Path testPath2 = new Path();
-		//	testPath2.addLeftTurn(380.0, turnInPlace, 21.0);
-		//	testPath2.addRightTurn(420.0, turnInPlace, 21.0);
-			//gamepad.Y.whenPressed(new DrivetrainAuton_Drive(testPath2));
-		//	gamepad.Y.whenPressed(new Drivetrain_GyroTurn(90.0));
-			//gamepad.Y.whenPressed(new Drivetrain_Calibrate());
-			//gamepad.Y.whenPressed(new Drivetrain_GyroTurn(270.0));
+			// gamepad.POVUp.whenActive(new Elevator_CyclePositions(POVButton.UP));
+			// gamepad.POVDown.whenActive(new Elevator_CyclePositions(POVButton.DOWN));
+			gamepad.LeftJoyUp.whenActive(new Elevator_Test());
+			gamepad.LeftJoyDown.whenActive(new Elevator_Test());
+			//gamepad.POVUp.whenActive(new Arm_Winch_WindOut());
+			//gamepad.POVDown.whenActive(new Arm_Winch_WindUp());
+
+
+			// double turnRadius = 1.5 * ROBOT_WIDTH;
+			// Path testPath = new Path();
+			// testPath.addStraight(36.0, 18.0);
+			// testPath.addRightTurn(90.0, turnRadius, 21.0);
+			// testPath.addLeftTurn(120, turnRadius, 21.0);
+			// testPath.addLeftTurn(120, turnRadius, -21.0);
+			// testPath.addRightTurn(90.0, turnRadius, -21.0);
+			// testPath.addStraight(36.0, -18.0);
+			// gamepad.B.whenPressed(new DrivetrainAuton_Drive(testPath));
+			//
+			// double turnInPlace = 0.5 * ROBOT_WIDTH;
+			// Path testPath2 = new Path();
+			// testPath2.addLeftTurn(380.0, turnInPlace, 21.0);
+			// testPath2.addRightTurn(420.0, turnInPlace, 21.0);
+			// gamepad.Y.whenPressed(new DrivetrainAuton_Drive(testPath2));
+			// gamepad.Y.whenPressed(new Drivetrain_GyroTurn(90.0));
+			// gamepad.Y.whenPressed(new Drivetrain_Calibrate());
+			// gamepad.Y.whenPressed(new Drivetrain_GyroTurn(270.0));
+			gamepad.A.whileHeld(new Cargo_Roller_Intake());
+			gamepad.B.whileHeld(new Cargo_Roller_Extake());
 		}
 		
 		/** JUPITER Controls **************************************************/

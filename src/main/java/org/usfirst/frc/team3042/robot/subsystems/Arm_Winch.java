@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.RobotMap;
+import org.usfirst.frc.team3042.robot.commands.Arm_Winch_Stop;
 import org.usfirst.frc.team3042.robot.commands.Arm_Winch_WindUp;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -32,7 +33,7 @@ public class Arm_Winch extends Subsystem {
 
 	/** initDefaultCommand ****************************************************/
 	public void initDefaultCommand() {
-		setDefaultCommand(new Arm_Winch_WindUp());
+		setDefaultCommand(new Arm_Winch_Stop());
 	}
 
 	private void setPower(double armWinchPower) {

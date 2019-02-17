@@ -41,13 +41,13 @@ public class Robot extends TimedRobot {
 	private static final boolean HAS_DSN_DRIVE = false;//                         RobotMap.HAS_DSN_DRIVE;
 	private static final boolean HAS_DSN_HOLDER = false;//RobotMap.HAS_DSN_HOLDER;
 	private static final boolean HAS_DSN_WINCH = false;//RobotMap.HAS_DSN_WINCH;
-	private static final boolean HAS_ELEVATOR = false;//RobotMap.HAS_ELEVATOR;
-	private static final boolean HAS_ARM_WINCH = false;//RobotMap.HAS_ARM_WINCH;
+	private static final boolean HAS_ELEVATOR = RobotMap.HAS_ELEVATOR;
+	private static final boolean HAS_ARM_WINCH = RobotMap.HAS_ARM_WINCH;
 	private static final boolean HAS_HOOK_HOLDER = false;//RobotMap.HAS_HOOK_HOLDER;
 	private static final boolean HAS_PANEL_SLIDER = false;//RobotMap.HAS_PANEL_SLIDER;
 	private static final boolean HAS_PANEL_GRIPPER = false;//RobotMap.HAS_PANEL_GRIPPER;
 	private static final boolean HAS_CARGO_ROLLER = RobotMap.HAS_CARGO_ROLLER;
-	private static final boolean HAS_ARM = false;//RobotMap.HAS_ARM;
+	private static final boolean HAS_ARM = false; //RobotMap.HAS_ARM;
 	
 	/** Create Subsystems *****************************************************/
 	private Log log = new Log(LOG_LEVEL, "Robot");

@@ -72,29 +72,29 @@ public class OI {
 		
 		/** JUNO Controls *****************************************************/
 		if (IS_JUNO) {
-			gamepad.RT.whileActive(new Panel_Slider_Forward());
+		//	gamepad.RT.whileActive(new Panel_Slider_Forward());
 
-			gamepad.X.whenPressed(new Drivetrain_GyroStraight(72.0, 24.0));
+		//	gamepad.X.whenPressed(new Drivetrain_GyroStraight(72.0, 24.0));
 
-			gamepad.POVUp.whenActive(new Elevator_CyclePositions(POVButton.UP));
-			gamepad.POVDown.whenActive(new Elevator_CyclePositions(POVButton.DOWN));
+		//	gamepad.POVUp.whenActive(new Elevator_CyclePositions(POVButton.UP));
+		//	gamepad.POVDown.whenActive(new Elevator_CyclePositions(POVButton.DOWN));
 			
-			double turnRadius = 1.5 * ROBOT_WIDTH;
-			Path testPath = new Path();
-			testPath.addStraight(36.0, 18.0);
-			testPath.addRightTurn(90.0, turnRadius, 21.0);
-			testPath.addLeftTurn(120, turnRadius, 21.0);
-			testPath.addLeftTurn(120, turnRadius, -21.0);
-			testPath.addRightTurn(90.0, turnRadius, -21.0);
-			testPath.addStraight(36.0, -18.0);
-			gamepad.B.whenPressed(new DrivetrainAuton_Drive(testPath));
-			
-			double turnInPlace = 0.5 * ROBOT_WIDTH;
-			Path testPath2 = new Path();
-			testPath2.addLeftTurn(380.0, turnInPlace, 21.0);
-			testPath2.addRightTurn(420.0, turnInPlace, 21.0);
+		//	double turnRadius = 1.5 * ROBOT_WIDTH;
+		//	Path testPath = new Path();
+		//	testPath.addStraight(36.0, 18.0);
+		//	testPath.addRightTurn(90.0, turnRadius, 21.0);
+		//	testPath.addLeftTurn(120, turnRadius, 21.0);
+		//	testPath.addLeftTurn(120, turnRadius, -21.0);
+		//	testPath.addRightTurn(90.0, turnRadius, -21.0);
+		//	testPath.addStraight(36.0, -18.0);
+		//	gamepad.B.whenPressed(new DrivetrainAuton_Drive(testPath));
+		//	
+		//	double turnInPlace = 0.5 * ROBOT_WIDTH;
+		//	Path testPath2 = new Path();
+		//	testPath2.addLeftTurn(380.0, turnInPlace, 21.0);
+		//	testPath2.addRightTurn(420.0, turnInPlace, 21.0);
 			//gamepad.Y.whenPressed(new DrivetrainAuton_Drive(testPath2));
-			gamepad.Y.whenPressed(new Drivetrain_GyroTurn(90.0));
+		//	gamepad.Y.whenPressed(new Drivetrain_GyroTurn(90.0));
 			//gamepad.Y.whenPressed(new Drivetrain_Calibrate());
 			//gamepad.Y.whenPressed(new Drivetrain_GyroTurn(270.0));
 		}

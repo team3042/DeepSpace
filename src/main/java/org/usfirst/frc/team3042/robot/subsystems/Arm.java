@@ -16,7 +16,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Arm extends Subsystem {
 	/** Configuration Constants ***********************************************/
-	private static final int CAN_ARM_MOTOR = RobotMap.CAN_ARM_MOTOR;
+	private static final int CAN_ARM_MOTOR_RIGHT = RobotMap.CAN_ARM_MOTOR_RIGHT;
+	private static final int CAN_ARM_MOTOR_LEFT = RobotMap.CAN_ARM_MOTOR_LEFT;
 	private static final int SLOTIDX_1 = RobotMap.SLOTIDX_1;
 	private static final int TIMEOUT = RobotMap.TALON_ERROR_TIMEOUT;
 	private static final int FRAME_RATE = RobotMap.AUTON_FRAME_RATE;
@@ -38,7 +39,7 @@ public class Arm extends Subsystem {
 	public static final boolean REVERSE_PHASE = RobotMap.ARM_REVERSE_SENSOR_PHASE;
 	
 	/** Instance Variables ****************************************************/
-	private TalonSRX armTalon = new TalonSRX(CAN_ARM_MOTOR);
+	private TalonSRX armTalon = new TalonSRX(CAN_ARM_MOTOR_RIGHT);
 	private int currentPreset = 2;
 	private int currentGoalPos = FRAME_POS;
 	public Position[] positionFromInt = new Position[]{Position.BOTTOM, Position.MIDDLE, Position.TOP};

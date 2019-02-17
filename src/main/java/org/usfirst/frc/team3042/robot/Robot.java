@@ -34,20 +34,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends TimedRobot {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ROBOT;
+	private static final Log.Level LOG_LEVEL =  RobotMap.LOG_ROBOT;
 	private static final boolean HAS_DRIVETRAIN = RobotMap.HAS_DRIVETRAIN;
-	private static final boolean HAS_GYROSCOPE = RobotMap.HAS_GYROSCOPE;
-	private static final boolean HAS_LINE_TRACKER = RobotMap.HAS_LINE_TRACKER;
-	private static final boolean HAS_DSN_DRIVE = RobotMap.HAS_DSN_DRIVE;
-	private static final boolean HAS_DSN_HOLDER = RobotMap.HAS_DSN_HOLDER;
-	private static final boolean HAS_DSN_WINCH = RobotMap.HAS_DSN_WINCH;
-	private static final boolean HAS_ELEVATOR = RobotMap.HAS_ELEVATOR;
-	private static final boolean HAS_ARM_WINCH = RobotMap.HAS_ARM_WINCH;
-	private static final boolean HAS_HOOK_HOLDER = RobotMap.HAS_HOOK_HOLDER;
-	private static final boolean HAS_PANEL_SLIDER = RobotMap.HAS_PANEL_SLIDER;
-	private static final boolean HAS_PANEL_GRIPPER = RobotMap.HAS_PANEL_GRIPPER;
+	private static final boolean HAS_GYROSCOPE = false;//                         RobotMap.HAS_GYROSCOPE;
+	private static final boolean HAS_LINE_TRACKER = false;//                      RobotMap.HAS_LINE_TRACKER;
+	private static final boolean HAS_DSN_DRIVE = false;//                         RobotMap.HAS_DSN_DRIVE;
+	private static final boolean HAS_DSN_HOLDER = false;//RobotMap.HAS_DSN_HOLDER;
+	private static final boolean HAS_DSN_WINCH = false;//RobotMap.HAS_DSN_WINCH;
+	private static final boolean HAS_ELEVATOR = false;//RobotMap.HAS_ELEVATOR;
+	private static final boolean HAS_ARM_WINCH = false;//RobotMap.HAS_ARM_WINCH;
+	private static final boolean HAS_HOOK_HOLDER = false;//RobotMap.HAS_HOOK_HOLDER;
+	private static final boolean HAS_PANEL_SLIDER = false;//RobotMap.HAS_PANEL_SLIDER;
+	private static final boolean HAS_PANEL_GRIPPER = false;//RobotMap.HAS_PANEL_GRIPPER;
 	private static final boolean HAS_CARGO_ROLLER = RobotMap.HAS_CARGO_ROLLER;
-	private static final boolean HAS_ARM = RobotMap.HAS_ARM;
+	private static final boolean HAS_ARM = false;//RobotMap.HAS_ARM;
 	
 	/** Create Subsystems *****************************************************/
 	private Log log = new Log(LOG_LEVEL, "Robot");
@@ -74,8 +74,8 @@ public class Robot extends TimedRobot {
 	public static boolean elevatorEmergencyMode = false;
 	public static boolean armEmergencyMode = false;
 
-	CameraServer camera1;
-	CameraServer camera2;
+	//CameraServer camera1;
+	//CameraServer camera2;
 
 	/** robotInit *************************************************************
 	 * This function is run when the robot is first started up and should be
@@ -84,11 +84,11 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		log.add("Robot Init", Log.Level.TRACE);
 
-		camera1 = CameraServer.getInstance();
-		camera2 = CameraServer.getInstance();
+		//camera1 = CameraServer.getInstance();
+		//camera2 = CameraServer.getInstance();
 
-		camera1.startAutomaticCapture();
-		camera2.startAutomaticCapture();
+		//camera1.startAutomaticCapture();
+		//camera2.startAutomaticCapture();
 		
 		oi = new OI();
 		chooser.setDefaultOption("Default Auto", new ExampleCommand());

@@ -37,16 +37,23 @@ public class RobotMap {
 	
 	
 	/** CAN ID numbers ********************************************************/
-	public static final int CAN_ELEVATOR_TALON = 	IS_JUNO     ? 13 : 17;
-	public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 3 : 0;
-	public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 9 : 0;
-	public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 28 : 8;
-	public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 5 : 7;
-	public static final int CAN_DSN =           	IS_JUNO     ? 10 : 0;
-	public static final int CAN_CARGO_ROLLER =      IS_JUNO     ? 0 : 0;
-	public static final int CAN_ARM_WINCH =         IS_JUNO     ? 0 : 0;
-	public static final int CAN_DSN_WINCH =         IS_JUNO     ? 0 : 0;
-	public static final int CAN_ARM_MOTOR =			IS_JUNO     ? 33 : 2;
+	public static final int CAN_ELEVATOR_TALON = 	IS_JUNO     ? 8  : 17;
+	public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 17 : 0;
+	public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 19 : 0;
+	public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 15 : 8;
+	public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 2  : 7;
+	//public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 15 : 0;
+	//public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 2 : 0;
+	//public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 17 : 8;
+	//public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 19  : 7;
+
+
+	public static final int CAN_DSN =           	IS_JUNO     ? 1  : 0;
+	public static final int CAN_CARGO_ROLLER =      IS_JUNO     ? 18 : 0;
+	public static final int CAN_ARM_WINCH =         IS_JUNO     ? 14 : 0;
+	public static final int CAN_DSN_WINCH =         IS_JUNO     ? 7  : 0;
+	public static final int CAN_ARM_MOTOR_RIGHT =   IS_JUNO     ? 25 : 2;
+	public static final int CAN_ARM_MOTOR_LEFT =    IS_JUNO     ? 4  : 0;
 
 	/** Solenoid ID numbers****************************************************/
 	public static final int DSN_SOLENOID =			(IS_JUNO)? 0 : 0;
@@ -64,7 +71,7 @@ public class RobotMap {
 	//see http://www.ni.com/pdf/manuals/374474a.pdf for additional info on the RoboRio
 	
 	/** OI Settings ***********************************************************/
-	public static final boolean USE_JOYSTICKS = !IS_JUNO;
+	public static final boolean USE_JOYSTICKS = true;
 	public static final double JOYSTICK_DRIVE_SCALE = 0.5;
 	public static final double TRIGGER_SPINNER_SCALE = 0.1;
 	public static final double JOYSTICK_DEAD_ZONE = 0.0;
@@ -142,8 +149,8 @@ public class RobotMap {
 	public static final boolean HAS_FOLLOWERS = true;
 	public static final NeutralMode DRIVETRAIN_BRAKE_MODE = NeutralMode.Brake;
 	public static final int PIDIDX = 0; //pidIdx - 0 for Primary closed-loop. 1 for cascaded closed-loop. See Phoenix-Documentation for how to interpret.
-	public static final boolean REVERSE_LEFT_MOTOR = 	(IS_JUNO) ? true : false;
-	public static final boolean REVERSE_RIGHT_MOTOR = 	(IS_JUNO) ? false: false;
+	public static final boolean REVERSE_LEFT_MOTOR = 	(IS_JUNO) ? false : false;
+	public static final boolean REVERSE_RIGHT_MOTOR = 	(IS_JUNO) ? true: false;
 	public static final int TALON_ERROR_TIMEOUT = 0;// measured in Ms
 	public static final int SLOTIDX_1 = 0;
 	public static final double kF_DRIVE_LEFT = 	(IS_JUNO) ? 0.1817180616740088 : 0;

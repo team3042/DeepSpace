@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -24,16 +25,20 @@ public class Drivetrain extends Subsystem {
 	private static final boolean HAS_AUTON = RobotMap.HAS_AUTON;
 	private static final NeutralMode BRAKE_MODE = RobotMap.DRIVETRAIN_BRAKE_MODE;
 	private static final boolean REVERSE_LEFT_MOTOR = RobotMap.REVERSE_LEFT_MOTOR;
-	private static final boolean REVERSE_RIGHT_MOTOR = RobotMap.REVERSE_RIGHT_MOTOR;	
+	private static final boolean REVERSE_RIGHT_MOTOR = RobotMap.REVERSE_RIGHT_MOTOR;
+	private static final int ID = RobotMap.DRIVETRAIN_SOLENOID;
+	private static final boolean STARTS_HIGH = RobotMap.DRIVE_STARTS_HIGH_GEAR;	
 	
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
+	Solenoid shift = new Solenoid(ID);
 	TalonSRX leftMotor = new TalonSRX(CAN_LEFT_MOTOR);
 	TalonSRX rightMotor = new TalonSRX(CAN_RIGHT_MOTOR);
 	DrivetrainFollowers followers;
 	DrivetrainEncoders encoders;
 	DrivetrainAuton auton;
+	boolean isHighGear = STARTS_HIGH;
 
 	
 	/** Drivetrain ************************************************************
@@ -66,6 +71,22 @@ public class Drivetrain extends Subsystem {
 		setDefaultCommand(new Drivetrain_TankDrive());
 	}
 	
+	private void setHighGear(){
+    	shift.set(!STARTS_HIGH);
+    	isHighGear = true;
+    }
+    private void setLowGear(){
+    	shift.set(STARTS_HIGH);
+    	isHighGear = false;
+    }
+    public void toggleGear(){
+    	if (isHighGear){
+    		setLowGear();
+    	}
+    	else {
+    		setHighGear();
+    	}
+    }
 	
 	/** Methods for setting the motors in Percent Vbus mode ********************/
 	public void setPower(double leftPower, double rightPower) {

@@ -29,7 +29,7 @@ public class Gamepad extends Joystick{
 	public static final int RIGHT_JOY_Y_AXIS = 5;
 	
 	/** Axis Mapping for a single joystick ************************************/
-	public static final int JOY_X = 0;
+	public static final int JOY_X_AXIS = 0;
 	public static final int JOY_Y_AXIS = 1;
 	
 	
@@ -78,7 +78,12 @@ public class Gamepad extends Joystick{
 	Button button9 = LeftJoy;
 	Button button10 = RightJoy;
 
-	
+	/**
+	 * <b> Gamepad </b>
+	 * <p> the port passed should be the desired USB port for the {@link Gamepad} on the {@link edu.wpi.first.wpilibj.DriverStation DriverStation}.
+	 * </p>
+	 * @param port
+	 */
 	public Gamepad (int port) {
 		super(port);
 	}

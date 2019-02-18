@@ -5,13 +5,13 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.commands.DSN_Winch_WindUp;
+import org.usfirst.frc.team3042.robot.commands.DSN_Winch_Stop;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 /** DSN_Winch **********************************************************
- * A subsystem for the winch that the DSN will use to bring it down
+ * A subsystem that represents the winch that deploys the DSN
  */
 public class DSN_Winch extends Subsystem {
 	/** Configuration Constants ***********************************************/
@@ -35,7 +35,7 @@ public class DSN_Winch extends Subsystem {
 	 * Set the default command for the subsystem.
 	 */
 	public void initDefaultCommand() {
-		setDefaultCommand(new DSN_Winch_WindUp());
+		setDefaultCommand(new DSN_Winch_Stop());
 	}
 
 	private void setPower(double dsnWinchPower) {

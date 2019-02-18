@@ -2,7 +2,7 @@ package org.usfirst.frc.team3042.robot.subsystems;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Forward;
+import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Stop;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -52,7 +52,7 @@ public class DSN_Drive extends Subsystem {
 	 * Set the default command for the subsystem.
 	 */
 	public void initDefaultCommand() {
-		setDefaultCommand(new DSN_Drive_Forward());
+		setDefaultCommand(new DSN_Drive_Stop());
 	}
 
 	public void forward() {

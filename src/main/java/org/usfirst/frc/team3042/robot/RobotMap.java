@@ -37,25 +37,24 @@ public class RobotMap {
 	
 	
 	/** CAN ID numbers ********************************************************/
-	public static final int CAN_ELEVATOR_TALON = 	IS_JUNO     ? 8  : 17;
+	public static final int CAN_ELEVATOR_TALON = 	IS_JUNO     ? 8  : 0;
 	public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 17 : 0;
 	public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 19 : 0;
-	public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 15 : 8;
-	public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 2  : 7;
+	public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 15 : 0;
+	public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 2  : 0;
 	public static final int CAN_DSN =           	IS_JUNO     ? 1  : 0;
 	public static final int CAN_CARGO_ROLLER =      IS_JUNO     ? 18 : 0;
 	public static final int CAN_ARM_WINCH =         IS_JUNO     ? 14 : 0;
 	public static final int CAN_DSN_WINCH =         IS_JUNO     ? 7  : 0;
-	public static final int CAN_ARM_MOTOR_RIGHT =   IS_JUNO     ? 25 : 2;
+	public static final int CAN_ARM_MOTOR_RIGHT =   IS_JUNO     ? 25 : 0;
 	public static final int CAN_ARM_MOTOR_LEFT =    IS_JUNO     ? 4  : 0;
 
-	/** Solenoid ID numbers****************************************************/
-	public static final int DSN_SOLENOID =			(IS_JUNO)? 0 : 0;
-	public static final int HOOK_SOLENOID =			(IS_JUNO)? 1 : 1;
-	public static final int SLIDER_SOLENOID =		(IS_JUNO)? 3 : 2;
-	public static final int GRIPPER_SOLENOID =		(IS_JUNO)? 2 : 3;
-	
 	/** PCM channels **********************************************************/
+	public static final int DSN_SOLENOID =			(IS_JUNO)? 0 : 0;
+	public static final int HOOK_SOLENOID =			(IS_JUNO)? 0 : 0;
+	public static final int SLIDER_SOLENOID =		(IS_JUNO)? 0 : 0;
+	public static final int GRIPPER_SOLENOID =		(IS_JUNO)? 0 : 0;
+	public static final int DRIVETRAIN_SOLENOID = 	(IS_JUNO)? 0 : 0;
 	
 
 	/** SPI ports *************************************************************/
@@ -68,12 +67,13 @@ public class RobotMap {
 	public static final boolean USE_JOYSTICKS = true;
 	public static final double JOYSTICK_DRIVE_SCALE = 0.5;
 	public static final double TRIGGER_SPINNER_SCALE = 0.1;
-	public static final double JOYSTICK_DEAD_ZONE = 0.0;
+	public static final double JOYSTICK_DEAD_ZONE = 0.15;
 
 	/** DSN Settings **********************************************************/
     public static final boolean HAS_DSN_DRIVE = true;
 	public static final boolean HAS_DSN_WINCH = true;
 	public static final boolean HAS_DSN_HOLDER = true;
+	public static final boolean DSN_HOLDER_STARTS_ACTIVE = true;
 	public static final double FORWARDPOWER = 0.75;
 	public static final double BACKWARDPOWER = 0.75;
 	public static final double DSNWINDUPPOWER = 0.75;
@@ -84,6 +84,9 @@ public class RobotMap {
 	public static final double ARMWINDUPPOWER = 0.75;
 	public static final double ARMWINDOUTPOWER = 0.75;
 	public static final boolean HAS_ARM = true;
+	public static final boolean ARM_FOLLOWER_IS_LEFT = true;
+	public static final boolean ARM_IS_REVERSED = false;
+	public static final boolean ARM_RIGHT_AND_LEFT_ARE_OPPOSITE = true;
 	public static final double ARM_KP = IS_JUNO 	? 4.2 : 10.0;
 	public static final double ARM_KI = IS_JUNO 	? 0.015 : 0.015;
 	public static final double ARM_KD = IS_JUNO 	? 80.0 : 50.0;
@@ -104,10 +107,13 @@ public class RobotMap {
 
 	/** Hook Holder Settings ****************************************************/
 	public static final boolean HAS_HOOK_HOLDER = true;
+	public static final boolean HOOK_HOLDER_STARTS_ACTIVE = true;
 
 	/** Panel Intake Settings ****************************************************/
 	public static final boolean HAS_PANEL_SLIDER = true;
 	public static final boolean HAS_PANEL_GRIPPER = true;
+	public static final boolean PANNEL_SLIDER_STARTS_ACTIVE = false;
+	public static final boolean PANNEL_GRIPPER_STARTS_ACTIVE = false;	
 
 	/** Cargo Roller Settings ****************************************************/
 	public static final boolean HAS_CARGO_ROLLER = true;
@@ -142,9 +148,10 @@ public class RobotMap {
 	public static final boolean HAS_DRIVETRAIN = true;
 	public static final boolean HAS_FOLLOWERS = true;
 	public static final NeutralMode DRIVETRAIN_BRAKE_MODE = NeutralMode.Brake;
+	public static final boolean DRIVE_STARTS_HIGH_GEAR = (IS_JUNO) ? false : false;
 	public static final int PIDIDX = 0; //pidIdx - 0 for Primary closed-loop. 1 for cascaded closed-loop. See Phoenix-Documentation for how to interpret.
 	public static final boolean REVERSE_LEFT_MOTOR = 	(IS_JUNO) ? false : false;
-	public static final boolean REVERSE_RIGHT_MOTOR = 	(IS_JUNO) ? true: false;
+	public static final boolean REVERSE_RIGHT_MOTOR = 	(IS_JUNO) ? true: true;
 	public static final int TALON_ERROR_TIMEOUT = 0;// measured in Ms
 	public static final int SLOTIDX_1 = 0;
 	public static final double kF_DRIVE_LEFT = 	(IS_JUNO) ? 0.1817180616740088 : 0;
@@ -161,8 +168,8 @@ public class RobotMap {
 	public static final int COUNTS_PER_REVOLUTION = 1440;
 	//How often the encoders update on the CAN, in milliseconds
 	public static final int ENCODER_FRAME_RATE = 10;
-	public static final boolean SENSOR_PHASE_LEFT = false;
-	public static final boolean SENSOR_PHASE_RIGHT = false;
+	public static final boolean SENSOR_PHASE_LEFT = (IS_JUNO) ? false: false;
+	public static final boolean SENSOR_PHASE_RIGHT = (IS_JUNO) ? false: false;
 	
 	
 	/** Drivetrain Autonomous Settings ****************************************/
@@ -230,11 +237,11 @@ public class RobotMap {
 	public static final Log.Level	LOG_DSN_DRIVE               = Log.Level.TRACE;
 	public static final Log.Level   LOG_DSN_HOLDER              = Log.Level.TRACE;
 	public static final Log.Level	LOG_DSN_WINCH               = Log.Level.TRACE;
-	public static final Log.Level	LOG_ELEVATOR              = Log.Level.TRACE;
+	public static final Log.Level	LOG_ELEVATOR              	= Log.Level.TRACE;
 	public static final Log.Level   LOG_PANEL_SLIDER			= Log.Level.TRACE;
 	public static final Log.Level   LOG_PANEL_GRIPPER			= Log.Level.TRACE;
 	public static final Log.Level	LOG_HOOK_HOLDER 		    = Log.Level.TRACE;
-	public static final Log.Level	LOG_ARM              = Log.Level.TRACE;
+	public static final Log.Level	LOG_ARM              		= Log.Level.TRACE;
 	public static final Log.Level   LOG_ARM_POT                 = Log.Level.TRACE;
 	public static final Log.Level	LOG_CARGO_ROLLER            = Log.Level.TRACE;
 }

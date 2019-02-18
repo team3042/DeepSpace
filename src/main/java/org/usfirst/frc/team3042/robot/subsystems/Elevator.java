@@ -52,11 +52,6 @@ public class Elevator extends Subsystem {
 	public int elevatorZero = 0;
 	
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	
-    	//setDefaultCommand(new Elevator_Test());
-    	//setDefaultCommand(new Elevator_Stop());
     	setDefaultCommand(new Elevator_Stop());
     }
     

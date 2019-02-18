@@ -1,10 +1,11 @@
 package org.usfirst.frc.team3042.robot.commands;
 
+import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team3042.robot.subsystems.Arm;
 
 /**
  * Stop thine arm
@@ -15,17 +16,18 @@ public class Arm_Stop extends Command {
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-
+    Arm arm = Robot.arm;
+    
     public Arm_Stop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.arm);
+    	requires(arm);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	log.add("Initialize", Log.Level.TRACE);
-    	Robot.arm.stop();
+    	arm.stop();
     }
 
     // Called repeatedly when this Command is scheduled to run

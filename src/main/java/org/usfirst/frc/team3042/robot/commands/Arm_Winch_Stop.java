@@ -7,13 +7,26 @@
 
 package org.usfirst.frc.team3042.robot.commands;
 
+import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
+import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Arm_Winch;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 public class Arm_Winch_Stop extends Command {
+  /** Configuration Constants ***********************************************/
+  private static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM_WINCH;
+
+  /** Instance Variables ****************************************************/
+	Log log = new Log(LOG_LEVEL, getName());
   Arm_Winch arm_winch = Robot.arm_winch;
+
+  /**
+   * <p> <b> Arm_Winch_Stop </b> </p>
+   * 
+   * Stops the {@link Arm_Winch}.
+   */
   public Arm_Winch_Stop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -23,6 +36,7 @@ public class Arm_Winch_Stop extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    log.add("Initialize", Log.Level.TRACE);
     arm_winch.stop();
   }
 
@@ -40,11 +54,13 @@ public class Arm_Winch_Stop extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    log.add("End", Log.Level.TRACE);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    log.add("Interrupted", Log.Level.TRACE);
   }
 }

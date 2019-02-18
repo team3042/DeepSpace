@@ -3,6 +3,7 @@ package org.usfirst.frc.team3042.robot.subsystems;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.commands.Arm_HoldPosition;
+import org.usfirst.frc.team3042.robot.commands.Arm_Stop;
 import org.usfirst.frc.team3042.robot.triggers.POVButton;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -37,9 +38,15 @@ public class Arm extends Subsystem {
 	private static final int FRAME_POS = RobotMap.ARM_FRAME_PERIMITER;
 	public static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM;
 	public static final boolean REVERSE_PHASE = RobotMap.ARM_REVERSE_SENSOR_PHASE;
-	
+	public static final boolean ARM_FOLLOWER_IS_LEFT = RobotMap.ARM_FOLLOWER_IS_LEFT;
+	public static final boolean REVERSED = RobotMap.ARM_IS_REVERSED;
+	public static final boolean OPPOSITE = RobotMap.ARM_RIGHT_AND_LEFT_ARE_OPPOSITE;
+
 	/** Instance Variables ****************************************************/
-	private TalonSRX armTalon = new TalonSRX(CAN_ARM_MOTOR_RIGHT);
+	private TalonSRX armTalonRight = new TalonSRX(CAN_ARM_MOTOR_RIGHT);
+	private TalonSRX armTalonLeft = new TalonSRX(CAN_ARM_MOTOR_LEFT);
+	private TalonSRX armTalon = (ARM_FOLLOWER_IS_LEFT) ? armTalonRight: armTalonLeft;
+	private TalonSRX armTalonFollower = (ARM_FOLLOWER_IS_LEFT) ? armTalonLeft: armTalonRight;
 	private int currentPreset = 2;
 	private int currentGoalPos = FRAME_POS;
 	public Position[] positionFromInt = new Position[]{Position.BOTTOM, Position.MIDDLE, Position.TOP};
@@ -48,10 +55,13 @@ public class Arm extends Subsystem {
 	public Arm(){
 		initMotor(armTalon);
 		initMotionMagic(armTalon);
+		armTalonFollower.set(ControlMode.Follower, armTalon.getDeviceID());
+		armTalon.setInverted(REVERSED);
+		armTalonFollower.setInverted((OPPOSITE) ? !REVERSED: REVERSED);
 	}
 	
     public void initDefaultCommand() {
-    	setDefaultCommand(new Arm_HoldPosition());
+    	setDefaultCommand(new Arm_Stop());
     }
     
     public void manual(int direction){
@@ -116,18 +126,18 @@ public class Arm extends Subsystem {
     
     private void initMotor(TalonSRX motor) {
     	motor.setSensorPhase(REVERSE_PHASE);
-		motor.changeMotionControlFramePeriod(FRAME_RATE);
-		motor.config_kP(SLOTIDX_1, kP, TIMEOUT);
-		motor.config_kI(SLOTIDX_1, kI, TIMEOUT);
-		motor.config_kD(SLOTIDX_1, kD, TIMEOUT);
-		motor.config_kF(SLOTIDX_1, kF, TIMEOUT);
-		motor.config_IntegralZone(SLOTIDX_1, I_ZONE, TIMEOUT);
-		motor.configSelectedFeedbackSensor(FeedbackDevice.Analog, PIDIDX, TIMEOUT);
+			motor.changeMotionControlFramePeriod(FRAME_RATE);
+			motor.config_kP(SLOTIDX_1, kP, TIMEOUT);
+			motor.config_kI(SLOTIDX_1, kI, TIMEOUT);
+			motor.config_kD(SLOTIDX_1, kD, TIMEOUT);
+			motor.config_kF(SLOTIDX_1, kF, TIMEOUT);
+			motor.config_IntegralZone(SLOTIDX_1, I_ZONE, TIMEOUT);
+			motor.configSelectedFeedbackSensor(FeedbackDevice.Analog, PIDIDX, TIMEOUT);
 	}
     
     public void initMotionMagic(TalonSRX motor){
-		motor.configMotionAcceleration(MAGIC_ACCEL, TIMEOUT);
-		motor.configMotionCruiseVelocity(MAGIC_CRUISE, TIMEOUT);
+			motor.configMotionAcceleration(MAGIC_ACCEL, TIMEOUT);
+			motor.configMotionCruiseVelocity(MAGIC_CRUISE, TIMEOUT);
 	}
     
 	public int safetyCheck(int position) {
@@ -151,7 +161,7 @@ public class Arm extends Subsystem {
 			case BOTTOM:
 				setTalonPositionMagic(BOT_POS);
 				currentPreset = 0;
-                break;
+        break;
 			case MIDDLE:
 				setTalonPositionMagic(MID_POS);
 				currentPreset = 1;

@@ -2,7 +2,6 @@ package org.usfirst.frc.team3042.robot.subsystems;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.commands.Hook_Deploy;
 
 import edu.wpi.first.wpilibj.Solenoid;
 
@@ -15,10 +14,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Hook_Holder extends Subsystem {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_HOOK_HOLDER;
+	private static final int ID = RobotMap.HOOK_SOLENOID;
+	private static final boolean open = RobotMap.HOOK_HOLDER_STARTS_ACTIVE;
+	private static final boolean close = !open;
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	private Solenoid hookSolenoid = new Solenoid(RobotMap.HOOK_SOLENOID);
+	private Solenoid hookSolenoid = new Solenoid(ID);
 	
 	
 	/** Hook_Holder *******************************************************/
@@ -27,13 +29,17 @@ public class Hook_Holder extends Subsystem {
 	}
 
 	public void hookDeploy() {
-		hookSolenoid.set(true);
+		hookSolenoid.set(open);
+	}
+
+	public void hookUnDeploy() {
+		hookSolenoid.set(close);
 	}
 
 	/** initDefaultCommand ****************************************************
 	 * Set the default command for the subsystem.
 	 */
 	public void initDefaultCommand() {
-		setDefaultCommand(new Hook_Deploy());
+		setDefaultCommand(null);
 	}
 }

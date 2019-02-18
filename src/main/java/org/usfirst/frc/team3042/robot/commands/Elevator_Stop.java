@@ -3,6 +3,7 @@ package org.usfirst.frc.team3042.robot.commands;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
+import org.usfirst.frc.team3042.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -14,19 +15,25 @@ public class Elevator_Stop extends Command {
 	public static final Log.Level LOG_LEVEL = RobotMap.LOG_ELEVATOR;
 	
 	/** Instance Variables ****************************************************/
-	Log log = new Log(LOG_LEVEL, getName());
+    Log log = new Log(LOG_LEVEL, getName());
+    Elevator elevator = Robot.elevator;
 
+    /**
+     * <p> <b> Arm_Winch_Stop </b> </p>
+     * 
+     * Stops the {@link Elevator}.
+     */
     public Elevator_Stop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.elevator);
+    	requires(elevator);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	log.add("Initialize", Log.Level.TRACE);
     	
-    	Robot.elevator.stop();
+    	elevator.stop();
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -12,32 +12,31 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.Cargo_Roller;
+import org.usfirst.frc.team3042.robot.subsystems.DSN_Winch;
 
-public class Cargo_Roller_Stop extends Command {
+public class DSN_Winch_Stop extends Command {
   /** Configuration Constants ***********************************************/
-  private static final Log.Level LOG_LEVEL = RobotMap.LOG_CARGO_ROLLER;
-
+  private static final Log.Level LOG_LEVEL = RobotMap.LOG_DSN_WINCH;
+  
   /** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-  Cargo_Roller cargo_roller = Robot.cargo_roller;
-
+  DSN_Winch dsn_winch = Robot.dsn_winch;
+  
   /**
-   * <p> <b> Cargo_Roller_Stop </b> </p>
-   * 
-   * Stops the {@link Cargo_Roller}.
+   * <b> DSN_Winch_Stop </b>
+   * <p> Stops the {@link DSN_Winch}.
    */
-  public Cargo_Roller_Stop() {
+  public DSN_Winch_Stop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(cargo_roller);
+    requires(dsn_winch);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
     log.add("Initialize", Log.Level.TRACE);
-    cargo_roller.stop();
+    dsn_winch.stop();
   }
 
   // Called repeatedly when this Command is scheduled to run

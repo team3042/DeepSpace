@@ -5,7 +5,6 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Intake;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Stop;
 
 import edu.wpi.first.wpilibj.command.Subsystem;

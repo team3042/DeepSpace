@@ -36,11 +36,11 @@ public class Robot extends TimedRobot {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL =  RobotMap.LOG_ROBOT;
 	private static final boolean HAS_DRIVETRAIN = RobotMap.HAS_DRIVETRAIN;
-	private static final boolean HAS_GYROSCOPE = false;//                         RobotMap.HAS_GYROSCOPE;
-	private static final boolean HAS_LINE_TRACKER = false;//                      RobotMap.HAS_LINE_TRACKER;
-	private static final boolean HAS_DSN_DRIVE = false;//                         RobotMap.HAS_DSN_DRIVE;
+	private static final boolean HAS_GYROSCOPE = false;//RobotMap.HAS_GYROSCOPE;
+	private static final boolean HAS_LINE_TRACKER = false;//RobotMap.HAS_LINE_TRACKER;
+	private static final boolean HAS_DSN_DRIVE = RobotMap.HAS_DSN_DRIVE;
 	private static final boolean HAS_DSN_HOLDER = false;//RobotMap.HAS_DSN_HOLDER;
-	private static final boolean HAS_DSN_WINCH = false;//RobotMap.HAS_DSN_WINCH;
+	private static final boolean HAS_DSN_WINCH = RobotMap.HAS_DSN_WINCH;
 	private static final boolean HAS_ELEVATOR = RobotMap.HAS_ELEVATOR;
 	private static final boolean HAS_ARM_WINCH = RobotMap.HAS_ARM_WINCH;
 	private static final boolean HAS_HOOK_HOLDER = false;//RobotMap.HAS_HOOK_HOLDER;

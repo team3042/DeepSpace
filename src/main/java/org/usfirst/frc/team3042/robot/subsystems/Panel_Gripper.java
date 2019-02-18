@@ -14,10 +14,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Panel_Gripper extends Subsystem {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_PANEL_GRIPPER;
-	private Solenoid gripperSolenoid = new Solenoid(RobotMap.GRIPPER_SOLENOID);
+	private static final int ID = RobotMap.GRIPPER_SOLENOID;
+	private static final boolean open = RobotMap.PANNEL_GRIPPER_STARTS_ACTIVE;
+	private static final boolean close = !open;
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
+	private Solenoid gripperSolenoid = new Solenoid(ID);
 	
 	
 	/** Panel_Gripper ******************************************************
@@ -28,17 +31,17 @@ public class Panel_Gripper extends Subsystem {
 	}
 
 	public void intakePanel() {
-		gripperSolenoid.set(true);
+		gripperSolenoid.set(open);
 	}
 
 	public void releasePanel() {
-		gripperSolenoid.set(true);
+		gripperSolenoid.set(close);
 	}
 	
 	/** initDefaultCommand ****************************************************
 	 * Set the default command for the subsystem.
 	 */
 	public void initDefaultCommand() {
-		setDefaultCommand(new Panel_Intake());
+		setDefaultCommand(null);
 	}
 }

@@ -71,11 +71,11 @@ public class Drivetrain extends Subsystem {
 		setDefaultCommand(new Drivetrain_TankDrive());
 	}
 	
-	private void setHighGear(){
+	public void setHighGear(){
     	shift.set(!STARTS_HIGH);
     	isHighGear = true;
     }
-    private void setLowGear(){
+    public void setLowGear(){
     	shift.set(STARTS_HIGH);
     	isHighGear = false;
     }

@@ -12,35 +12,36 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team3042.robot.subsystems.Panel_Gripper;
 
 /**
- * <b> Drivetrain_Shift </b>
- * @see Drivetrain
+ * <b> Panel_Gripper_Toggle </b>
+ * @see Panel_Gripper
  */
-public class Drivetrain_Shift extends InstantCommand {
-  /** Configuration Constants ***********************************************/
-  private static final Log.Level LOG_LEVEL = RobotMap.LOG_DRIVETRAIN;
+public class Panel_Gripper_Toggle extends InstantCommand {
+   /** Configuration Constants ***********************************************/
+   private static final Log.Level LOG_LEVEL = RobotMap.LOG_PANEL_GRIPPER;
 
-  /** Instance Variables ****************************************************/
+   /** Instance Variables ****************************************************/
   Log log = new Log(LOG_LEVEL, getName());
-	Drivetrain drivetrain = Robot.drivetrain;
+	Panel_Gripper panel_gripper = Robot.panel_gripper;
 
   /**
-   * <p> <b> Drivetrain_Shift </b> </p>
-   * Shifts the gear for the {@link Drivetrain}.
+   * <p> <b> Panel_Gripper_Toggle </b> </p>
+   * Shifts the piston for the {@link Panel_Gripper}.
    */
-  public Drivetrain_Shift() {
+  public Panel_Gripper_Toggle() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(panel_gripper);
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
     log.add("Initialize", Log.Level.TRACE);
-    drivetrain.toggleGear();
+    panel_gripper.toggle();
   }
 
 }

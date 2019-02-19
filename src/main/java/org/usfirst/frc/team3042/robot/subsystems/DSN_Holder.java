@@ -20,8 +20,9 @@ public class DSN_Holder extends Subsystem {
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	private Solenoid dsnSolenoid = new Solenoid(ID);
-	
+	Solenoid dsnSolenoid = new Solenoid(ID);
+	boolean isOpen = open;
+
 	
 	/** DSN_Holder ******************************************************
 	 * 
@@ -30,6 +31,23 @@ public class DSN_Holder extends Subsystem {
 		log.add("Constructor", LOG_LEVEL);
 
 	}
+
+	public void setOpen(){
+    	dsnSolenoid.set(!open);
+    	isOpen = true;
+    }
+    public void setClose(){
+    	dsnSolenoid.set(open);
+    	isOpen = false;
+    }
+    public void toggle(){
+    	if (isOpen){
+    		setClose();
+    	}
+    	else {
+    		setOpen();
+    	}
+    }
 
 	public void dsnEngage() {
 

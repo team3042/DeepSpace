@@ -20,13 +20,31 @@ public class Hook_Holder extends Subsystem {
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	private Solenoid hookSolenoid = new Solenoid(ID);
+	Solenoid hookSolenoid = new Solenoid(ID);
+	boolean isOpen = open;
 	
 	
 	/** Hook_Holder *******************************************************/
 	public Hook_Holder() {
 		log.add("Constructor", LOG_LEVEL);
 	}
+
+	public void setOpen(){
+    	hookSolenoid.set(!open);
+    	isOpen = true;
+    }
+    public void setClose(){
+    	hookSolenoid.set(open);
+    	isOpen = false;
+    }
+    public void toggle(){
+    	if (isOpen){
+    		setClose();
+    	}
+    	else {
+    		setOpen();
+    	}
+    }
 
 	public void hookDeploy() {
 		hookSolenoid.set(open);

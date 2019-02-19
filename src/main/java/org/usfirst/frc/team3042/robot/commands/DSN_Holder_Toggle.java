@@ -12,35 +12,36 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team3042.robot.subsystems.DSN_Holder;
 
 /**
- * <b> Drivetrain_Shift </b>
- * @see Drivetrain
+ * <b> DSN_Holder_Toggle </b>
+ * @see DSN_Holder
  */
-public class Drivetrain_Shift extends InstantCommand {
-  /** Configuration Constants ***********************************************/
-  private static final Log.Level LOG_LEVEL = RobotMap.LOG_DRIVETRAIN;
+public class DSN_Holder_Toggle extends InstantCommand {
+   /** Configuration Constants ***********************************************/
+   private static final Log.Level LOG_LEVEL = RobotMap.LOG_DSN_HOLDER;
 
-  /** Instance Variables ****************************************************/
+   /** Instance Variables ****************************************************/
   Log log = new Log(LOG_LEVEL, getName());
-	Drivetrain drivetrain = Robot.drivetrain;
+	DSN_Holder dsn_holder = Robot.dsn_holder;
 
   /**
-   * <p> <b> Drivetrain_Shift </b> </p>
-   * Shifts the gear for the {@link Drivetrain}.
+   * <p> <b> DSN_Holder_Toggle </b> </p>
+   * Shifts the piston for the {@link DSN_Holder}.
    */
-  public Drivetrain_Shift() {
+  public DSN_Holder_Toggle() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(dsn_holder);
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
     log.add("Initialize", Log.Level.TRACE);
-    drivetrain.toggleGear();
+    dsn_holder.toggle();
   }
 
 }

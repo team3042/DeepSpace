@@ -19,7 +19,8 @@ public class Panel_Slider extends Subsystem {
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	private Solenoid sliderSolenoid = new Solenoid(ID);
+	Solenoid sliderSolenoid = new Solenoid(ID);
+	boolean isOpen = open;
 	
 	
 	/** Panel_Slider ******************************************************
@@ -28,6 +29,23 @@ public class Panel_Slider extends Subsystem {
 	public Panel_Slider() {
 		log.add("Constructor", LOG_LEVEL);
 	}
+
+	public void setOpen(){
+    	sliderSolenoid.set(!open);
+    	isOpen = true;
+    }
+    public void setClose(){
+    	sliderSolenoid.set(open);
+    	isOpen = false;
+    }
+    public void toggle(){
+    	if (isOpen){
+    		setClose();
+    	}
+    	else {
+    		setOpen();
+    	}
+    }
 
 	public void engageSlider() {
 		sliderSolenoid.set(open);

@@ -20,8 +20,9 @@ public class Panel_Gripper extends Subsystem {
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	private Solenoid gripperSolenoid = new Solenoid(ID);
-	
+	Solenoid gripperSolenoid = new Solenoid(ID);
+	boolean isOpen = open;
+
 	
 	/** Panel_Gripper ******************************************************
 	 * 
@@ -29,6 +30,23 @@ public class Panel_Gripper extends Subsystem {
 	public Panel_Gripper() {
 		log.add("Constructor", LOG_LEVEL);
 	}
+
+	public void setOpen(){
+    	gripperSolenoid.set(!open);
+    	isOpen = true;
+    }
+    public void setClose(){
+    	gripperSolenoid.set(open);
+    	isOpen = false;
+    }
+    public void toggle(){
+    	if (isOpen){
+    		setClose();
+    	}
+    	else {
+    		setOpen();
+    	}
+    }
 
 	public void intakePanel() {
 		gripperSolenoid.set(open);

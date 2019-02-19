@@ -42,11 +42,6 @@ public class RobotMap {
 	public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 19 : 12;
 	public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 15 : 29;
 	public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 2  : 31;
-	//public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 17 : 29;
-	//public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 19 : 31;
-	//public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 15 : 28;
-	//public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 2  : 12;
-
 	public static final int CAN_DSN =           	IS_JUNO     ? 1  : 32;
 	public static final int CAN_CARGO_ROLLER =      IS_JUNO     ? 18 : 27;
 	public static final int CAN_ARM_WINCH =         IS_JUNO     ? 14 : 26;
@@ -146,7 +141,7 @@ public class RobotMap {
 	public static final int ELEVATOR_I_ZONE = IS_JUNO 	? 0 : 0;
 	public static final int ELEVATOR_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 3500 : 8000;
 	public static final int ELEVATOR_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 4000 : 8000;
-	public static final boolean ELEVATOR_REVERSE = true;
+	public static final boolean ELEVATOR_REVERSE = (IS_JUNO) ? true: false;
 	public static final int ELEVATOR_SPROCKET_CIRCUMFERENCE = IS_JUNO ? 4 : 4;
 
 	/** Drivetrain Settings ***************************************************/

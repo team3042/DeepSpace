@@ -33,13 +33,13 @@ public class DSN_Holder extends Subsystem {
 
 	public void dsnEngage() {
 
-		dsnSolenoid.set(open);
+		dsnSolenoid.set(close);
 
 	}
 
 	public void dsnRelease() {
 
-		dsnSolenoid.set(close);
+		dsnSolenoid.set(open);
 
 	}
 

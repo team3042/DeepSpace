@@ -21,8 +21,10 @@ public class Panel_Intake extends Command {
 	Panel_Gripper panel_gripper = Robot.panel_gripper;
 	
 	
-	/** Panel_Intake ********************************************************
-	 * Required subsystems will cancel commands when this command is run.
+	/**
+	 * <b> Panel_Intake </b>
+	 * 
+	 * <p> This will use the {@link Panel_Gripper} to intake a pannel. </p>
 	 */
 	public Panel_Intake() {
 		log.add("Constructor", Log.Level.TRACE);

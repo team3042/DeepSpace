@@ -11,7 +11,7 @@ public class RobotMap {
 	/** Robot selector ********************************************************/
 	public static enum Bot {JUNO, JUPITER;}
 	// Set the bot to which you intend to push code.
-	private static Bot currentBot = Bot.JUNO;
+	private static Bot currentBot = Bot.JUPITER;
 
 	public static final boolean IS_JUPITER = (currentBot == Bot.JUPITER);
 	public static final boolean IS_JUNO = (currentBot == Bot.JUNO);
@@ -37,24 +37,29 @@ public class RobotMap {
 	
 	
 	/** CAN ID numbers ********************************************************/
-	public static final int CAN_ELEVATOR_TALON = 	IS_JUNO     ? 8  : 0;
-	public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 17 : 0;
-	public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 19 : 0;
-	public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 15 : 0;
-	public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 2  : 0;
-	public static final int CAN_DSN =           	IS_JUNO     ? 1  : 0;
-	public static final int CAN_CARGO_ROLLER =      IS_JUNO     ? 18 : 0;
-	public static final int CAN_ARM_WINCH =         IS_JUNO     ? 14 : 0;
-	public static final int CAN_DSN_WINCH =         IS_JUNO     ? 7  : 0;
-	public static final int CAN_ARM_MOTOR_RIGHT =   IS_JUNO     ? 25 : 0;
-	public static final int CAN_ARM_MOTOR_LEFT =    IS_JUNO     ? 4  : 0;
+	public static final int CAN_ELEVATOR_TALON = 	IS_JUNO     ? 8  : 30;
+	public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 17 : 28;
+	public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 19 : 12;
+	public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 15 : 29;
+	public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 2  : 31;
+	//public static final int CAN_LEFT_MOTOR 	= 		IS_JUNO 	? 17 : 29;
+	//public static final int CAN_RIGHT_MOTOR = 		IS_JUNO 	? 19 : 31;
+	//public static final int CAN_LEFT_FOLLOWER =     IS_JUNO 	? 15 : 28;
+	//public static final int CAN_RIGHT_FOLLOWER =    IS_JUNO	    ? 2  : 12;
+
+	public static final int CAN_DSN =           	IS_JUNO     ? 1  : 32;
+	public static final int CAN_CARGO_ROLLER =      IS_JUNO     ? 18 : 27;
+	public static final int CAN_ARM_WINCH =         IS_JUNO     ? 14 : 26;
+	public static final int CAN_DSN_WINCH =         IS_JUNO     ? 7  : 33;
+	public static final int CAN_ARM_MOTOR_RIGHT =   IS_JUNO     ? 25 : 16;
+	public static final int CAN_ARM_MOTOR_LEFT =    IS_JUNO     ? 4  : 13;
 
 	/** PCM channels **********************************************************/
-	public static final int DSN_SOLENOID =			(IS_JUNO)? 0 : 0;
-	public static final int HOOK_SOLENOID =			(IS_JUNO)? 0 : 0;
+	public static final int DSN_SOLENOID =			(IS_JUNO)? 2 : 0;
+	public static final int HOOK_SOLENOID =			(IS_JUNO)? 4 : 0;
 	public static final int SLIDER_SOLENOID =		(IS_JUNO)? 0 : 0;
-	public static final int GRIPPER_SOLENOID =		(IS_JUNO)? 0 : 0;
-	public static final int DRIVETRAIN_SOLENOID = 	(IS_JUNO)? 0 : 0;
+	public static final int GRIPPER_SOLENOID =		(IS_JUNO)? 1 : 0;
+	public static final int DRIVETRAIN_SOLENOID = 	(IS_JUNO)? 3 : 0;
 	
 
 	/** SPI ports *************************************************************/
@@ -107,7 +112,7 @@ public class RobotMap {
 
 	/** Hook Holder Settings ****************************************************/
 	public static final boolean HAS_HOOK_HOLDER = true;
-	public static final boolean HOOK_HOLDER_STARTS_ACTIVE = true;
+	public static final boolean HOOK_HOLDER_STARTS_ACTIVE = false;
 
 	/** Panel Intake Settings ****************************************************/
 	public static final boolean HAS_PANEL_SLIDER = true;

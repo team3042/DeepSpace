@@ -11,6 +11,8 @@ import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Backward;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Forward;
 import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Engage;
 import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Release;
+import org.usfirst.frc.team3042.robot.commands.DSN_Winch_WindOut;
+import org.usfirst.frc.team3042.robot.commands.DSN_Winch_WindUp;
 import org.usfirst.frc.team3042.robot.commands.DrivetrainAuton_Drive;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroStraight;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroTurn;
@@ -88,21 +90,27 @@ public class OI {
 			joyRight.button1.whenPressed(new Drivetrain_Shift());
 			gamepad.LeftJoyUp.whenActive(new Elevator_Test());
 			gamepad.LeftJoyDown.whenActive(new Elevator_Test());
-			//gamepad.RightJoyUp.whenActive(new Arm_Test());
-			//gamepad.RightJoyDown.whenActive(new Arm_Test());
-			gamepad.POVUp.whenActive(new Arm_Winch_WindOut());
-			gamepad.POVDown.whenActive(new Arm_Winch_WindUp());
+			gamepad.RightJoyUp.whenActive(new Arm_Test());
+			gamepad.RightJoyDown.whenActive(new Arm_Test());
+			gamepad.A.whileActive(new Arm_Winch_WindOut());
+			gamepad.B.whileActive(new Arm_Winch_WindUp());
+			gamepad.Y.whileActive(new DSN_Winch_WindOut());
+			gamepad.X.whileActive(new DSN_Winch_WindUp());
 			gamepad.RB.whileHeld(new Cargo_Roller_Intake());
 			gamepad.LB.whileHeld(new Cargo_Roller_Extake());
-			gamepad.POVLeft.whenActive(new DSN_Drive_Forward());
-			gamepad.POVRight.whenActive(new DSN_Drive_Backward());
+			gamepad.RT.whileActive(new DSN_Drive_Forward());
+			gamepad.LT.whileActive(new DSN_Drive_Backward());
 			//gamepad.X.whileHeld(new DSN_Holder_Engage());
 			//gamepad.Y.whileHeld(new DSN_Holder_Release());
-			//gamepad.X.whileHeld(new Hook_Deploy());
+			//gamepad.A.whileHeld(new Hook_Deploy());
 			//gamepad.X.whileHeld(new Panel_Slider_Forward());
 			//gamepad.Y.whileHeld(new Panel_Slider_Backward());
+			gamepad.POVLeft.whileActive(new Panel_Slider_Forward());
+			gamepad.POVRight.whileActive(new Panel_Slider_Backward());
 			//gamepad.X.whileHeld(new Panel_Intake());
 			//gamepad.Y.whileHeld(new Panel_Release());
+			gamepad.POVUp.whileActive(new Panel_Intake());
+			gamepad.POVDown.whileActive(new Panel_Release());
 
 
 			// double turnRadius = 1.5 * ROBOT_WIDTH;
@@ -130,6 +138,12 @@ public class OI {
 		
 		/** JUPITER Controls **************************************************/
 		if (IS_JUPITER) {
+			gamepad.RT.whileActive(new DSN_Drive_Forward());
+			gamepad.LT.whileActive(new DSN_Drive_Backward());
+			gamepad.LeftJoyUp.whenActive(new Elevator_Test());
+			gamepad.LeftJoyDown.whenActive(new Elevator_Test());
+			gamepad.RightJoyUp.whenActive(new Arm_Test());
+			gamepad.RightJoyDown.whenActive(new Arm_Test());
 
 		}
 	}

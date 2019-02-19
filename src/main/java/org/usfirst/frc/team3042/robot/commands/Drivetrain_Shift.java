@@ -30,7 +30,6 @@ public class Drivetrain_Shift extends InstantCommand {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(drivetrain);
   }
 
   // Called once when the command executes

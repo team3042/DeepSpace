@@ -54,11 +54,11 @@ public class RobotMap {
 	public static final int CAN_ARM_MOTOR_LEFT =    IS_JUNO     ? 4  : 13;
 
 	/** PCM channels **********************************************************/
-	public static final int DSN_SOLENOID =			(IS_JUNO)? 2 : 0;
-	public static final int HOOK_SOLENOID =			(IS_JUNO)? 4 : 0;
+	public static final int DSN_SOLENOID =			(IS_JUNO)? 2 : 3;
+	public static final int HOOK_SOLENOID =			(IS_JUNO)? 4 : 2;
 	public static final int SLIDER_SOLENOID =		(IS_JUNO)? 0 : 0;
-	public static final int GRIPPER_SOLENOID =		(IS_JUNO)? 1 : 0;
-	public static final int DRIVETRAIN_SOLENOID = 	(IS_JUNO)? 3 : 0;
+	public static final int GRIPPER_SOLENOID =		(IS_JUNO)? 1 : 1;
+	public static final int DRIVETRAIN_SOLENOID = 	(IS_JUNO)? 3 : 7;
 	
 
 	/** SPI ports *************************************************************/

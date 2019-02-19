@@ -7,6 +7,7 @@ import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * We don't know if it will work
@@ -39,7 +40,9 @@ public class Elevator_Test extends Command {
     protected void execute() {
     	double speed = -Robot.oi.gamepad.getRawAxis(Gamepad.LEFT_JOY_Y_AXIS);
     	speed *= 0.5;
-    	elevator.setPower(speed);
+        elevator.setPower(speed);
+        //comment out the line below if the encoder for the elevator is not plugged in or has an improper PIDIDX
+        SmartDashboard.putNumber("Elevator pos (raw)", elevator.getPosition());
     }
 
     // Make this return true when this Command no longer needs to run execute()

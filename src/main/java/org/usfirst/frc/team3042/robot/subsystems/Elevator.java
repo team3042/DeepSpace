@@ -217,6 +217,15 @@ public class Elevator extends Subsystem {
 		elevatorTalon.clearMotionProfileHasUnderrun(TIMEOUT);
 	}
 	
+	/**
+	 * Get the selected sensor position (in raw sensor units).
+	 *
+	 * @param pidIdx
+	 *            0 for Primary closed-loop. 1 for auxiliary closed-loop. See
+	 *            Phoenix-Documentation for how to interpret. See {@link RobotMap #PIDIDX PIDIDX} value in {@link RobotMap}. 
+	 *
+	 * @return Position of selected sensor (in raw sensor units).
+	 */
 	public int getPosition(){
 		return elevatorTalon.getSelectedSensorPosition(PIDIDX);
 	}

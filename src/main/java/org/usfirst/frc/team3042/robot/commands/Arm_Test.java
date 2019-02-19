@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3042.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.subsystems.Arm;
@@ -39,7 +40,10 @@ public class Arm_Test extends Command {
     protected void execute() {
     	double power = -Robot.oi.gamepad.getRawAxis(Gamepad.RIGHT_JOY_Y_AXIS);
     	power *= (power > 0) ? 0.5 : 0.8;
-    	arm.setPower(power);
+        arm.setPower(power);
+        //comment out the line below if the potentiometer for the elevator is not plugged in or has an improper PIDIDX
+        SmartDashboard.putNumber("Arm pos (raw)", arm.getPosition());
+
     }
 
     // Make this return true when this Command no longer needs to run execute()

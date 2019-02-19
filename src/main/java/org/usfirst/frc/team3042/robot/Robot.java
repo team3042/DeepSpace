@@ -48,6 +48,8 @@ public class Robot extends TimedRobot {
 	private static final boolean HAS_PANEL_GRIPPER = false;//RobotMap.HAS_PANEL_GRIPPER;
 	private static final boolean HAS_CARGO_ROLLER = RobotMap.HAS_CARGO_ROLLER;
 	private static final boolean HAS_ARM = RobotMap.HAS_ARM;
+	private static final boolean HAS_CAMERA1 = RobotMap.HAS_CAMERA1;
+	private static final boolean HAS_CAMERA2 = RobotMap.HAS_CAMERA2;
 	
 	/** Create Subsystems *****************************************************/
 	private Log log = new Log(LOG_LEVEL, "Robot");
@@ -74,8 +76,8 @@ public class Robot extends TimedRobot {
 	public static boolean elevatorEmergencyMode = false;
 	public static boolean armEmergencyMode = false;
 
-	//CameraServer camera1;
-	//CameraServer camera2;
+	CameraServer camera1;
+	CameraServer camera2;
 
 	/** robotInit *************************************************************
 	 * This function is run when the robot is first started up and should be
@@ -84,11 +86,15 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		log.add("Robot Init", Log.Level.TRACE);
 
-		//camera1 = CameraServer.getInstance();
-		//camera2 = CameraServer.getInstance();
-
-		//camera1.startAutomaticCapture();
-		//camera2.startAutomaticCapture();
+		if (HAS_CAMERA1) {
+			camera1 = CameraServer.getInstance();
+			camera1.startAutomaticCapture();
+		}
+		if (HAS_CAMERA2) {
+			camera2 = CameraServer.getInstance();
+			camera2.startAutomaticCapture();
+		}
+			
 		
 		oi = new OI();
 		chooser.setDefaultOption("Default Auto", new ExampleCommand());

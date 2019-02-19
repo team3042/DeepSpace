@@ -24,6 +24,10 @@ public class RobotMap {
 	public static final double WHEEL_DIAMETER = 4.0;
 	public static final double ROBOT_WIDTH = (IS_JUNO) ? 15.0 : 0.0;
 	
+
+	/** USB Host ports ********************************************************/
+	public static final boolean HAS_CAMERA1 = false;
+	public static final boolean HAS_CAMERA2 = false;
 	
 	/** USB ports *************************************************************/					
 	public static final int USB_JOYSTICK_LEFT 	= 0;

@@ -29,6 +29,7 @@ import org.usfirst.frc.team3042.robot.commands.Panel_Release;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Backward;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Forward;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Toggle;
+import org.usfirst.frc.team3042.robot.commands.Test_printSensorRaw;
 import org.usfirst.frc.team3042.robot.triggers.POVButton;
 
 /**
@@ -92,18 +93,22 @@ public class OI {
 			boolean test = true;
 			if (test) {
 				joyRight.button1.whenPressed(new Drivetrain_Shift());
-				gamepad.LeftJoyUp.whenActive(new Elevator_Test());
-				gamepad.LeftJoyDown.whenActive(new Elevator_Test());
-				gamepad.RightJoyUp.whenActive(new Arm_Test());
-				gamepad.RightJoyDown.whenActive(new Arm_Test());
-				gamepad.A.whileActive(new Arm_Winch_WindOut());
-				gamepad.B.whileActive(new Arm_Winch_WindUp());
-				gamepad.Y.whileActive(new DSN_Winch_WindOut());
-				gamepad.X.whileActive(new DSN_Winch_WindUp());
-				gamepad.RB.whileHeld(new Cargo_Roller_Intake());
-				gamepad.LB.whileHeld(new Cargo_Roller_Extake());
 				gamepad.RT.whileActive(new DSN_Drive_Forward());
 				gamepad.LT.whileActive(new DSN_Drive_Backward());
+				gamepad.RB.whileHeld(new Cargo_Roller_Intake());
+				gamepad.LB.whileHeld(new Cargo_Roller_Extake());
+				//gamepad.LeftJoyUp.whenActive(new Elevator_Test());
+				//gamepad.LeftJoyDown.whenActive(new Elevator_Test());
+				//gamepad.RightJoyUp.whenActive(new Arm_Test());
+				//gamepad.RightJoyDown.whenActive(new Arm_Test());
+				//gamepad.POVUp.whileActive(new Arm_Winch_WindOut());
+				//gamepad.POVDown.whileActive(new Arm_Winch_WindUp());
+				//gamepad.POVLeft.whileActive(new DSN_Winch_WindOut());
+				//gamepad.POVRight.whileActive(new DSN_Winch_WindUp());
+				gamepad.A.whenPressed(new Panel_Slider_Toggle());
+				gamepad.B.whenPressed(new Panel_Gripper_Toggle());
+				//gamepad.X.whenPressed(new Hook_Holder_Toggle());
+				//gamepad.Y.whenPressed(new DSN_Holder_Toggle());
 				// gamepad.X.whileHeld(new DSN_Holder_Engage());
 				// gamepad.Y.whileHeld(new DSN_Holder_Release());
 				// gamepad.A.whileHeld(new Hook_Deploy());
@@ -141,6 +146,7 @@ public class OI {
 
 		/** JUPITER Controls **************************************************/
 		if (IS_JUPITER) {
+			//gamepad.Start.whenPressed(new Test_printSensorRaw()); 
 			joyRight.button1.whenPressed(new Drivetrain_Shift());
 			gamepad.RT.whileActive(new DSN_Drive_Forward());
 			gamepad.LT.whileActive(new DSN_Drive_Backward());

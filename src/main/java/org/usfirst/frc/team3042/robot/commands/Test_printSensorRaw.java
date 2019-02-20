@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team3042.robot.commands;
 
+import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.subsystems.Arm;
 import org.usfirst.frc.team3042.robot.subsystems.Elevator;
@@ -18,6 +19,7 @@ public class Test_printSensorRaw extends Command {
 
   Elevator elevator = Robot.elevator;
   Arm arm = Robot.arm;
+  Log log = new Log(Log.Level.TRACE, getName());
 
   public Test_printSensorRaw() {
     // Use requires() here to declare subsystem dependencies
@@ -27,7 +29,7 @@ public class Test_printSensorRaw extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-  }
+    }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
@@ -36,7 +38,6 @@ public class Test_printSensorRaw extends Command {
     SmartDashboard.putNumber("Elevator pos (raw)", elevator.getPosition());
     //comment out the line below if the potentiometer for the Arm is not plugged in or has an improper PIDIDX
     SmartDashboard.putNumber("Arm pos (raw)", arm.getPosition());
-
   }
 
   // Make this return true when this Command no longer needs to run execute()

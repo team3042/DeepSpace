@@ -163,6 +163,8 @@ public class Robot extends TimedRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Elevator pos (raw)", elevator.getPosition());
+	    SmartDashboard.putNumber("Arm pos (raw)", arm.getPosition());
 	}
 
 	

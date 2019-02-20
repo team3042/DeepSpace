@@ -21,7 +21,7 @@ public class RobotMap {
 	 * and speed closed-loop commands. For example, if the diameter is given 
 	 * in inches, position will be in inches and speed in inches per second.
 	 */
-	public static final double WHEEL_DIAMETER = 4.0;
+	public static final double WHEEL_DIAMETER = 6.0;
 	public static final double ROBOT_WIDTH = (IS_JUNO) ? 15.0 : 0.0;
 	
 
@@ -78,6 +78,7 @@ public class RobotMap {
 	public static final boolean HAS_DSN_WINCH = true;
 	public static final boolean HAS_DSN_HOLDER = true;
 	public static final boolean DSN_HOLDER_STARTS_ACTIVE = true;
+	public static final boolean DSN_WINCH_ISREVERSED = (IS_JUNO) ? false: true;
 	public static final double FORWARDPOWER = 0.75;
 	public static final double BACKWARDPOWER = 0.75;
 	public static final double DSNWINDUPPOWER = 0.75;

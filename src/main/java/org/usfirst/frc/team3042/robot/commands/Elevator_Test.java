@@ -39,7 +39,7 @@ public class Elevator_Test extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double speed = -Robot.oi.gamepad.getRawAxis(Gamepad.LEFT_JOY_Y_AXIS);
-    	speed *= 0.25;
+    	speed *= 0.5;
         elevator.setPower(speed);
         //comment out the line below if the encoder for the elevator is not plugged in or has an improper PIDIDX
         SmartDashboard.putNumber("Elevator pos (raw)", elevator.getPosition());

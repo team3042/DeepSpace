@@ -18,6 +18,7 @@ import org.usfirst.frc.team3042.robot.subsystems.Hook_Holder;
 import org.usfirst.frc.team3042.robot.subsystems.Arm;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -70,11 +71,19 @@ public class Robot extends TimedRobot {
 	
 	public static OI oi;
 
+	public static boolean elevatorEmergencyMode = false;
+	public static boolean armEmergencyMode = false;
+	public static double kP_Elevator;
+	public static double kI_Elevator;
+	public static double kD_Elevator;
+	public static double kP_Arm;
+	public static double kI_Arm;
+	public static double kD_Arm;
+
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<Command>();
 
-	public static boolean elevatorEmergencyMode = false;
-	public static boolean armEmergencyMode = false;
+	Preferences prefs;
 
 	CameraServer camera1;
 	CameraServer camera2;
@@ -100,6 +109,14 @@ public class Robot extends TimedRobot {
 		chooser.setDefaultOption("Default Auto", new ExampleCommand());
 		chooser.addOption("My Auto", new ExampleCommand());
 		SmartDashboard.putData("Auto Mode", chooser);
+
+		prefs = Preferences.getInstance();
+		kP_Elevator = prefs.getDouble("kP_Elevator", RobotMap.ELEVATOR_KP);
+		kI_Elevator = prefs.getDouble("kI_Elevator", RobotMap.ELEVATOR_KI);
+		kD_Elevator = prefs.getDouble("kD_Elevator", RobotMap.ELEVATOR_KD);
+		kP_Arm = prefs.getDouble("kP_Arm", RobotMap.ARM_KP);
+		kI_Arm = prefs.getDouble("kI_Arm", RobotMap.ARM_KI);
+		kD_Arm = prefs.getDouble("kD_Arm", RobotMap.ARM_KD);
 	}
 
 	

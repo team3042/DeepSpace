@@ -57,10 +57,10 @@ private TalonSRX motor = new TalonSRX(CAN_CARGO_ROLLER);	/** Instance Variables 
 	}
 
 	public void intake() {
-    	setPower(INTAKEPOWER);
+    	setPower(-1d*INTAKEPOWER);
 	}
 	
 	public void extake() {
-    	setPower(-1.0*EXTAKEPOWER);
+    	setPower(1d*EXTAKEPOWER);
     }
 }

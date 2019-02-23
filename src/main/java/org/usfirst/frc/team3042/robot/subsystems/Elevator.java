@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3042.robot.subsystems;
 
 import org.usfirst.frc.team3042.lib.Log;
+import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.commands.Elevator_Hold_Position;
 import org.usfirst.frc.team3042.robot.commands.Elevator_Stop;
@@ -35,9 +36,9 @@ public class Elevator extends Subsystem {
 	private static final int TIMEOUT = RobotMap.TALON_ERROR_TIMEOUT;
 	private static final int FRAME_RATE = RobotMap.AUTON_FRAME_RATE;
 	private static final int PIDIDX = RobotMap.PIDIDX;
-	private static final double kP = RobotMap.ELEVATOR_KP;
-	private static final double kI = RobotMap.ELEVATOR_KI;
-	private static final double kD = RobotMap.ELEVATOR_KD;
+	private static final double kP = Robot.kP_Elevator;
+	private static final double kI = Robot.kI_Elevator;
+	private static final double kD = Robot.kD_Elevator;
 	private static final double kF = RobotMap.ELEVATOR_KF;
 	private static final int I_ZONE = RobotMap.ELEVATOR_I_ZONE;
 	private static final int MAGIC_ACCEL = RobotMap.ELEVATOR_MOTION_MAGIC_ACCELERATION;

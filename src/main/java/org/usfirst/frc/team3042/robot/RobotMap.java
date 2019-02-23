@@ -11,7 +11,7 @@ public class RobotMap {
 	/** Robot selector ********************************************************/
 	public static enum Bot {JUNO, JUPITER;}
 	// Set the bot to which you intend to push code.
-	private static Bot currentBot = Bot.JUPITER;
+	private static Bot currentBot = Bot.JUNO;
 
 	public static final boolean IS_JUPITER = (currentBot == Bot.JUPITER);
 	public static final boolean IS_JUNO = (currentBot == Bot.JUNO);

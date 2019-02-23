@@ -2,6 +2,8 @@ package org.usfirst.frc.team3042.robot;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.lib.Path;
+import org.usfirst.frc.team3042.robot.commands.Arm_CyclePositions;
+import org.usfirst.frc.team3042.robot.commands.Arm_SetPosition;
 import org.usfirst.frc.team3042.robot.commands.Arm_Test;
 import org.usfirst.frc.team3042.robot.commands.Arm_Winch_WindOut;
 import org.usfirst.frc.team3042.robot.commands.Arm_Winch_WindUp;
@@ -19,6 +21,7 @@ import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroStraight;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroTurn;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_Shift;
 import org.usfirst.frc.team3042.robot.commands.Elevator_CyclePositions;
+import org.usfirst.frc.team3042.robot.commands.Elevator_SetPosition;
 import org.usfirst.frc.team3042.robot.commands.Elevator_Test;
 import org.usfirst.frc.team3042.robot.commands.Hook_Deploy;
 import org.usfirst.frc.team3042.robot.commands.Hook_Holder_Toggle;
@@ -30,6 +33,8 @@ import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Backward;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Forward;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Toggle;
 import org.usfirst.frc.team3042.robot.commands.Test_printSensorRaw;
+import org.usfirst.frc.team3042.robot.subsystems.Arm;
+import org.usfirst.frc.team3042.robot.subsystems.Elevator;
 import org.usfirst.frc.team3042.robot.triggers.POVButton;
 
 /**
@@ -90,9 +95,9 @@ public class OI {
 
 		/** JUNO Controls *****************************************************/
 		if (IS_JUNO) {
-			boolean test = true;
+			boolean test = false;
 			if (test) {
-				//gamepad.Start.whenPressed(new Test_printSensorRaw());
+				// gamepad.Start.whenPressed(new Test_printSensorRaw());
 				joyRight.button1.whenPressed(new Drivetrain_Shift());
 				gamepad.RT.whileActive(new DSN_Drive_Forward());
 				gamepad.LT.whileActive(new DSN_Drive_Backward());
@@ -112,8 +117,12 @@ public class OI {
 				gamepad.Y.whenPressed(new DSN_Holder_Toggle());
 
 			} else {
-				gamepad.POVUp.whenActive(new Elevator_CyclePositions(POVButton.UP));
-				gamepad.POVDown.whenActive(new Elevator_CyclePositions(POVButton.DOWN));
+				//gamepad.POVUp.whenActive(new Elevator_CyclePositions(POVButton.UP));
+				//gamepad.POVDown.whenActive(new Elevator_CyclePositions(POVButton.DOWN));
+				gamepad.A.whenPressed(new Arm_SetPosition(Arm.Position.BOTTOM));
+				gamepad.B.whenPressed(new Arm_SetPosition(Arm.Position.MIDDLE));
+				gamepad.X.whenPressed(new Elevator_SetPosition(Elevator.Position.INTAKE));
+				gamepad.Y.whenPressed(new Elevator_SetPosition(Elevator.Position.HIGH_PANEL));
 
 			}
 		}

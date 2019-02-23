@@ -23,7 +23,7 @@ public class Elevator extends Subsystem {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ELEVATOR;
 	private TalonSRX elevatorTalon = new TalonSRX(RobotMap.CAN_ELEVATOR_TALON);
-	private final int INT_POS = RobotMap.ELEVATOR_INTAKE_POSITION;
+	private final int INT_POS = RobotMap.ELEVATOR_HIGH_PANEL_POSITION;
 	private final int LOW_PANEL_POS = RobotMap.ELEVATOR_LOW_PANEL_POSITION;
 	private final int MID_PANEL_POS = RobotMap.ELEVATOR_MID_PANEL_POSITION;
 	private final int HIGH_PANEL_POS = RobotMap.ELEVATOR_HIGH_PANEL_POSITION;
@@ -36,9 +36,9 @@ public class Elevator extends Subsystem {
 	private static final int TIMEOUT = RobotMap.TALON_ERROR_TIMEOUT;
 	private static final int FRAME_RATE = RobotMap.AUTON_FRAME_RATE;
 	private static final int PIDIDX = RobotMap.PIDIDX;
-	private static final double kP = Robot.kP_Elevator;
-	private static final double kI = Robot.kI_Elevator;
-	private static final double kD = Robot.kD_Elevator;
+	private static final double kP = RobotMap.ELEVATOR_KP;
+	private static final double kI = RobotMap.ELEVATOR_KI;
+	private static final double kD = RobotMap.ELEVATOR_KD;
 	private static final double kF = RobotMap.ELEVATOR_KF;
 	private static final int I_ZONE = RobotMap.ELEVATOR_I_ZONE;
 	private static final int MAGIC_ACCEL = RobotMap.ELEVATOR_MOTION_MAGIC_ACCELERATION;
@@ -53,7 +53,7 @@ public class Elevator extends Subsystem {
 	public int elevatorZero = 0;
 	
     public void initDefaultCommand() {
-    	setDefaultCommand(new Elevator_Stop());
+    	setDefaultCommand(new Elevator_Hold_Position());
     }
     
     public Elevator(){
@@ -228,7 +228,7 @@ public class Elevator extends Subsystem {
 	 * @return Position of selected sensor (in raw sensor units).
 	 */
 	public int getPosition(){
-		return elevatorTalon.getSelectedSensorPosition(PIDIDX);
+		return elevatorTalon.getSelectedSensorPosition(PIDIDX) - elevatorZero;
 	}
 	
 	public int getCurrentGoalPos(){

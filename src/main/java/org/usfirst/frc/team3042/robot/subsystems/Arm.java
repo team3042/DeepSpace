@@ -24,9 +24,9 @@ public class Arm extends Subsystem {
 	private static final int TIMEOUT = RobotMap.TALON_ERROR_TIMEOUT;
 	private static final int FRAME_RATE = RobotMap.AUTON_FRAME_RATE;
 	private static final int PIDIDX = RobotMap.PIDIDX;
-	private static final double kP = Robot.kP_Arm;
-	private static final double kI = Robot.kI_Arm;
-	private static final double kD = Robot.kD_Arm;
+	private static final double kP = RobotMap.ARM_KP;
+	private static final double kI = RobotMap.ARM_KI;
+	private static final double kD = RobotMap.ARM_KD;
 	private static final double kF = RobotMap.ARM_KF;
 	private static final int I_ZONE = RobotMap.ARM_I_ZONE;
 	private static final int BOT_POS = RobotMap.ARM_BOTTOM_POS;
@@ -62,7 +62,7 @@ public class Arm extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-    	setDefaultCommand(new Arm_Stop());
+    	setDefaultCommand(new Arm_HoldPosition());
     }
     
     public void manual(int direction){
@@ -126,6 +126,7 @@ public class Arm extends Subsystem {
 	}
     
     private void initMotor(TalonSRX motor) {
+			log.add("kp_arm" + kP, Log.Level.TRACE);
     	motor.setSensorPhase(REVERSE_PHASE);
 			motor.changeMotionControlFramePeriod(FRAME_RATE);
 			motor.config_kP(SLOTIDX_1, kP, TIMEOUT);
@@ -154,6 +155,7 @@ public class Arm extends Subsystem {
 	
 	public void setTalonPositionMagic(int position) {
 		armTalon.set(ControlMode.MotionMagic, safetyCheck(position));
+		log.add("Arm Pos (raw) 2 " + position, Log.Level.TRACE);
 		currentGoalPos = safetyCheck(position);
 	}
     

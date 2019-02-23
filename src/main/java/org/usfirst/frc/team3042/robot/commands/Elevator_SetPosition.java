@@ -21,7 +21,7 @@ public class Elevator_SetPosition extends Command {
     public Elevator_SetPosition(Elevator.Position position) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	//requires(Robot.elevator);
+    	requires(Robot.elevator);
     	this.position = position;
     }
 

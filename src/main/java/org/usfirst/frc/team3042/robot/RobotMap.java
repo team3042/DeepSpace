@@ -26,8 +26,8 @@ public class RobotMap {
 	
 
 	/** USB Host ports ********************************************************/
-	public static final boolean HAS_CAMERA1 = false;
-	public static final boolean HAS_CAMERA2 = false;
+	public static final boolean HAS_CAMERA1 = (IS_JUNO) ? true: false;
+	public static final boolean HAS_CAMERA2 = (IS_JUNO) ? false: false;
 	
 	/** USB ports *************************************************************/					
 	public static final int USB_JOYSTICK_LEFT 	= 0;

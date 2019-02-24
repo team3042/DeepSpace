@@ -228,7 +228,7 @@ public class Elevator extends Subsystem {
 	 * @return Position of selected sensor (in raw sensor units).
 	 */
 	public int getPosition(){
-		return elevatorTalon.getSelectedSensorPosition(PIDIDX) - elevatorZero;
+		return elevatorTalon.getSelectedSensorPosition(PIDIDX);
 	}
 	
 	public int getCurrentGoalPos(){

@@ -21,7 +21,7 @@ public class Arm_SetPosition extends Command {
     public Arm_SetPosition(Position position) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.arm);
+    	//requires(Robot.arm);
     	
     	this.position = position;
     }

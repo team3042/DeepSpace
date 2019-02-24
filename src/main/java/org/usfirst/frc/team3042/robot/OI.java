@@ -3,12 +3,15 @@ package org.usfirst.frc.team3042.robot;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.lib.Path;
 import org.usfirst.frc.team3042.robot.commands.Arm_CyclePositions;
+import org.usfirst.frc.team3042.robot.commands.Arm_IntoFrame;
 import org.usfirst.frc.team3042.robot.commands.Arm_SetPosition;
 import org.usfirst.frc.team3042.robot.commands.Arm_Test;
 import org.usfirst.frc.team3042.robot.commands.Arm_Winch_WindOut;
 import org.usfirst.frc.team3042.robot.commands.Arm_Winch_WindUp;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Extake;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Intake;
+import org.usfirst.frc.team3042.robot.commands.Control_FrameToIntake;
+import org.usfirst.frc.team3042.robot.commands.Control_IntakeToFrame;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Backward;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Forward;
 import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Engage;
@@ -119,11 +122,12 @@ public class OI {
 			} else {
 				//gamepad.POVUp.whenActive(new Elevator_CyclePositions(POVButton.UP));
 				//gamepad.POVDown.whenActive(new Elevator_CyclePositions(POVButton.DOWN));
-				gamepad.A.whenPressed(new Arm_SetPosition(Arm.Position.BOTTOM));
-				gamepad.B.whenPressed(new Arm_SetPosition(Arm.Position.MIDDLE));
-				gamepad.X.whenPressed(new Elevator_SetPosition(Elevator.Position.INTAKE));
-				gamepad.Y.whenPressed(new Elevator_SetPosition(Elevator.Position.HIGH_PANEL));
-
+				gamepad.RB.whileHeld(new Cargo_Roller_Intake());
+				gamepad.LB.whileHeld(new Cargo_Roller_Extake());
+				gamepad.B.whenPressed(new Control_IntakeToFrame());
+				gamepad.A.whenPressed(new Control_FrameToIntake());
+				gamepad.X.whenPressed(new Panel_Gripper_Toggle());
+				gamepad.Y.whenPressed(new Panel_Slider_Toggle());
 			}
 		}
 

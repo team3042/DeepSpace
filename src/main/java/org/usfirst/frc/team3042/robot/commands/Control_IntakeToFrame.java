@@ -35,7 +35,7 @@ public class Control_IntakeToFrame extends CommandGroup {
     // a CommandGroup containing them would require both the chassis and the
     // arm.
     addSequential(new Elevator_SetPosition(Elevator.Position.HIGH_PANEL));
-    Timer.delay(.7);
+    addSequential(new Elevator_MonitorPosition());
     addSequential(new Arm_SetPosition(Arm.Position.BOTTOM));
   }
 }

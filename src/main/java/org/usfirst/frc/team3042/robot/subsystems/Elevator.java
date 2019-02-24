@@ -126,6 +126,7 @@ public class Elevator extends Subsystem {
 	 * @param position
 	 */
 	public void setPosition(Position position) {
+		log.add("Elevator Zero " + this.elevatorZero, Log.Level.TRACE);
 		switch (position) {
 			case INTAKE:
 				log.add("Intake", Log.Level.DEBUG);

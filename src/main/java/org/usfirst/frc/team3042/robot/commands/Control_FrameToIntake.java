@@ -36,7 +36,7 @@ public class Control_FrameToIntake extends CommandGroup {
     // arm.
 
     addSequential(new Arm_SetPosition(Arm.Position.MIDDLE));
-    Timer.delay(.4);
+    addSequential(new Arm_MonitorPosition());
     addSequential(new Elevator_SetPosition(Elevator.Position.INTAKE));
   }
 }

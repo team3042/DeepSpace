@@ -26,10 +26,6 @@ public class Arm_HoldPosition extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	log.add("Initialize", Log.Level.TRACE);
-    	
-    	if(!Robot.armEmergencyMode){
-    		Robot.arm.setTalonPositionMagic(Robot.arm.getCurrentGoalPos());
-    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -45,7 +41,10 @@ public class Arm_HoldPosition extends Command {
         	else{
         		Robot.arm.setPower(-0.05);
         	}
-    	}
+		}
+		else {
+			Robot.arm.setTalonPositionMagic(Robot.arm.getCurrentGoalPos());
+		}
     }
 
     // Make this return true when this Command no longer needs to run execute()

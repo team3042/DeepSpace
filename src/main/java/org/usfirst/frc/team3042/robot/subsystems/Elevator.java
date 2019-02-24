@@ -23,7 +23,7 @@ public class Elevator extends Subsystem {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ELEVATOR;
 	private TalonSRX elevatorTalon = new TalonSRX(RobotMap.CAN_ELEVATOR_TALON);
-	private final int INT_POS = RobotMap.ELEVATOR_HIGH_PANEL_POSITION;
+	private final int INT_POS = RobotMap.ELEVATOR_INTAKE_POSITION;
 	private final int LOW_PANEL_POS = RobotMap.ELEVATOR_LOW_PANEL_POSITION;
 	private final int MID_PANEL_POS = RobotMap.ELEVATOR_MID_PANEL_POSITION;
 	private final int HIGH_PANEL_POS = RobotMap.ELEVATOR_HIGH_PANEL_POSITION;
@@ -46,7 +46,7 @@ public class Elevator extends Subsystem {
 	
 	/** Instance Variables ****************************************************/
 	private Log log = new Log(LOG_LEVEL, getName());
-	private int currentGoalPos = INT_POS;
+	private int currentGoalPos = HIGH_PANEL_POS;
 	private int currentPreset = 0;
 	public static Position[] positionFromPreset = new Position[]{Position.INTAKE, Position.LOW_PANEL, Position.MID_PANEL, Position.HIGH_PANEL, Position.LOW_CARGO, Position.MID_CARGO};
 	public static final double maxSpeed = RobotMap.ELEVATOR_MAX_SPEED;

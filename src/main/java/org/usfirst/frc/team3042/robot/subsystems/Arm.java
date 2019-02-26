@@ -29,14 +29,15 @@ public class Arm extends Subsystem {
 	private static final double kD = RobotMap.ARM_KD;
 	private static final double kF = RobotMap.ARM_KF;
 	private static final int I_ZONE = RobotMap.ARM_I_ZONE;
+	private static final int FRAME_POS = RobotMap.ARM_FRAME_POS;
+	private static final int INT_POS = RobotMap.ARM_INTAKE_POS;
 	private static final int BOT_POS = RobotMap.ARM_BOTTOM_POS;
 	private static final int MID_POS = RobotMap.ARM_MIDDLE_POS;
 	private static final int TOP_POS = RobotMap.ARM_TOP_POS;
-	private static final int MAGIC_ACCEL = RobotMap.ARM_MOTION_MAGIC_ACCELERATION;
-	private static final int MAGIC_CRUISE = RobotMap.ARM_MOTION_MAGIC_CRUISE_VELOCITY;
 	private static final int MAX_POS = RobotMap.ARM_MAX_POSITION;
 	private static final int MIN_POS = RobotMap.ARM_MIN_POSITION;
-	private static final int FRAME_POS = RobotMap.ARM_FRAME_PERIMITER;
+	private static final int MAGIC_ACCEL = RobotMap.ARM_MOTION_MAGIC_ACCELERATION;
+	private static final int MAGIC_CRUISE = RobotMap.ARM_MOTION_MAGIC_CRUISE_VELOCITY;
 	public static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM;
 	public static final boolean REVERSE_PHASE = RobotMap.ARM_REVERSE_SENSOR_PHASE;
 	public static final boolean ARM_FOLLOWER_IS_LEFT = RobotMap.ARM_FOLLOWER_IS_LEFT;
@@ -48,9 +49,10 @@ public class Arm extends Subsystem {
 	private TalonSRX armTalonLeft = new TalonSRX(CAN_ARM_MOTOR_LEFT);
 	private TalonSRX armTalon = (ARM_FOLLOWER_IS_LEFT) ? armTalonRight: armTalonLeft;
 	private TalonSRX armTalonFollower = (ARM_FOLLOWER_IS_LEFT) ? armTalonLeft: armTalonRight;
-	private int currentPreset = 2;
+	private int currentPreset = 0;
 	private int currentGoalPos = FRAME_POS;
-	public Position[] positionFromInt = new Position[]{Position.BOTTOM, Position.MIDDLE, Position.TOP};
+	public Position[] positionFromInt = new Position[]{Position.FRAME, Position.INTAKE, Position.BOTTOM, Position.MIDDLE, Position.TOP};
+	Position a = Position.MIDDLE;
 	Log log = new Log(LOG_LEVEL, getName());
 	
 	public Arm(){
@@ -114,7 +116,7 @@ public class Arm extends Subsystem {
 	}
 	
 	public static enum Position {
-		BOTTOM, MIDDLE, TOP;
+		FRAME, INTAKE, BOTTOM, MIDDLE, TOP;
 	}
 	
 	public void intoFrame(){
@@ -122,7 +124,7 @@ public class Arm extends Subsystem {
 	}
 	
 	public void toIntake(){
-		setTalonPosition(BOT_POS);
+		setTalonPosition(INT_POS);
 	}
     
     private void initMotor(TalonSRX motor) {
@@ -137,12 +139,12 @@ public class Arm extends Subsystem {
 			motor.configSelectedFeedbackSensor(FeedbackDevice.Analog, PIDIDX, TIMEOUT);
 	}
     
-    public void initMotionMagic(TalonSRX motor){
+    private void initMotionMagic(TalonSRX motor){
 			motor.configMotionAcceleration(MAGIC_ACCEL, TIMEOUT);
 			motor.configMotionCruiseVelocity(MAGIC_CRUISE, TIMEOUT);
 	}
     
-	public int safetyCheck(int position) {
+	private int safetyCheck(int position) {
 		return Math.max(Math.min(MAX_POS, position), MIN_POS);
 	}
     
@@ -161,17 +163,24 @@ public class Arm extends Subsystem {
     
     public void setPosition(Position position) {
 		switch (position) {
+			case FRAME:
+				setTalonPositionMagic(FRAME_POS);
+				currentPreset = 0;
+				break;
+			case INTAKE:
+				setTalonPositionMagic(INT_POS);
+				currentPreset = 1;
 			case BOTTOM:
 				setTalonPositionMagic(BOT_POS);
-				currentPreset = 0;
+				currentPreset = 2;
         break;
 			case MIDDLE:
 				setTalonPositionMagic(MID_POS);
-				currentPreset = 1;
+				currentPreset = 3;
 				break;
 			case TOP:
 				setTalonPositionMagic(TOP_POS);
-				currentPreset = 2;
+				currentPreset = 4;
 				break;
 			default:
 				stop();

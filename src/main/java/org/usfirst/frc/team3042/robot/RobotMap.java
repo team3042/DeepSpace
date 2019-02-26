@@ -102,10 +102,11 @@ public class RobotMap {
 	public static final int ARM_I_ZONE = IS_JUNO 	? 0 : 30;
 	public static final boolean ARM_REVERSE_SENSOR_PHASE = (IS_JUNO) ? false : true;
 	public static final int ARM_MANUAL_SPEED = IS_JUNO	? 0 : 1;
+	public static final int ARM_FRAME_POS = IS_JUNO ? 140 : 0;
+	public static final int ARM_INTAKE_POS = IS_JUNO ? 380 : 0;
 	public static final int ARM_BOTTOM_POS = IS_JUNO	? 140 : -180;
 	public static final int ARM_MIDDLE_POS = IS_JUNO	? 380 : -15;
 	public static final int ARM_TOP_POS = IS_JUNO	? 380 : 0;
-	public static final int ARM_FRAME_PERIMITER = IS_JUNO ? ARM_BOTTOM_POS : 0;
 	public static final int ARM_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 200 : 100;
 	public static final int ARM_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 170 : 100;
 	public static final int ARM_MAX_POSITION = IS_JUNO    ? 500 : 0;

@@ -258,4 +258,5 @@ public class RobotMap {
 	public static final Log.Level	LOG_ARM              		= Log.Level.TRACE;
 	public static final Log.Level   LOG_ARM_POT                 = Log.Level.TRACE;
 	public static final Log.Level	LOG_CARGO_ROLLER            = Log.Level.TRACE;
+	public static final Log.Level	LOG_POSITION_CONTROL            = Log.Level.TRACE;
 }

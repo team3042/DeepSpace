@@ -3,7 +3,7 @@ package org.usfirst.frc.team3042.robot.commands;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.Arm;
+import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -29,7 +29,7 @@ public class Arm_CrisisAverted extends Command {
     protected void initialize() {
     	log.add("Initialize", Log.Level.TRACE);
     	Robot.armEmergencyMode = false;
-    	Robot.arm.setPosition(Arm.Position.MIDDLE);
+    	Robot.arm.setPosition(Position_Control.Position.MID_PANEL);
     	log.add("Breathe easy, the danger is past. Well done, Cadet!", Log.Level.TRACE);
     }
 

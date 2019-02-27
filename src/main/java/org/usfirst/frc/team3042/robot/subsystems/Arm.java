@@ -50,9 +50,7 @@ public class Arm extends Subsystem {
 	TalonSRX armTalonLeft = new TalonSRX(CAN_ARM_MOTOR_LEFT);
 	TalonSRX armTalon = (ARM_FOLLOWER_IS_LEFT) ? armTalonRight: armTalonLeft;
 	TalonSRX armTalonFollower = (ARM_FOLLOWER_IS_LEFT) ? armTalonLeft: armTalonRight;
-	int currentPreset = 0;
 	int currentGoalPos = FRAME_POS;
-	Position[] positionFromInt = new Position[]{Position.FRAME, Position.INTAKE, Position.BOTTOM, Position.MIDDLE, Position.TOP};
 	
 	
 	public Arm(){
@@ -82,22 +80,7 @@ public class Arm extends Subsystem {
 		default:
 			break;
     	}
-	}
-	
-	public void cyclePreset(int direction){
-		switch (direction) {
-		case POVButton.UP:
-			currentPreset = Math.min(currentPreset + 1, positionFromInt.length - 1);
-			setPosition(positionFromInt[currentPreset]);
-			break;
-		case POVButton.DOWN:
-			currentPreset = Math.max(currentPreset - 1, 0);
-			setPosition(positionFromInt[currentPreset]);
-			break;
-		default:
-			break;
-		}
-	}
+	}                                                    
 	/**
 	 * Returns the actual pos - not the enum one.
 	 * @return <code>armTalon.getSelectedSensorPosition(PIDIDX);</code>
@@ -109,14 +92,6 @@ public class Arm extends Subsystem {
 	
 	public int getCurrentGoalPos(){
 		return currentGoalPos;
-	}
-	
-	public int getCurrentPreset(){
-		return currentPreset;
-	}
-	
-	public static enum Position {
-		FRAME, INTAKE, BOTTOM, MIDDLE, TOP;
 	}
 	
 	public void intoFrame(){
@@ -161,35 +136,35 @@ public class Arm extends Subsystem {
 		currentGoalPos = safetyCheck(position);
 	}
     
-    public void setPosition(Position position) {
+    public void setPosition(Position_Control.Position position) {
 		switch (position) {
 			case FRAME:
 				setTalonPositionMagic(FRAME_POS);
-				currentPreset = 0;
 				break;
 			case INTAKE:
 				setTalonPositionMagic(INT_POS);
-				currentPreset = 1;
-			case BOTTOM:
-				setTalonPositionMagic(BOT_POS);
-				currentPreset = 2;
-        break;
-			case MIDDLE:
-				setTalonPositionMagic(MID_POS);
-				currentPreset = 3;
 				break;
-			case TOP:
+			case LOW_CARGO:
+				setTalonPositionMagic(BOT_POS);
+        break;
+			case MID_PANEL:
+				setTalonPositionMagic(MID_POS);
+				break;
+			case MID_CARGO:
 				setTalonPositionMagic(TOP_POS);
-				currentPreset = 4;
+				break;
+			case HIGH_PANEL:
+				setTalonPositionMagic(MID_POS);
+				break;
+			case HIGH_CARGO:
+				setTalonPositionMagic(TOP_POS);
 				break;
 			default:
 				stop();
 				break;
 		}
-    }
-    public void setPreset(int preset){
-    	currentPreset = preset;
-    }
+		}
+		
     public void stop() {
 		setPower(armTalon, 0);
 	}

@@ -27,6 +27,7 @@ public class Elevator extends Subsystem {
 	private final int LOW_PANEL_POS = RobotMap.ELEVATOR_LOW_PANEL_POSITION;
 	private final int MID_PANEL_POS = RobotMap.ELEVATOR_MID_PANEL_POSITION;
 	private final int HIGH_PANEL_POS = RobotMap.ELEVATOR_HIGH_PANEL_POSITION;
+	private final int HIGH_CARGO_POS = RobotMap.ELEVATOR_HIGH_CARGO_POSITION;
 	private final int LOW_CARGO_POS = RobotMap.ELEVATOR_LOW_CARGO_POSITION;
 	private final int MID_CARGO_POS = RobotMap.ELEVATOR_MID_CARGO_POSITION;
 	private int MAX_POS = RobotMap.ELEVATOR_MAX_POSITION;
@@ -47,8 +48,6 @@ public class Elevator extends Subsystem {
 	/** Instance Variables ****************************************************/
 	private Log log = new Log(LOG_LEVEL, getName());
 	private int currentGoalPos = HIGH_PANEL_POS;
-	private int currentPreset = 0;
-	public static Position[] positionFromPreset = new Position[]{Position.INTAKE, Position.LOW_PANEL, Position.MID_PANEL, Position.HIGH_PANEL, Position.LOW_CARGO, Position.MID_CARGO};
 	public static final double maxSpeed = RobotMap.ELEVATOR_MAX_SPEED;
 	public int elevatorZero = 0;
 	
@@ -76,10 +75,6 @@ public class Elevator extends Subsystem {
 		motor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PIDIDX, TIMEOUT);
 		motor.setInverted(RobotMap.ELEVATOR_REVERSE);
 	}
-    
-    public void zeroTheEncoder(){
-    	
-    }
     
     public void initMotionMagic(TalonSRX motor){
 		motor.configMotionAcceleration(MAGIC_ACCEL, TIMEOUT);
@@ -125,18 +120,13 @@ public class Elevator extends Subsystem {
 	 * use this method to set Elevator Position to a Position - INTAKE, LOW_PANEL, MID_PANEL, HIGH_PANEL, LOW_CARGO, MID_CARGO;
 	 * @param position
 	 */
-	public void setPosition(Position position) {
+	public void setPosition(Position_Control.Position position) {
 		log.add("Elevator Zero " + this.elevatorZero, Log.Level.TRACE);
 		switch (position) {
 			case INTAKE:
 				log.add("Intake", Log.Level.DEBUG);
 				currentGoalPos = INT_POS + elevatorZero; //setTalonPositionMagic(INT_POS - elevatorZero);
 				log.add("Intake position: " + INT_POS, Log.Level.DEBUG);
-				break;
-			case LOW_PANEL:
-				log.add("Low PANEL", Log.Level.DEBUG);
-				currentGoalPos = LOW_PANEL_POS + elevatorZero; //setTalonPositionMagic(LOW_PANEL_POS - elevatorZero);
-				log.add("Low PANEL position: " + LOW_PANEL_POS, Log.Level.DEBUG);
 				break;
 			case LOW_CARGO:
 				log.add("Low CARGO", Log.Level.DEBUG);
@@ -158,6 +148,11 @@ public class Elevator extends Subsystem {
 				currentGoalPos = HIGH_PANEL_POS + elevatorZero; //setTalonPositionMagic(HIGH_PANEL_POS - elevatorZero);
 				log.add("High PANEL position: " + HIGH_PANEL_POS, Log.Level.DEBUG);
 				break;
+			case HIGH_CARGO:
+				log.add("High CARGO", Log.Level.DEBUG);
+				currentGoalPos = HIGH_CARGO_POS + elevatorZero; //setTalonPositionMagic(HIGH_CARGO_POS - elevatorZero);
+				log.add("High CARGO position: " + HIGH_CARGO_POS, Log.Level.DEBUG);
+				break;
 			default:
 				stop();
 				break;
@@ -177,24 +172,6 @@ public class Elevator extends Subsystem {
 		}
 	}
 
-	/**
-	 * @param direction (ex POVButton.UP)
-	 */
-	public void cyclePreset(int direction){
-		switch (direction) {
-			case POVButton.UP:
-				currentPreset = Math.min(currentPreset + 1, positionFromPreset.length - 1);
-				setPosition(positionFromPreset[currentPreset]);
-				break;
-			case POVButton.DOWN:
-				currentPreset = Math.max(currentPreset - 1, 0);
-				setPosition(positionFromPreset[currentPreset]);
-				break;
-			default:
-				break;
-		}
-	}
-	
 	public void pushPoint(	TrajectoryPoint leftPoint) {
 		elevatorTalon.pushMotionProfileTrajectory(leftPoint);
 	}
@@ -237,13 +214,5 @@ public class Elevator extends Subsystem {
 	
 	public int getCurrentGoalPos(){
 		return currentGoalPos;
-	}
-	
-	public int getCurrentPreset(){
-		return currentPreset;
-	}
-	
-	public static enum Position {
-		INTAKE, LOW_PANEL, LOW_CARGO, MID_PANEL, MID_CARGO, HIGH_PANEL;
 	}
 }

@@ -10,6 +10,7 @@ package org.usfirst.frc.team3042.robot.commands;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.subsystems.Arm;
 import org.usfirst.frc.team3042.robot.subsystems.Elevator;
+import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.InstantCommand;
@@ -28,11 +29,11 @@ public class PrepareClimb extends InstantCommand {
       // ********** Construct our command group, and run it
       //
       CommandGroup cmdGroup = new CommandGroup("GoToTarget");
-      cmdGroup.addParallel(new Arm_SetPosition(Arm.Position.BOTTOM));
-      cmdGroup.addParallel(new Elevator_SetPosition(Elevator.Position.INTAKE));
+      cmdGroup.addParallel(new Arm_SetPosition(Position_Control.Position.INTAKE));
+      cmdGroup.addParallel(new Elevator_SetPosition(Position_Control.Position.INTAKE));
       cmdGroup.addSequential(new Hook_Deploy());
-      cmdGroup.addParallel(new Arm_SetPosition(Arm.Position.TOP));
-      cmdGroup.addParallel(new Elevator_SetPosition(Elevator.Position.MID_PANEL));
+      cmdGroup.addParallel(new Arm_SetPosition(Position_Control.Position.HIGH_CARGO));
+      cmdGroup.addParallel(new Elevator_SetPosition(Position_Control.Position.MID_PANEL));
       cmdGroup.start();
 		} 
   }

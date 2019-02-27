@@ -6,6 +6,7 @@ import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.commands.Position_Control_OutputPosition;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Controls elevator and arm position
@@ -17,7 +18,7 @@ public class Position_Control extends Subsystem {
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
 	private boolean stowed = true;
-	private int currentPosition = 0;
+	private int currentPosition = 1;
 
 	public Position_Control(){
 		
@@ -28,7 +29,31 @@ public class Position_Control extends Subsystem {
 		}
 
 		public void OutputPosition() {
-
+			String positionLabel;
+			switch (Position.values()[currentPosition]) {
+				case INTAKE:
+				positionLabel = "Intake";
+				break;
+				case LOW_CARGO:
+				positionLabel = "Low Cargo";
+				break;
+				case MID_PANEL:
+				positionLabel = "Mid Panel";
+				break;
+				case MID_CARGO:
+				positionLabel = "Mid Cargo";
+				break;
+				case HIGH_PANEL:
+				positionLabel = "High Panel";
+				break;
+				case HIGH_CARGO:
+				positionLabel = "High Cargo";
+				break;
+				default:
+				positionLabel = "ERROR: UNKNOWN POSITION";
+				break;
+			}
+			SmartDashboard.putString("Position: ", positionLabel);
 		}
 
 		public void MoveInElevator() {
@@ -43,25 +68,32 @@ public class Position_Control extends Subsystem {
 
 		public void MoveOutArm() {
 			stowed = false;
-			Robot.arm.setPosition(currentPosition);
+			Robot.arm.setPosition(Position.values()[currentPosition]);
 		}
 
 		public void MoveOutElevator() {
 			stowed = false;
-			Robot.elevator.setPosition(currentPosition);
+			Robot.elevator.setPosition(Position.values()[currentPosition]);
 		}
 
 		public void IncreaseHeight() {
-			if(currentPosition < Position.values().length){
-				
+			if(currentPosition < Position.values().length - 1){
+				currentPosition++;
+			}
+			if(!stowed) {
+				Robot.arm.setPosition(Position.values()[currentPosition]);
+				Robot.elevator.setPosition(Position.values()[currentPosition]);
 			}
 		}
 
 		public void DecreaseHeight() {
-			if(currentPosition > 0){
-				
+			if(currentPosition > 1){
+				currentPosition--;
 			}
-			
+			if(!stowed) {
+				Robot.arm.setPosition(Position.values()[currentPosition]);
+				Robot.elevator.setPosition(Position.values()[currentPosition]);
+			}
 		}
 		
 		public static enum Position {

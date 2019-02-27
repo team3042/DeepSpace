@@ -134,6 +134,7 @@ public class RobotMap {
 
 	/** Elevator Settings **********************************************************/
 	public static final boolean HAS_ELEVATOR = true;
+	public static final boolean HAS_POSITION_CONTROL = true;
 	public static final double ELEVATOR_LOWER_VELOCITY = IS_JUNO ? -0.1 : -0.1;
 	public static final double ELEVATOR_POSITION_CONTROL_RANGE =IS_JUNO ? 300 : 300;
 	public static final int ELEVATOR_INTAKE_POSITION = IS_JUNO 		? -23000 : 200;

@@ -7,7 +7,9 @@
 
 package org.usfirst.frc.team3042.robot.commands;
 
+import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
+import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
 import org.usfirst.frc.team3042.lib.Log;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,6 +18,7 @@ public class Position_Control_IncreaseHeight extends Command {
 
   private static final Log.Level LOG_LEVEL = RobotMap.LOG_POSITION_CONTROL;
 
+  Position_Control position_control = Robot.position_control;
   Log log = new Log(LOG_LEVEL, getName());
 
   public Position_Control_IncreaseHeight() {
@@ -23,7 +26,7 @@ public class Position_Control_IncreaseHeight extends Command {
   }
 
   protected void initialize() {
-
+    position_control.IncreaseHeight();
   }
 
   protected void execute() {
@@ -31,7 +34,7 @@ public class Position_Control_IncreaseHeight extends Command {
   }
 
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   protected void end() {

@@ -14,6 +14,7 @@ import org.usfirst.frc.team3042.robot.subsystems.LineTracker;
 import org.usfirst.frc.team3042.robot.subsystems.Cargo_Roller;
 import org.usfirst.frc.team3042.robot.subsystems.Panel_Gripper;
 import org.usfirst.frc.team3042.robot.subsystems.Panel_Slider;
+import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
 import org.usfirst.frc.team3042.robot.subsystems.Hook_Holder;
 import org.usfirst.frc.team3042.robot.subsystems.Arm;
 
@@ -49,6 +50,7 @@ public class Robot extends TimedRobot {
 	private static final boolean HAS_PANEL_GRIPPER = RobotMap.HAS_PANEL_GRIPPER;
 	private static final boolean HAS_CARGO_ROLLER = RobotMap.HAS_CARGO_ROLLER;
 	private static final boolean HAS_ARM = RobotMap.HAS_ARM;
+	private static final boolean HAS_POSITION_CONTROL = RobotMap.HAS_POSITION_CONTROL;
 	private static final boolean HAS_CAMERA1 = RobotMap.HAS_CAMERA1;
 	private static final boolean HAS_CAMERA2 = RobotMap.HAS_CAMERA2;
 	
@@ -67,6 +69,7 @@ public class Robot extends TimedRobot {
 	public static final Arm arm = (HAS_ARM) ? new Arm()  : null;
 	public static final Hook_Holder hook_holder = (HAS_HOOK_HOLDER) ? new Hook_Holder()  : null;
 	public static final Panel_Gripper panel_gripper = (HAS_PANEL_GRIPPER) ? new Panel_Gripper()  : null;
+	public static final Position_Control position_control = (HAS_POSITION_CONTROL) ? new Position_Control()  : null;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	
 	public static OI oi;
@@ -181,7 +184,8 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("Elevator pos (raw)", elevator.getPosition());
-	    SmartDashboard.putNumber("Arm pos (raw)", arm.getPosition());
+		SmartDashboard.putNumber("Arm pos (raw)", arm.getPosition());
+		position_control.OutputPosition();
 	}
 
 	

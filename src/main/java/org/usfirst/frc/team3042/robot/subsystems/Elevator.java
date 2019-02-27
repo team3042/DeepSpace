@@ -176,7 +176,10 @@ public class Elevator extends Subsystem {
 				break;
 		}
 	}
-	
+
+	/**
+	 * @param direction (ex POVButton.UP)
+	 */
 	public void cyclePreset(int direction){
 		switch (direction) {
 			case POVButton.UP:

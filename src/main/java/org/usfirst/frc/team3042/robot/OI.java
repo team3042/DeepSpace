@@ -122,12 +122,14 @@ public class OI {
 			} else {
 				//gamepad.POVUp.whenActive(new Elevator_CyclePositions(POVButton.UP));
 				//gamepad.POVDown.whenActive(new Elevator_CyclePositions(POVButton.DOWN));
-				gamepad.RB.whileHeld(new Cargo_Roller_Intake());
-				gamepad.LB.whileHeld(new Cargo_Roller_Extake());
+				joyRight.button1.whenPressed(new Drivetrain_Shift());
+				gamepad.LB.whileHeld(new Cargo_Roller_Intake());
+				gamepad.RB.whileHeld(new Cargo_Roller_Extake());
 				gamepad.B.whenPressed(new Control_IntakeToFrame());
 				gamepad.A.whenPressed(new Control_FrameToIntake());
 				gamepad.X.whenPressed(new Panel_Gripper_Toggle());
-				gamepad.Y.whenPressed(new Panel_Slider_Toggle());
+				gamepad.LT.whenInactive(new Panel_Slider_Toggle());
+				gamepad.RT.whenActive(new Panel_Slider_Toggle());
 			}
 		}
 

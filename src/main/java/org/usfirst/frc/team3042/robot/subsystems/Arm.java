@@ -45,15 +45,15 @@ public class Arm extends Subsystem {
 	public static final boolean OPPOSITE = RobotMap.ARM_RIGHT_AND_LEFT_ARE_OPPOSITE;
 
 	/** Instance Variables ****************************************************/
-	private TalonSRX armTalonRight = new TalonSRX(CAN_ARM_MOTOR_RIGHT);
-	private TalonSRX armTalonLeft = new TalonSRX(CAN_ARM_MOTOR_LEFT);
-	private TalonSRX armTalon = (ARM_FOLLOWER_IS_LEFT) ? armTalonRight: armTalonLeft;
-	private TalonSRX armTalonFollower = (ARM_FOLLOWER_IS_LEFT) ? armTalonLeft: armTalonRight;
-	private int currentPreset = 0;
-	private int currentGoalPos = FRAME_POS;
-	public Position[] positionFromInt = new Position[]{Position.FRAME, Position.INTAKE, Position.BOTTOM, Position.MIDDLE, Position.TOP};
-	Position a = Position.MIDDLE;
 	Log log = new Log(LOG_LEVEL, getName());
+	TalonSRX armTalonRight = new TalonSRX(CAN_ARM_MOTOR_RIGHT);
+	TalonSRX armTalonLeft = new TalonSRX(CAN_ARM_MOTOR_LEFT);
+	TalonSRX armTalon = (ARM_FOLLOWER_IS_LEFT) ? armTalonRight: armTalonLeft;
+	TalonSRX armTalonFollower = (ARM_FOLLOWER_IS_LEFT) ? armTalonLeft: armTalonRight;
+	int currentPreset = 0;
+	int currentGoalPos = FRAME_POS;
+	Position[] positionFromInt = new Position[]{Position.FRAME, Position.INTAKE, Position.BOTTOM, Position.MIDDLE, Position.TOP};
+	
 	
 	public Arm(){
 		initMotor(armTalon);

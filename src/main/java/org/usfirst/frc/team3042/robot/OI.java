@@ -122,6 +122,11 @@ public class OI {
 			} else {
 				//gamepad.POVUp.whenActive(new Elevator_CyclePositions(POVButton.UP));
 				//gamepad.POVDown.whenActive(new Elevator_CyclePositions(POVButton.DOWN));
+				joyRight.button1.whenPressed(new Drivetrain_Shift());
+				gamepad.LeftJoyUp.whenActive(new Elevator_Test());
+				gamepad.LeftJoyDown.whenActive(new Elevator_Test());
+				gamepad.RightJoyUp.whenActive(new Arm_Test());
+				gamepad.RightJoyDown.whenActive(new Arm_Test());
 				gamepad.RB.whileHeld(new Cargo_Roller_Intake());
 				gamepad.LB.whileHeld(new Cargo_Roller_Extake());
 				gamepad.B.whenPressed(new Control_IntakeToFrame());

@@ -72,7 +72,7 @@ public class RobotMap {
 	
 	/** OI Settings ***********************************************************/
 	public static final boolean USE_JOYSTICKS = true;
-	public static final double JOYSTICK_DRIVE_SCALE = 0.75;
+	public static final double JOYSTICK_DRIVE_SCALE = 1.0;
 	public static final double TRIGGER_SPINNER_SCALE = 0.1;
 	public static final double JOYSTICK_DEAD_ZONE = 0.15;
 
@@ -123,7 +123,7 @@ public class RobotMap {
 	/** Panel Intake Settings ****************************************************/
 	public static final boolean HAS_PANEL_SLIDER = true;
 	public static final boolean HAS_PANEL_GRIPPER = true;
-	public static final boolean PANNEL_SLIDER_STARTS_ACTIVE = false;
+	public static final boolean PANNEL_SLIDER_STARTS_ACTIVE = true;
 	public static final boolean PANNEL_GRIPPER_STARTS_ACTIVE = false;	
 
 	/** Cargo Roller Settings ****************************************************/

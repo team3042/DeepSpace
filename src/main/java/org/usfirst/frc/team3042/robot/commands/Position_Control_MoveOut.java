@@ -22,6 +22,8 @@ public class Position_Control_MoveOut extends Command {
   private static final int ELEVATOR_TOLERANCE = RobotMap.ELEVATOR_TOLERANCE;
   private static final int ARM_TIMEOUT = RobotMap.ARM_TIMEOUT;
   private static final int ELEVATOR_TIMEOUT = RobotMap.ELEVATOR_TIMEOUT;
+  private static final int MAGIC_GRAVITY_OFFSET = RobotMap.ARM_MAGIC_GRAVITY_OFFSET;
+  private static final int ARM_INTAKE_POS = RobotMap.ARM_INTAKE_POS;
   private boolean armMoved = false;
 
   Log log = new Log(LOG_LEVEL, getName());
@@ -41,7 +43,7 @@ public class Position_Control_MoveOut extends Command {
   }
 
   protected void execute() {
-    if(Math.abs(Robot.arm.getPosition() - Robot.arm.getCurrentGoalPos()) < ARM_TOLERANCE || 
+    if ( (Robot.arm.getPosition() + MAGIC_GRAVITY_OFFSET >= ARM_INTAKE_POS - ARM_TOLERANCE) || 
     timer.get() > ARM_TIMEOUT) {
       log.add("Arm Moved", LOG_LEVEL.TRACE);
       armMoved = true;

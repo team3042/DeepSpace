@@ -129,7 +129,7 @@ public class OI {
 				gamepad.LB.whileHeld(new Cargo_Roller_Intake());
 				gamepad.RB.whileHeld(new Cargo_Roller_Extake());
 				gamepad.X.whenPressed(new Panel_Gripper_Toggle());
-				gamepad.LT.whenInactive(new Panel_Slider_Toggle());
+				gamepad.RT.whenInactive(new Panel_Slider_Toggle());
 				gamepad.RT.whenActive(new Panel_Slider_Toggle());
 			}
 		}

@@ -71,7 +71,12 @@ public class Position_Control extends Subsystem {
 			Robot.arm.setPosition(Position.values()[currentPosition]);
 		}
 
+		public void MoveArmToIntake() {
+			Robot.arm.setPosition(Position.INTAKE);
+		}
+
 		public void MoveOutElevator() {
+			log.add("Elevator Moved Out  Pos:" + Position.values()[currentPosition],LOG_LEVEL.TRACE );
 			stowed = false;
 			Robot.elevator.setPosition(Position.values()[currentPosition]);
 		}

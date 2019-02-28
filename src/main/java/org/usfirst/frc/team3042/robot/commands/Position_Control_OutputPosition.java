@@ -22,15 +22,15 @@ public class Position_Control_OutputPosition extends Command {
   Log log = new Log(LOG_LEVEL, getName());
 
   public Position_Control_OutputPosition() {
-    
+    requires(position_control);
   }
 
   protected void initialize() {
-    position_control.OutputPosition();
+    
   }
 
   protected void execute() {
-    
+    position_control.OutputPosition();
   }
 
   protected boolean isFinished() {

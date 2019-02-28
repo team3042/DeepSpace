@@ -10,6 +10,7 @@ package org.usfirst.frc.team3042.robot.commands;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
+import org.usfirst.frc.team3042.robot.subsystems.Arm;
 import org.usfirst.frc.team3042.lib.Log;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -22,44 +23,52 @@ public class Position_Control_MoveIn extends Command {
   private static final int ELEVATOR_TOLERANCE = RobotMap.ELEVATOR_TOLERANCE;
   private static final int ARM_TIMEOUT = RobotMap.ARM_TIMEOUT;
   private static final int ELEVATOR_TIMEOUT = RobotMap.ELEVATOR_TIMEOUT;
+  private static final int DELTA_POT = RobotMap.DELTA_POT;
+  private static final int ARM_FRAME_POS = RobotMap.ARM_FRAME_POS;
+  private double startTime;
   private boolean elevatorMoved = false;
+  private boolean armMoved = false;
 
   Log log = new Log(LOG_LEVEL, getName());
   Timer timer = new Timer();
   Position_Control position_control = Robot.position_control;
-
+  
   public Position_Control_MoveIn() {
     
   }
 
   protected void initialize() {
+    log.add("INITIALIZE", LOG_LEVEL.TRACE);
+    elevatorMoved = false;
+    armMoved = false;
     timer.reset();
     timer.start();
     position_control.MoveInElevator();
+    position_control.MoveArmToIntake();
   }
 
   protected void execute() {
-    if(Math.abs(Robot.elevator.getPosition() - Robot.elevator.getCurrentGoalPos()) < ELEVATOR_TOLERANCE || 
+    if (elevatorMoved) {
+      int offset = (int) (DELTA_POT * (timer.get() - startTime));
+      int potPosition = Robot.arm.getPosition();
+      Robot.arm.setTalonPositionMagic(potPosition - offset);
+      armMoved = (Math.abs(potPosition - ARM_FRAME_POS) < ARM_TOLERANCE || (timer.get() - startTime) > ARM_TIMEOUT);
+    }
+    else if (Math.abs(Robot.elevator.getPosition() - Robot.elevator.getCurrentGoalPos()) < ELEVATOR_TOLERANCE || 
     timer.get() > ELEVATOR_TIMEOUT) {
-      timer.reset();
-      timer.start();
+      log.add("Elevator Moved", LOG_LEVEL.TRACE);
       elevatorMoved = true;
-      position_control.MoveInArm();
+      startTime = timer.get();
     }
   }
 
   protected boolean isFinished() {
-    if(elevatorMoved) {
-      return Math.abs(Robot.arm.getPosition() - Robot.arm.getCurrentGoalPos()) < ARM_TOLERANCE || 
-      timer.get() > ARM_TIMEOUT;
-    }
-    else {
-      return false;
-    }
+    return armMoved;
   }
 
   protected void end() {
-
+    log.add("END", LOG_LEVEL.TRACE);
+    position_control.MoveInArm();
   }
 
   protected void interrupted() {

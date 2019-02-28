@@ -30,10 +30,12 @@ public class Arm extends Subsystem {
 	private static final double kF = RobotMap.ARM_KF;
 	private static final int I_ZONE = RobotMap.ARM_I_ZONE;
 	private static final int FRAME_POS = RobotMap.ARM_FRAME_POS;
-	private static final int INT_POS = RobotMap.ARM_INTAKE_POS;
-	private static final int BOT_POS = RobotMap.ARM_BOTTOM_POS;
-	private static final int MID_POS = RobotMap.ARM_MIDDLE_POS;
-	private static final int TOP_POS = RobotMap.ARM_TOP_POS;
+	private static final int INTAKE_POS = RobotMap.ARM_INTAKE_POS;
+	private static final int LOW_CARGO_POS = RobotMap.ARM_LOW_CARGO_POSITION;
+	private static final int MID_PANEL_POS = RobotMap.ARM_MID_PANEL_POSITION;
+	private static final int MID_CARGO_POS = RobotMap.ARM_MID_CARGO_POSITION;
+	private static final int HIGH_PANEL_POS = RobotMap.ARM_HIGH_PANEL_POSITION;
+	private static final int HIGH_CARGO_POS = RobotMap.ARM_HIGH_CARGO_POSITION;
 	private static final int MAX_POS = RobotMap.ARM_MAX_POSITION;
 	private static final int MIN_POS = RobotMap.ARM_MIN_POSITION;
 	private static final int MAGIC_ACCEL = RobotMap.ARM_MOTION_MAGIC_ACCELERATION;
@@ -99,7 +101,7 @@ public class Arm extends Subsystem {
 	}
 	
 	public void toIntake(){
-		setTalonPosition(INT_POS);
+		setTalonPosition(INTAKE_POS);
 	}
     
     private void initMotor(TalonSRX motor) {
@@ -132,7 +134,6 @@ public class Arm extends Subsystem {
 	
 	public void setTalonPositionMagic(int position) {
 		armTalon.set(ControlMode.MotionMagic, safetyCheck(position));
-		log.add("Arm Pos (raw) 2 " + position, Log.Level.TRACE);
 		currentGoalPos = safetyCheck(position);
 	}
     
@@ -142,22 +143,22 @@ public class Arm extends Subsystem {
 				setTalonPositionMagic(FRAME_POS);
 				break;
 			case INTAKE:
-				setTalonPositionMagic(INT_POS);
+				setTalonPositionMagic(INTAKE_POS);
 				break;
 			case LOW_CARGO:
-				setTalonPositionMagic(BOT_POS);
+				setTalonPositionMagic(LOW_CARGO_POS);
         break;
 			case MID_PANEL:
-				setTalonPositionMagic(MID_POS);
+				setTalonPositionMagic(MID_PANEL_POS);
 				break;
 			case MID_CARGO:
-				setTalonPositionMagic(TOP_POS);
+				setTalonPositionMagic(MID_CARGO_POS);
 				break;
 			case HIGH_PANEL:
-				setTalonPositionMagic(MID_POS);
+				setTalonPositionMagic(HIGH_PANEL_POS);
 				break;
 			case HIGH_CARGO:
-				setTalonPositionMagic(TOP_POS);
+				setTalonPositionMagic(HIGH_CARGO_POS);
 				break;
 			default:
 				stop();

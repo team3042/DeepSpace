@@ -33,6 +33,8 @@ public class Position_Control_MoveOut extends Command {
   }
 
   protected void initialize() {
+    log.add("INITIALIZE", LOG_LEVEL.TRACE);
+    armMoved = false;
     timer.reset();
     timer.start();
     position_control.MoveOutArm();
@@ -41,25 +43,18 @@ public class Position_Control_MoveOut extends Command {
   protected void execute() {
     if(Math.abs(Robot.arm.getPosition() - Robot.arm.getCurrentGoalPos()) < ARM_TOLERANCE || 
     timer.get() > ARM_TIMEOUT) {
-      timer.reset();
-      timer.start();
+      log.add("Arm Moved", LOG_LEVEL.TRACE);
       armMoved = true;
       position_control.MoveOutElevator();
     }
   }
 
   protected boolean isFinished() {
-    if(armMoved) {
-      return Math.abs(Robot.elevator.getPosition() - Robot.elevator.getCurrentGoalPos()) < ELEVATOR_TOLERANCE || 
-      timer.get() > ELEVATOR_TIMEOUT;
-    }
-    else {
-      return false;
-    }
+    return armMoved;
   }
 
   protected void end() {
-
+    log.add("END", LOG_LEVEL.TRACE);
   }
 
   protected void interrupted() {

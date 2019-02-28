@@ -185,7 +185,6 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("Elevator pos (raw)", elevator.getPosition());
 		SmartDashboard.putNumber("Arm pos (raw)", arm.getPosition());
-		position_control.OutputPosition();
 	}
 
 	

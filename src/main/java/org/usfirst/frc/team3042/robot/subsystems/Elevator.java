@@ -24,7 +24,6 @@ public class Elevator extends Subsystem {
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ELEVATOR;
 	private TalonSRX elevatorTalon = new TalonSRX(RobotMap.CAN_ELEVATOR_TALON);
 	private final int INT_POS = RobotMap.ELEVATOR_INTAKE_POSITION;
-	private final int LOW_PANEL_POS = RobotMap.ELEVATOR_LOW_PANEL_POSITION;
 	private final int MID_PANEL_POS = RobotMap.ELEVATOR_MID_PANEL_POSITION;
 	private final int HIGH_PANEL_POS = RobotMap.ELEVATOR_HIGH_PANEL_POSITION;
 	private final int HIGH_CARGO_POS = RobotMap.ELEVATOR_HIGH_CARGO_POSITION;
@@ -123,6 +122,11 @@ public class Elevator extends Subsystem {
 	public void setPosition(Position_Control.Position position) {
 		log.add("Elevator Zero " + this.elevatorZero, Log.Level.TRACE);
 		switch (position) {
+			case FRAME:
+				log.add("FRAME", Log.Level.DEBUG);
+				currentGoalPos = HIGH_PANEL_POS + elevatorZero; //setTalonPositionMagic(HIGH_PANEL_POS - elevatorZero);
+				log.add("Frame position: " + HIGH_PANEL_POS, Log.Level.DEBUG);
+				break;
 			case INTAKE:
 				log.add("Intake", Log.Level.DEBUG);
 				currentGoalPos = INT_POS + elevatorZero; //setTalonPositionMagic(INT_POS - elevatorZero);
@@ -130,7 +134,7 @@ public class Elevator extends Subsystem {
 				break;
 			case LOW_CARGO:
 				log.add("Low CARGO", Log.Level.DEBUG);
-				currentGoalPos = LOW_PANEL_POS + elevatorZero; //setTalonPositionMagic(LOW_CARGO_POS - elevatorZero);
+				currentGoalPos = LOW_CARGO_POS + elevatorZero; //setTalonPositionMagic(LOW_CARGO_POS - elevatorZero);
 				log.add("Low CARGO position: " + LOW_CARGO_POS, Log.Level.DEBUG);
 				break;
 			case MID_PANEL:
@@ -140,7 +144,7 @@ public class Elevator extends Subsystem {
 				break;
 			case MID_CARGO:
 				log.add("Mid CARGO", Log.Level.DEBUG);
-				currentGoalPos = MID_PANEL_POS + elevatorZero; //setTalonPositionMagic(MID_CARGO_POS - elevatorZero);
+				currentGoalPos = MID_CARGO_POS + elevatorZero; //setTalonPositionMagic(MID_CARGO_POS - elevatorZero);
 				log.add("Mid CARGO position: " + MID_CARGO_POS, Log.Level.DEBUG);
 				break;
 			case HIGH_PANEL:

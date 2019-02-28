@@ -111,7 +111,7 @@ public class RobotMap {
 	public static final int ARM_HIGH_CARGO_POSITION = IS_JUNO 	? 700 : 15000;
 	public static final int ARM_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 200 : 100;
 	public static final int ARM_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 170 : 100; 
-	public static final int ARM_MAX_POSITION = IS_JUNO    ? 700 : 0;
+	public static final int ARM_MAX_POSITION = IS_JUNO    ? 725 : 0;
 	public static final int ARM_MIN_POSITION = IS_JUNO    ? 110 : -190;
 	public static final int ARM_POSITION_CONTROL_RANGE = IS_JUNO	? 30 : 20;
 	public static final int ARM_POSITION_WAIT_TOLLERANCE = IS_JUNO ? 30 : 30;

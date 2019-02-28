@@ -119,7 +119,6 @@ public class OI {
 				gamepad.B.whenPressed(new Panel_Gripper_Toggle());
 				gamepad.X.whenPressed(new Hook_Holder_Toggle());
 				gamepad.Y.whenPressed(new DSN_Holder_Toggle());
-
 			} else {
 				gamepad.POVUp.whenActive(new Position_Control_IncreaseHeight());
 				gamepad.POVDown.whenActive(new Position_Control_DecreaseHeight());

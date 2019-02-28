@@ -72,6 +72,7 @@ public class Position_Control_MoveIn extends Command {
   }
 
   protected void interrupted() {
-
+    log.add("Interrupted", LOG_LEVEL.TRACE);
+    position_control.MoveInArm();
   }
 }

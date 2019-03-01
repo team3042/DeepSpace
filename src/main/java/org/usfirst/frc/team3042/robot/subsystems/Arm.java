@@ -36,8 +36,8 @@ public class Arm extends Subsystem {
 	private static final int MID_CARGO_POS = RobotMap.ARM_MID_CARGO_POSITION;
 	private static final int HIGH_PANEL_POS = RobotMap.ARM_HIGH_PANEL_POSITION;
 	private static final int HIGH_CARGO_POS = RobotMap.ARM_HIGH_CARGO_POSITION;
-	private static final int MAX_POS = RobotMap.ARM_MAX_POSITION;
-	private static final int MIN_POS = RobotMap.ARM_MIN_POSITION;
+	private static final int MAX_POS = RobotMap.ARM_MAX_POS;
+	private static final int MIN_POS = RobotMap.ARM_MIN_POS;
 	private static final int MAGIC_ACCEL = RobotMap.ARM_MOTION_MAGIC_ACCELERATION;
 	private static final int MAGIC_CRUISE = RobotMap.ARM_MOTION_MAGIC_CRUISE_VELOCITY;
 	public static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM;

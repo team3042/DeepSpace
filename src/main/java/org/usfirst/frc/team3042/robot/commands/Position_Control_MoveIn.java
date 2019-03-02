@@ -10,6 +10,7 @@ package org.usfirst.frc.team3042.robot.commands;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
+import org.usfirst.frc.team3042.robot.subsystems.Position_Control.Position;
 import org.usfirst.frc.team3042.robot.subsystems.Arm;
 import org.usfirst.frc.team3042.lib.Log;
 
@@ -66,6 +67,7 @@ public class Position_Control_MoveIn extends Command {
       armMoved = false;
       timer.reset();
       timer.start();
+      Robot.arm.setPosition(Position.MID_PANEL);
       position_control.moveElevator();
     }
   }

@@ -32,8 +32,6 @@ import org.usfirst.frc.team3042.robot.commands.Panel_Release;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Backward;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Forward;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Toggle;
-import org.usfirst.frc.team3042.robot.commands.Position_Control_DecreaseHeight;
-import org.usfirst.frc.team3042.robot.commands.Position_Control_IncreaseHeight;
 import org.usfirst.frc.team3042.robot.commands.Position_Control_MoveIn;
 import org.usfirst.frc.team3042.robot.commands.Position_Control_MoveOut;
 import org.usfirst.frc.team3042.robot.commands.Test_printSensorRaw;
@@ -120,10 +118,10 @@ public class OI {
 				gamepad.X.whenPressed(new Hook_Holder_Toggle());
 				gamepad.Y.whenPressed(new DSN_Holder_Toggle());
 			} else {
-				gamepad.POVUp.whenActive(new Position_Control_IncreaseHeight());
-				gamepad.POVDown.whenActive(new Position_Control_DecreaseHeight());
-				gamepad.A.whenPressed(new Position_Control_MoveOut());
-				gamepad.B.whenPressed(new Position_Control_MoveIn());
+				gamepad.POVUp.whenActive(new Position_Control_MoveIn(false));
+				gamepad.POVDown.whenActive(new Position_Control_MoveOut(false));
+				gamepad.A.whenPressed(new Position_Control_MoveOut(true));
+				gamepad.B.whenPressed(new Position_Control_MoveIn(true));
 				joyRight.button1.whenPressed(new Drivetrain_Shift());
 				gamepad.LB.whileHeld(new Cargo_Roller_Intake());
 				gamepad.RB.whileHeld(new Cargo_Roller_Extake());

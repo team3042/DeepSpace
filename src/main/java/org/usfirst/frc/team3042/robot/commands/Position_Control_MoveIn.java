@@ -32,57 +32,84 @@ public class Position_Control_MoveIn extends Command {
   Log log = new Log(LOG_LEVEL, getName());
   Timer timer = new Timer();
   Position_Control position_control = Robot.position_control;
+  boolean shouldMove = true;
+  boolean finished = false;
+  boolean sendToStow = false;
   
-  public Position_Control_MoveIn() {
-    
+  public Position_Control_MoveIn(boolean sendToStow) {
+     this.sendToStow = sendToStow;
   }
 
   protected void initialize() {
     log.add("INITIALIZE", LOG_LEVEL.TRACE);
-    elevatorMoved = false;
-    armMoved = false;
-    timer.reset();
-    timer.start();
-    position_control.MoveInElevator();
-    position_control.MoveArmToIntake();
+
+    // Determine how we want to move the robot
+    if (sendToStow) {
+      position_control.setStowTrue();
+      shouldMove = true;
+      finished = false;
+    }
+    else {
+      position_control.IncreaseHeight();
+      if (position_control.getStowed()) {
+        shouldMove = false;
+        finished = true;
+      }
+      else {
+        shouldMove = true;
+        finished = false;
+      }
+    }
+  
+    if (shouldMove) {
+      elevatorMoved = false;
+      armMoved = false;
+      timer.reset();
+      timer.start();
+      position_control.moveElevator();
+    }
   }
 
   protected void execute() {
-    if (elevatorMoved) {
-      int offset = (int) (DELTA_POT * (timer.get() - startTime));
-      int potPosition = Robot.arm.getPosition();
-      Robot.arm.setTalonPositionMagic(potPosition - offset);
-      armMoved = (Math.abs(potPosition - ARM_FRAME_POS) < ARM_TOLERANCE || (timer.get() - startTime) > ARM_TIMEOUT);
-      /*
-      double currentTime = timer.get();
-      double deltaTime = currentTime - previousTime;
-      int offset = (int) (DELTA_POT * deltaTime);
-      int newGoal = Robot.arm.getPosition() - offset;
-      Robot.arm.setTalonPositionMagic(newGoal);
-      previousTime = currentTime;
-      armMoved = (newGoal <= ARM_FRAME_POS + ARM_TOLERANCE || (timer.get() - startTime) > ARM_TIMEOUT);
-      */
-    }
-    else if (Math.abs(Robot.elevator.getPosition() - Robot.elevator.getCurrentGoalPos()) < ELEVATOR_TOLERANCE || 
+    if (shouldMove) {
+      if (elevatorMoved) {
+        int offset = (int) (DELTA_POT * (timer.get() - startTime));
+        int potPosition = Robot.arm.getPosition();
+        Robot.arm.setTalonPositionMagic(potPosition - offset);
+        armMoved = (Math.abs(potPosition - ARM_FRAME_POS) < ARM_TOLERANCE || (timer.get() - startTime) > ARM_TIMEOUT);
+        if (armMoved) {
+          position_control.moveArm();
+          finished = true;
+        }
+        /*
+        double currentTime = timer.get();
+        double deltaTime = currentTime - previousTime;
+        int offset = (int) (DELTA_POT * deltaTime);
+        int newGoal = Robot.arm.getPosition() - offset;
+        Robot.arm.setTalonPositionMagic(newGoal);
+        previousTime = currentTime;
+        armMoved = (newGoal <= ARM_FRAME_POS + ARM_TOLERANCE || (timer.get() - startTime) > ARM_TIMEOUT);
+        */
+      }
+      else if (Math.abs(Robot.elevator.getPosition() - Robot.elevator.getCurrentGoalPos()) < ELEVATOR_TOLERANCE || 
               timer.get() > ELEVATOR_TIMEOUT) {
-      log.add("Elevator Moved", LOG_LEVEL.TRACE);
-      elevatorMoved = true;
-      startTime = timer.get();
-      previousTime = startTime;
+        log.add("Elevator Moved", LOG_LEVEL.TRACE);
+        elevatorMoved = true;
+        startTime = timer.get();
+        previousTime = startTime;
+      }
     }
   }
 
   protected boolean isFinished() {
-    return armMoved;
+    return finished;
   }
 
   protected void end() {
     log.add("END", LOG_LEVEL.TRACE);
-    position_control.MoveInArm();
   }
 
   protected void interrupted() {
     log.add("Interrupted", LOG_LEVEL.TRACE);
-    position_control.MoveInArm();
   }
 }

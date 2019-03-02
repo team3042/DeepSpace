@@ -28,6 +28,7 @@ public class PrepareClimb extends InstantCommand {
       //
       // ********** Construct our command group, and run it
       //
+      /*
       CommandGroup cmdGroup = new CommandGroup("GoToTarget");
       cmdGroup.addParallel(new Arm_SetPosition(Position_Control.Position.INTAKE));
       cmdGroup.addParallel(new Elevator_SetPosition(Position_Control.Position.INTAKE));
@@ -35,5 +36,6 @@ public class PrepareClimb extends InstantCommand {
       cmdGroup.addParallel(new Arm_SetPosition(Position_Control.Position.HIGH_CARGO));
       cmdGroup.addParallel(new Elevator_SetPosition(Position_Control.Position.MID_PANEL));
       cmdGroup.start();
+      */
 		} 
   }

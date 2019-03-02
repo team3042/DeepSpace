@@ -56,48 +56,40 @@ public class Position_Control extends Subsystem {
 			SmartDashboard.putString("Position: ", positionLabel);
 		}
 
-		public void MoveInElevator() {
-			stowed = true;
-			Robot.elevator.setPosition(Position.FRAME);
+		public void moveElevator() {
+			Robot.elevator.setPosition(Position.values()[currentPosition]);
+
 		}
 
-		public void MoveInArm() {
-			stowed = true;
-			Robot.arm.setPosition(Position.FRAME);
-		}
-
-		public void MoveOutArm() {
-			stowed = false;
+		public void moveArm() {
 			Robot.arm.setPosition(Position.values()[currentPosition]);
+		}
+
+		public void setStowTrue() {
+			stowed = true;
+		}
+
+		public void setStowNotTrue() {
+			stowed = false;
+		}
+
+		public boolean getStowed() {
+			return stowed;
 		}
 
 		public void MoveArmToIntake() {
 			Robot.arm.setPosition(Position.INTAKE);
 		}
 
-		public void MoveOutElevator() {
-			log.add("Elevator Moved Out  Pos:" + Position.values()[currentPosition],LOG_LEVEL.TRACE );
-			stowed = false;
-			Robot.elevator.setPosition(Position.values()[currentPosition]);
-		}
-
 		public void IncreaseHeight() {
-			if(currentPosition < Position.values().length - 1){
+			if(currentPosition < 2 ) {//Position.values().length - 1){
 				currentPosition++;
-			}
-			if(!stowed) {
-				Robot.arm.setPosition(Position.values()[currentPosition]);
-				Robot.elevator.setPosition(Position.values()[currentPosition]);
 			}
 		}
 
 		public void DecreaseHeight() {
 			if(currentPosition > 1){
 				currentPosition--;
-			}
-			if(!stowed) {
-				Robot.arm.setPosition(Position.values()[currentPosition]);
-				Robot.elevator.setPosition(Position.values()[currentPosition]);
 			}
 		}
 		

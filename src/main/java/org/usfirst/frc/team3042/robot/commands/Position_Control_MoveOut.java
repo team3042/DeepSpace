@@ -24,35 +24,57 @@ public class Position_Control_MoveOut extends Command {
   private static final int ELEVATOR_TIMEOUT = RobotMap.ELEVATOR_TIMEOUT;
   private static final int MAGIC_GRAVITY_OFFSET = RobotMap.ARM_MAGIC_GRAVITY_OFFSET;
   private static final int ARM_INTAKE_POS = RobotMap.ARM_INTAKE_POS;
-  private boolean armMoved = false;
 
   Log log = new Log(LOG_LEVEL, getName());
   Position_Control position_control = Robot.position_control;
   Timer timer = new Timer();
+  boolean sendFromStow = false;
+  boolean shouldMove = true;
+  boolean finished = false;
 
-  public Position_Control_MoveOut() {
-    
+  public Position_Control_MoveOut(boolean sendFromStow) {
+    this.sendFromStow = sendFromStow;
   }
 
   protected void initialize() {
     log.add("INITIALIZE", LOG_LEVEL.TRACE);
-    armMoved = false;
+
+    // Determine how we want to move the robot
+    if (sendFromStow) {
+      position_control.setStowNotTrue();
+      shouldMove = true;
+      finished = false;
+    }
+    else {
+      position_control.DecreaseHeight();
+      if (position_control.getStowed()) {
+        shouldMove = false;
+        finished = true;
+      }
+      else {
+        shouldMove = true;
+        finished = false;
+      }
+    }
+
     timer.reset();
     timer.start();
-    position_control.MoveOutArm();
+    position_control.moveArm();
   }
 
   protected void execute() {
+    if (shouldMove) {
     if ( (Robot.arm.getPosition() + MAGIC_GRAVITY_OFFSET >= ARM_INTAKE_POS - ARM_TOLERANCE) || 
     timer.get() > ARM_TIMEOUT) {
       log.add("Arm Moved", LOG_LEVEL.TRACE);
-      armMoved = true;
-      position_control.MoveOutElevator();
+      finished = true;
+      position_control.moveElevator();
     }
+  }
   }
 
   protected boolean isFinished() {
-    return armMoved;
+    return finished;
   }
 
   protected void end() {

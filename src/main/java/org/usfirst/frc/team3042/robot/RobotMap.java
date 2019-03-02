@@ -245,7 +245,6 @@ public class RobotMap {
 	public static final Log.Level	LOG_GYROSCOPE				= Log.Level.DEBUG;
 	public static final Log.Level	LOG_LIGHT_RING				= Log.Level.TRACE;
 	public static final Log.Level   LOG_LINE_TRACKER			= Log.Level.TRACE;
-	public static final Log.Level   LOG_ARM_WINCH			    = Log.Level.TRACE;
 	public static final Log.Level	LOG_EXAMPLE_SUBSYSTEM 		= Log.Level.TRACE;
 	public static final Log.Level	LOG_DSN_DRIVE               = Log.Level.TRACE;
 	public static final Log.Level   LOG_DSN_HOLDER              = Log.Level.TRACE;
@@ -253,7 +252,6 @@ public class RobotMap {
 	public static final Log.Level	LOG_ELEVATOR              	= Log.Level.TRACE;
 	public static final Log.Level   LOG_PANEL_SLIDER			= Log.Level.TRACE;
 	public static final Log.Level   LOG_PANEL_GRIPPER			= Log.Level.TRACE;
-	public static final Log.Level	LOG_HOOK_HOLDER 		    = Log.Level.TRACE;
 	public static final Log.Level	LOG_ARM              		= Log.Level.TRACE;
 	public static final Log.Level   LOG_ARM_POT                 = Log.Level.TRACE;
 	public static final Log.Level	LOG_CARGO_ROLLER            = Log.Level.TRACE;

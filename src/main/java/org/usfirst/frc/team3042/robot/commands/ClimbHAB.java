@@ -27,7 +27,6 @@ public class ClimbHAB extends InstantCommand {
       // ********** Construct our command group, and run it
       //
       CommandGroup cmdGroup = new CommandGroup("GoToTarget");
-      cmdGroup.addSequential(new Arm_Winch_WindOut());
       cmdGroup.addSequential(new DSN_Holder_Release());
       cmdGroup.addParallel(new DSN_Winch_WindOut());
       cmdGroup.addParallel(new Elevator_SetPosition(Position.LOW_PANEL));

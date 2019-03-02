@@ -57,12 +57,21 @@ public class Position_Control extends Subsystem {
 		}
 
 		public void moveElevator() {
-			Robot.elevator.setPosition(Position.values()[currentPosition]);
-
+			if(stowed) {
+				Robot.elevator.setPosition(Position.FRAME);
+			}
+			else {
+				Robot.elevator.setPosition(Position.values()[currentPosition]);
+			}
 		}
 
 		public void moveArm() {
-			Robot.arm.setPosition(Position.values()[currentPosition]);
+			if(stowed) {
+				Robot.arm.setPosition(Position.FRAME);
+			}
+			else {
+				Robot.arm.setPosition(Position.values()[currentPosition]);
+			}
 		}
 
 		public void setStowTrue() {
@@ -82,7 +91,7 @@ public class Position_Control extends Subsystem {
 		}
 
 		public void IncreaseHeight() {
-			if(currentPosition < 2 ) {//Position.values().length - 1){
+			if(currentPosition < 3 ) {//Position.values().length - 1){
 				currentPosition++;
 			}
 		}

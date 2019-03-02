@@ -102,12 +102,12 @@ public class RobotMap {
 	public static final int ARM_I_ZONE = IS_JUNO 	? 0 : 30;
 	public static final boolean ARM_REVERSE_SENSOR_PHASE = (IS_JUNO) ? false : true;
 	public static final int ARM_MANUAL_SPEED = IS_JUNO	? 0 : 1;
-	public static final int ARM_MIN_POS = IS_JUNO ? 120 : 120;
+	public static final int ARM_MIN_POS = IS_JUNO ? 100 : 100;
 	public static final int ARM_MAX_POS = IS_JUNO ? 732 : 732;
 	public static final int ARM_FRAME_POS = IS_JUNO ? ARM_MIN_POS : ARM_MIN_POS;
-	public static final int ARM_INTAKE_POS = IS_JUNO ? 380 : 380;
-	public static final int ARM_LOW_CARGO_POSITION = IS_JUNO 	? 576 : 576;
-	public static final int ARM_MID_PANEL_POSITION = IS_JUNO    ? 725 : 725;
+	public static final int ARM_INTAKE_POS = IS_JUNO ? 365 : 365;
+	public static final int ARM_LOW_CARGO_POSITION = IS_JUNO 	? 375 : 375;
+	public static final int ARM_MID_PANEL_POSITION = IS_JUNO    ? 450 : 450;
 	public static final int ARM_MID_CARGO_POSITION = IS_JUNO 	? 691 : 691;
 	public static final int ARM_HIGH_PANEL_POSITION = IS_JUNO 	? 715 : 715;
 	public static final int ARM_HIGH_CARGO_POSITION = IS_JUNO 	? ARM_MAX_POS : ARM_MAX_POS;
@@ -118,7 +118,7 @@ public class RobotMap {
 	public static final int ARM_TOLERANCE = IS_JUNO ? 10 : 10;
 	public static final int ARM_MAGIC_GRAVITY_OFFSET = IS_JUNO ? 40 : 40;
 	public static final int ARM_TIMEOUT = IS_JUNO ? 2 : 2;
-	public static final int DELTA_POT = IS_JUNO ? 100 : 100; //Units: per second
+	public static final int DELTA_POT = IS_JUNO ? 400 : 100; //Units: per second
 
 	/** Hook Holder Settings ****************************************************/
 	public static final boolean HAS_HOOK_HOLDER = true;
@@ -141,9 +141,9 @@ public class RobotMap {
 	public static final double ELEVATOR_LOWER_VELOCITY = IS_JUNO ? -0.1 : -0.1;
 	public static final double ELEVATOR_POSITION_CONTROL_RANGE =IS_JUNO ? 300 : 300;
 	public static final int ELEVATOR_MAX_POSITION = IS_JUNO          ? 0 : 0;
-	public static final int ELEVATOR_MIN_POSITION = IS_JUNO          ? -22000 : -22000;
+	public static final int ELEVATOR_MIN_POSITION = IS_JUNO          ? -22500 : -22500;
 	public static final int ELEVATOR_INTAKE_POSITION = IS_JUNO 		? ELEVATOR_MIN_POSITION : ELEVATOR_MIN_POSITION;
-	public static final int ELEVATOR_LOW_CARGO_POSITION = IS_JUNO 	? -22256 : -22256;
+	public static final int ELEVATOR_LOW_CARGO_POSITION = IS_JUNO 	? 0 : 0;
 	public static final int ELEVATOR_MID_PANEL_POSITION = IS_JUNO    ? -22210 : -22210;
 	public static final int ELEVATOR_MID_CARGO_POSITION = IS_JUNO 	? -3110 : -3110;
 	public static final int ELEVATOR_HIGH_PANEL_POSITION = IS_JUNO 	? ELEVATOR_MAX_POSITION : ELEVATOR_MAX_POSITION;

@@ -129,6 +129,7 @@ public class OI {
 				gamepad.B.whenPressed(new Position_Control_MoveIn(true));
 				joyRight.button1.whenPressed(new Drivetrain_Shift());
 				joyLeft.button1.whenPressed(new DriveTrainScale_Toggle());
+				joyLeft.button1.whenReleased(new DriveTrainScale_Toggle());
 				gamepad.LB.whileHeld(new Cargo_Roller_Intake());
 				gamepad.RB.whileHeld(new Cargo_Roller_Extake());
 				gamepad.X.whenPressed(new Panel_Gripper_Toggle());

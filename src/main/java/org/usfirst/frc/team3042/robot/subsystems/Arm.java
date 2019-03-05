@@ -116,7 +116,7 @@ public class Arm extends Subsystem {
 			motor.configSelectedFeedbackSensor(FeedbackDevice.Analog, PIDIDX, TIMEOUT);
 	}
     
-    private void initMotionMagic(TalonSRX motor){
+    	private void initMotionMagic(TalonSRX motor){
 			motor.configMotionAcceleration(MAGIC_ACCEL, TIMEOUT);
 			motor.configMotionCruiseVelocity(MAGIC_CRUISE, TIMEOUT);
 	}
@@ -136,8 +136,12 @@ public class Arm extends Subsystem {
 		armTalon.set(ControlMode.MotionMagic, safetyCheck(position));
 		currentGoalPos = safetyCheck(position);
 	}
+	
+	public void setAdjustedPosition(int position) {
+		armTalon.set(ControlMode.MotionMagic, safetyCheck(position));
+	}
     
-    public void setPosition(Position_Control.Position position) {
+    	public void setPosition(Position_Control.Position position) {
 		switch (position) {
 			case FRAME:
 				setTalonPositionMagic(FRAME_POS);

@@ -62,6 +62,8 @@ public class RobotMap {
 	public static final int SLIDER_SOLENOID =		(IS_JUNO)? 0 : 0;
 	public static final int GRIPPER_SOLENOID =		(IS_JUNO)? 1 : 1;
 	public static final int DRIVETRAIN_SOLENOID = 	(IS_JUNO)? 3 : 7;
+	public static final int CHOCK_SOLENOID = 	(IS_JUNO)? 8 : 8;
+	public static final int BUCKETPISTONS_SOLENOID = 	(IS_JUNO)? 4 : 9;
 	
 
 	/** SPI ports *************************************************************/
@@ -72,8 +74,8 @@ public class RobotMap {
 	
 	/** OI Settings ***********************************************************/
 	public static final boolean USE_JOYSTICKS = true;
-	public static final double JOYSTICK_DRIVE_SCALE = 1.0;
-	public static final double JOYSTICK_DRIVE_SCALE_LOW = 0.20;
+	public static final double JOYSTICK_DRIVE_SCALE = 0.9;
+	public static final double JOYSTICK_DRIVE_SCALE_LOW = 0.30;
 	public static final boolean JOYSTICK_DRIVE_SCALE_STARTS_HIGH = true;
 	public static final double TRIGGER_SPINNER_SCALE = 0.1;
 	public static final double JOYSTICK_DEAD_ZONE = 0.25;
@@ -90,6 +92,8 @@ public class RobotMap {
 	public static final double DSNWINDOUTPOWER = 0.75;
 
 	/** Arm Settings ****************************************************/
+	public static final boolean HAS_CHOCK = true;
+	public static final boolean HAS_BUCKET_PISTONS = true;
 	public static final boolean HAS_ARM_WINCH = true;
 	public static final double ARMWINDUPPOWER = 0.75;
 	public static final double ARMWINDOUTPOWER = 0.75;
@@ -105,13 +109,13 @@ public class RobotMap {
 	public static final boolean ARM_REVERSE_SENSOR_PHASE = (IS_JUNO) ? false : true;
 	public static final int ARM_MANUAL_SPEED = IS_JUNO	? 0 : 1;
 	public static final int ARM_MIN_POS = IS_JUNO ? 100 : 100;
-	public static final int ARM_MAX_POS = IS_JUNO ? 732 : 732;
+	public static final int ARM_MAX_POS = IS_JUNO ? 632 + ARM_MIN_POS : 632 + ARM_MIN_POS;
 	public static final int ARM_FRAME_POS = IS_JUNO ? ARM_MIN_POS : ARM_MIN_POS;
-	public static final int ARM_INTAKE_POS = IS_JUNO ? 410 : 400;
-	public static final int ARM_LOW_CARGO_POSITION = IS_JUNO 	? 415 : 405;
-	public static final int ARM_MID_PANEL_POSITION = IS_JUNO    ? 495 : 485;
-	public static final int ARM_MID_CARGO_POSITION = IS_JUNO 	? 691 : 691;
-	public static final int ARM_HIGH_PANEL_POSITION = IS_JUNO 	? 715 : 715;
+	public static final int ARM_INTAKE_POS = IS_JUNO ? 310 + ARM_MIN_POS : 310 + ARM_MIN_POS;
+	public static final int ARM_LOW_CARGO_POSITION = IS_JUNO 	? 315 + ARM_MIN_POS : 315 + ARM_MIN_POS;
+	public static final int ARM_MID_PANEL_POSITION = IS_JUNO    ? 395 + ARM_MIN_POS : 395 + ARM_MIN_POS;
+	public static final int ARM_MID_CARGO_POSITION = IS_JUNO 	? 591 + ARM_MIN_POS : 591 + ARM_MIN_POS;
+	public static final int ARM_HIGH_PANEL_POSITION = IS_JUNO 	? 615 + ARM_MIN_POS : 615 + ARM_MIN_POS;
 	public static final int ARM_HIGH_CARGO_POSITION = IS_JUNO 	? ARM_MAX_POS : ARM_MAX_POS;
 	public static final int ARM_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 200 : 100;
 	public static final int ARM_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 170 : 100; 
@@ -262,5 +266,7 @@ public class RobotMap {
 	public static final Log.Level	LOG_ARM              		= Log.Level.TRACE;
 	public static final Log.Level   LOG_ARM_POT                 = Log.Level.TRACE;
 	public static final Log.Level	LOG_CARGO_ROLLER            = Log.Level.TRACE;
-	public static final Log.Level	LOG_POSITION_CONTROL            = Log.Level.TRACE;
+	public static final Log.Level	LOG_POSITION_CONTROL        = Log.Level.TRACE;
+	public static final Log.Level	LOG_CHOCK                   = Log.Level.TRACE;
+	public static final Log.Level	LOG_BUCKET_PISTONS           = Log.Level.TRACE;
 }

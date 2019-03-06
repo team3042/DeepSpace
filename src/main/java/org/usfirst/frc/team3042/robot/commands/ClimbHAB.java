@@ -8,7 +8,8 @@
 package org.usfirst.frc.team3042.robot.commands;
 
 import org.usfirst.frc.team3042.lib.Log;
-import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
+import org.usfirst.frc.team3042.robot.Robot;
+import org.usfirst.frc.team3042.robot.subsystems.Position_Control.Position;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.InstantCommand;
@@ -26,11 +27,15 @@ public class ClimbHAB extends InstantCommand {
       //
       // ********** Construct our command group, and run it
       //
-      CommandGroup cmdGroup = new CommandGroup("GoToTarget");
+      CommandGroup cmdGroup = new CommandGroup("ClimbHAB");
       cmdGroup.addSequential(new DSN_Holder_Release());
-      cmdGroup.addParallel(new DSN_Winch_WindOut());
-      cmdGroup.addParallel(new Elevator_SetPosition(Position_Control.Position.INTAKE));
-      cmdGroup.addSequential(new DSN_Drive_Forward());
+      cmdGroup.addSequential(new Elevator_SetPosition(Position.INTAKE));
+      cmdGroup.addSequential(new DSN_Winch_WindUp());
+      cmdGroup.addSequential(new Arm_Stop());
+      cmdGroup.addSequential(new Elevator_MonitorPosition());
+      cmdGroup.addSequential(new DSN_Winch_Stop());
+      cmdGroup.addParallel(new DSN_Drive_Forward());
+      cmdGroup.addParallel(new Drivetrain_DriveForward());
       cmdGroup.start();
 		} 
   }

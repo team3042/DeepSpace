@@ -11,11 +11,12 @@ import org.usfirst.frc.team3042.robot.subsystems.Gyroscope;
 import org.usfirst.frc.team3042.robot.subsystems.DSN_Holder;
 import org.usfirst.frc.team3042.robot.subsystems.LineTracker;
 import org.usfirst.frc.team3042.robot.subsystems.Cargo_Roller;
+import org.usfirst.frc.team3042.robot.subsystems.Chock;
 import org.usfirst.frc.team3042.robot.subsystems.Panel_Gripper;
 import org.usfirst.frc.team3042.robot.subsystems.Panel_Slider;
 import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
-import org.usfirst.frc.team3042.robot.subsystems.Hook_Holder;
 import org.usfirst.frc.team3042.robot.subsystems.Arm;
+import org.usfirst.frc.team3042.robot.subsystems.BucketPistons;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Preferences;
@@ -35,16 +36,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends TimedRobot {
 	/** Configuration Constants ***********************************************/
-	private static final Log.Level LOG_LEVEL =  RobotMap.LOG_ROBOT;
+	private static final Log.Level LOG_LEVEL = RobotMap.LOG_ROBOT;
 	private static final boolean HAS_DRIVETRAIN = RobotMap.HAS_DRIVETRAIN;
-	private static final boolean HAS_GYROSCOPE = false;//RobotMap.HAS_GYROSCOPE;
-	private static final boolean HAS_LINE_TRACKER = false;//RobotMap.HAS_LINE_TRACKER;
+	private static final boolean HAS_GYROSCOPE = false;// RobotMap.HAS_GYROSCOPE;
+	private static final boolean HAS_LINE_TRACKER = false;// RobotMap.HAS_LINE_TRACKER;
 	private static final boolean HAS_DSN_DRIVE = RobotMap.HAS_DSN_DRIVE;
+	private static final boolean HAS_BUCKET_PISTONS = RobotMap.HAS_BUCKET_PISTONS;
+	private static final boolean HAS_CHOCK = RobotMap.HAS_CHOCK;
 	private static final boolean HAS_DSN_HOLDER = RobotMap.HAS_DSN_HOLDER;
 	private static final boolean HAS_DSN_WINCH = RobotMap.HAS_DSN_WINCH;
 	private static final boolean HAS_ELEVATOR = RobotMap.HAS_ELEVATOR;
-	private static final boolean HAS_ARM_WINCH = RobotMap.HAS_ARM_WINCH;
-	private static final boolean HAS_HOOK_HOLDER = RobotMap.HAS_HOOK_HOLDER;
 	private static final boolean HAS_PANEL_SLIDER = RobotMap.HAS_PANEL_SLIDER;
 	private static final boolean HAS_PANEL_GRIPPER = RobotMap.HAS_PANEL_GRIPPER;
 	private static final boolean HAS_CARGO_ROLLER = RobotMap.HAS_CARGO_ROLLER;
@@ -52,21 +53,23 @@ public class Robot extends TimedRobot {
 	private static final boolean HAS_POSITION_CONTROL = RobotMap.HAS_POSITION_CONTROL;
 	private static final boolean HAS_CAMERA1 = RobotMap.HAS_CAMERA1;
 	private static final boolean HAS_CAMERA2 = RobotMap.HAS_CAMERA2;
-	
+
 	/** Create Subsystems *****************************************************/
 	private Log log = new Log(LOG_LEVEL, "Robot");
-	public static final Drivetrain 	drivetrain 	= (HAS_DRIVETRAIN) 	? new Drivetrain() 	: null;
-	public static final Gyroscope 	gyroscope 	= (HAS_GYROSCOPE) 	? new Gyroscope() 	: null;
-	public static final LineTracker lineTracker = (HAS_LINE_TRACKER) ? new LineTracker()  : null;
-	public static final DSN_Drive dsn_drive = (HAS_DSN_DRIVE) ? new DSN_Drive()  : null;
-	public static final DSN_Winch dsn_winch = (HAS_DSN_WINCH) ? new DSN_Winch()  : null;
-	public static final Elevator elevator = (HAS_ELEVATOR) ? new Elevator()  : null;
-	public static final DSN_Holder dsn_holder = (HAS_DSN_HOLDER) ? new DSN_Holder()  : null;
-    public static final Cargo_Roller 	cargo_roller 	= (HAS_CARGO_ROLLER) 	? new Cargo_Roller() 	: null;
-	public static final Panel_Slider panel_slider = (HAS_PANEL_SLIDER) ? new Panel_Slider()  : null;
-	public static final Arm arm = (HAS_ARM) ? new Arm()  : null;
-	public static final Panel_Gripper panel_gripper = (HAS_PANEL_GRIPPER) ? new Panel_Gripper()  : null;
-	public static final Position_Control position_control = (HAS_POSITION_CONTROL) ? new Position_Control()  : null;
+	public static final Drivetrain drivetrain = (HAS_DRIVETRAIN) ? new Drivetrain() : null;
+	public static final Gyroscope gyroscope = (HAS_GYROSCOPE) ? new Gyroscope() : null;
+	public static final LineTracker lineTracker = (HAS_LINE_TRACKER) ? new LineTracker() : null;
+	public static final DSN_Drive dsn_drive = (HAS_DSN_DRIVE) ? new DSN_Drive() : null;
+	public static final DSN_Winch dsn_winch = (HAS_DSN_WINCH) ? new DSN_Winch() : null;
+	public static final Elevator elevator = (HAS_ELEVATOR) ? new Elevator() : null;
+	public static final DSN_Holder dsn_holder = (HAS_DSN_HOLDER) ? new DSN_Holder() : null;
+	public static final Cargo_Roller cargo_roller = (HAS_CARGO_ROLLER) ? new Cargo_Roller() : null;
+	public static final Panel_Slider panel_slider = (HAS_PANEL_SLIDER) ? new Panel_Slider() : null;
+	public static final Arm arm = (HAS_ARM) ? new Arm() : null;
+	public static final Panel_Gripper panel_gripper = (HAS_PANEL_GRIPPER) ? new Panel_Gripper() : null;
+	public static final Position_Control position_control = (HAS_POSITION_CONTROL) ? new Position_Control() : null;
+	public static final Chock chock = (HAS_CHOCK) ? new Chock() : null;
+	public static final BucketPistons bucket_pistons = (HAS_BUCKET_PISTONS) ? new BucketPistons() : null;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	
 	public static OI oi;

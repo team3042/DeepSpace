@@ -27,7 +27,7 @@ public class Arm_HoldAdjustedPosition extends Command {
         private Timer timer = new Timer();
 	private double nextAdjustmentTime;
 	
-	public Arm_HoldPosition() {
+	public Arm_HoldAdjustedPosition() {
         	// Use requires() here to declare subsystem dependencies
     		requires(Robot.arm);
 	}
@@ -36,10 +36,10 @@ public class Arm_HoldAdjustedPosition extends Command {
     	protected void initialize() {
     		log.add("Initialize", Log.Level.TRACE);
 
-		startNewGoal(Robot.arm.getCurrentGoalPosition());
+		startNewGoal(Robot.arm.getCurrentGoalPos());
     	}
 
-	private void startNewGoal(double newGoal) {
+	private void startNewGoal(int newGoal) {
 		goalPosition = newGoal;
 		adjustedGoal = goalPosition + INITIAL_ADJUSTMENT;
 
@@ -67,7 +67,7 @@ public class Arm_HoldAdjustedPosition extends Command {
         		}
 		}
 		else {
-			int currentGoal = Robot.arm.getCurrentGoalPosition();
+			int currentGoal = Robot.arm.getCurrentGoalPos();
 			if (currentGoal != goalPosition) startNewGoal(currentGoal);
 
 			double time = timer.get();

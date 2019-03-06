@@ -7,13 +7,12 @@
 
 package org.usfirst.frc.team3042.robot.commands;
 
-import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.lib.Log;
-import org.usfirst.frc.team3042.robot.subsystems.Position_Control.Position;
 
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class PrepareClimb extends InstantCommand {
+public class StopClimb extends InstantCommand {
 
   Log log = new Log(Log.Level.DEBUG, getName());
 
@@ -26,8 +25,11 @@ public class PrepareClimb extends InstantCommand {
       //
       // ********** Construct our command group, and run it
       //
-      Robot.arm.setPosition(Position.INTAKE);
-      Robot.elevator.setPosition(Position.HIGH_PANEL);
-      Robot.bucket_pistons.engagePistons();
+      CommandGroup cmdGroup = new CommandGroup("StopClimb");
+      cmdGroup.addParallel(new BucketPistons_Disengage());
+      cmdGroup.addParallel(new Drivetrain_TankDrive());
+      cmdGroup.addParallel(new DSN_Drive_Stop());
+      cmdGroup.addParallel(new Elevator_Stop());
+      cmdGroup.start();
 		} 
   }

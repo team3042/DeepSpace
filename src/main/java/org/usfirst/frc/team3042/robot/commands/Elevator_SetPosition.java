@@ -3,7 +3,7 @@ package org.usfirst.frc.team3042.robot.commands;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.Elevator;
+import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -16,9 +16,9 @@ public class Elevator_SetPosition extends Command {
 	
 	/** Instance Variables ****************************************************/
 	private Log log = new Log(LOG_LEVEL, getName());
-	private Elevator.Position position;
+	private Position_Control.Position position;
 
-    public Elevator_SetPosition(Elevator.Position position) {
+    public Elevator_SetPosition(Position_Control.Position position) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         //requires(Robot.elevator);

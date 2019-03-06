@@ -3,7 +3,7 @@ package org.usfirst.frc.team3042.robot.commands;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
-import org.usfirst.frc.team3042.robot.subsystems.Elevator;
+import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -30,7 +30,7 @@ public class Elevator_CrisisAverted extends Command {
     	
     	Robot.elevator.setZero();
     	Robot.elevatorEmergencyMode = false;
-    	Robot.elevator.setPosition(Elevator.Position.INTAKE);
+    	Robot.elevator.setPosition(Position_Control.Position.INTAKE);
     	log.add("The elevator has now officially ended its state of emergency, the crisis has been averted", Log.Level.TRACE);
     }
 

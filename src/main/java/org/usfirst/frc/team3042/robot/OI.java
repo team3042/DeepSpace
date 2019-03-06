@@ -8,8 +8,6 @@ import org.usfirst.frc.team3042.robot.commands.Arm_SetPosition;
 import org.usfirst.frc.team3042.robot.commands.Arm_Test;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Extake;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Intake;
-import org.usfirst.frc.team3042.robot.commands.Control_FrameToIntake;
-import org.usfirst.frc.team3042.robot.commands.Control_IntakeToFrame;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Backward;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Forward;
 import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Engage;
@@ -17,11 +15,11 @@ import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Release;
 import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Toggle;
 import org.usfirst.frc.team3042.robot.commands.DSN_Winch_WindOut;
 import org.usfirst.frc.team3042.robot.commands.DSN_Winch_WindUp;
+import org.usfirst.frc.team3042.robot.commands.DriveTrainScale_Toggle;
 import org.usfirst.frc.team3042.robot.commands.DrivetrainAuton_Drive;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroStraight;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroTurn;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_Shift;
-import org.usfirst.frc.team3042.robot.commands.Elevator_CyclePositions;
 import org.usfirst.frc.team3042.robot.commands.Elevator_SetPosition;
 import org.usfirst.frc.team3042.robot.commands.Elevator_Test;
 import org.usfirst.frc.team3042.robot.commands.LineTracker_PrintLines;
@@ -31,6 +29,8 @@ import org.usfirst.frc.team3042.robot.commands.Panel_Release;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Backward;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Forward;
 import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Toggle;
+import org.usfirst.frc.team3042.robot.commands.Position_Control_MoveIn;
+import org.usfirst.frc.team3042.robot.commands.Position_Control_MoveOut;
 import org.usfirst.frc.team3042.robot.commands.Test_printSensorRaw;
 import org.usfirst.frc.team3042.robot.subsystems.Arm;
 import org.usfirst.frc.team3042.robot.subsystems.Elevator;
@@ -50,6 +50,7 @@ public class OI {
 	private static final int USB_JOY_RIGHT = RobotMap.USB_JOYSTICK_RIGHT;
 	private static final boolean USE_JOYSTICKS = RobotMap.USE_JOYSTICKS;
 	private static final double JOYSTICK_DRIVE_SCALE = RobotMap.JOYSTICK_DRIVE_SCALE;
+	private static final double JOYSTICK_DRIVE_SCALE_LOW = RobotMap.JOYSTICK_DRIVE_SCALE_LOW;
 	private static final double JOYSTICK_DEAD_ZONE = RobotMap.JOYSTICK_DEAD_ZONE;
 	private static final double TRIGGER_SPINNER_SCALE = RobotMap.TRIGGER_SPINNER_SCALE;
 	private static final int GAMEPAD_LEFT_Y_AXIS = Gamepad.LEFT_JOY_Y_AXIS;
@@ -58,11 +59,14 @@ public class OI {
 	private static final int GAMEPAD_LEFT_TRIGGER = Gamepad.LEFT_TRIGGER;
 	private static final int GAMEPAD_RIGHT_TRIGGER = Gamepad.RIGHT_TRIGGER;
 	private static final double ROBOT_WIDTH = RobotMap.ROBOT_WIDTH;
+	private static final boolean SCALE_STARTS_HIGH = RobotMap.JOYSTICK_DRIVE_SCALE_STARTS_HIGH;
 
 	/** Instance Variables ****************************************************/
 	Log log = new Log(RobotMap.LOG_OI, "OI");
 	public Gamepad gamepad, joyLeft, joyRight;
 	int driveAxisLeft, driveAxisRight;
+	public static double CURRENT_DRIVE_SCALE = JOYSTICK_DRIVE_SCALE;
+	public static boolean isHighScale = SCALE_STARTS_HIGH;
 
 	/**
 	 * OI ********************************************************************
@@ -111,21 +115,19 @@ public class OI {
 				gamepad.A.whenPressed(new Panel_Slider_Toggle());
 				gamepad.B.whenPressed(new Panel_Gripper_Toggle());
 				gamepad.Y.whenPressed(new DSN_Holder_Toggle());
-
 			} else {
-				//gamepad.POVUp.whenActive(new Elevator_CyclePositions(POVButton.UP));
-				//gamepad.POVDown.whenActive(new Elevator_CyclePositions(POVButton.DOWN));
+				gamepad.POVUp.whenActive(new Position_Control_MoveIn(false));
+				gamepad.POVDown.whenActive(new Position_Control_MoveOut(false));
+				gamepad.A.whenPressed(new Position_Control_MoveOut(true));
+				gamepad.B.whenPressed(new Position_Control_MoveIn(true));
 				joyRight.button1.whenPressed(new Drivetrain_Shift());
-				gamepad.LeftJoyUp.whenActive(new Elevator_Test());
-				gamepad.LeftJoyDown.whenActive(new Elevator_Test());
-				gamepad.RightJoyUp.whenActive(new Arm_Test());
-				gamepad.RightJoyDown.whenActive(new Arm_Test());
-				gamepad.RB.whileHeld(new Cargo_Roller_Intake());
-				gamepad.LB.whileHeld(new Cargo_Roller_Extake());
-				gamepad.B.whenPressed(new Control_IntakeToFrame());
-				gamepad.A.whenPressed(new Control_FrameToIntake());
+				joyLeft.button1.whenPressed(new DriveTrainScale_Toggle());
+				joyLeft.button1.whenReleased(new DriveTrainScale_Toggle());
+				gamepad.LB.whileHeld(new Cargo_Roller_Intake());
+				gamepad.RB.whileHeld(new Cargo_Roller_Extake());
 				gamepad.X.whenPressed(new Panel_Gripper_Toggle());
-				gamepad.Y.whenPressed(new Panel_Slider_Toggle());
+				gamepad.RT.whenInactive(new Panel_Slider_Toggle());
+				gamepad.RT.whenActive(new Panel_Slider_Toggle());
 			}
 		}
 
@@ -166,7 +168,7 @@ public class OI {
 	}
 	private double scaleJoystick(double joystickValue) {
 		joystickValue = checkDeadZone(joystickValue);
-		joystickValue *= JOYSTICK_DRIVE_SCALE;
+		joystickValue *= CURRENT_DRIVE_SCALE;
 		joystickValue *= -1.0;
 		return joystickValue;
 	}
@@ -174,6 +176,22 @@ public class OI {
 		if (Math.abs(joystickValue) < JOYSTICK_DEAD_ZONE) joystickValue = 0.0;
 		return joystickValue;
 	}
+	public void setHighScale(){
+    	CURRENT_DRIVE_SCALE = JOYSTICK_DRIVE_SCALE;
+    	isHighScale = true;
+    }
+    public void setLowScale(){
+    	CURRENT_DRIVE_SCALE = JOYSTICK_DRIVE_SCALE_LOW;
+    	isHighScale = false;
+    }
+    public void toggleScale(){
+    	if (isHighScale){
+    		setLowScale();
+    	}
+    	else {
+    		setHighScale();
+    	}
+    }
 	
 	
 	/** Access the POV value **************************************************/

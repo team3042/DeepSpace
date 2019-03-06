@@ -29,14 +29,17 @@ public class Arm extends Subsystem {
 	private static final double kD = RobotMap.ARM_KD;
 	private static final double kF = RobotMap.ARM_KF;
 	private static final int I_ZONE = RobotMap.ARM_I_ZONE;
-	private static final int BOT_POS = RobotMap.ARM_BOTTOM_POS;
-	private static final int MID_POS = RobotMap.ARM_MIDDLE_POS;
-	private static final int TOP_POS = RobotMap.ARM_TOP_POS;
+	private static final int FRAME_POS = RobotMap.ARM_FRAME_POS;
+	private static final int INTAKE_POS = RobotMap.ARM_INTAKE_POS;
+	private static final int LOW_CARGO_POS = RobotMap.ARM_LOW_CARGO_POSITION;
+	private static final int MID_PANEL_POS = RobotMap.ARM_MID_PANEL_POSITION;
+	private static final int MID_CARGO_POS = RobotMap.ARM_MID_CARGO_POSITION;
+	private static final int HIGH_PANEL_POS = RobotMap.ARM_HIGH_PANEL_POSITION;
+	private static final int HIGH_CARGO_POS = RobotMap.ARM_HIGH_CARGO_POSITION;
+	private static final int MAX_POS = RobotMap.ARM_MAX_POS;
+	private static final int MIN_POS = RobotMap.ARM_MIN_POS;
 	private static final int MAGIC_ACCEL = RobotMap.ARM_MOTION_MAGIC_ACCELERATION;
 	private static final int MAGIC_CRUISE = RobotMap.ARM_MOTION_MAGIC_CRUISE_VELOCITY;
-	private static final int MAX_POS = RobotMap.ARM_MAX_POSITION;
-	private static final int MIN_POS = RobotMap.ARM_MIN_POSITION;
-	private static final int FRAME_POS = RobotMap.ARM_FRAME_PERIMITER;
 	public static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM;
 	public static final boolean REVERSE_PHASE = RobotMap.ARM_REVERSE_SENSOR_PHASE;
 	public static final boolean ARM_FOLLOWER_IS_LEFT = RobotMap.ARM_FOLLOWER_IS_LEFT;
@@ -44,14 +47,13 @@ public class Arm extends Subsystem {
 	public static final boolean OPPOSITE = RobotMap.ARM_RIGHT_AND_LEFT_ARE_OPPOSITE;
 
 	/** Instance Variables ****************************************************/
-	private TalonSRX armTalonRight = new TalonSRX(CAN_ARM_MOTOR_RIGHT);
-	private TalonSRX armTalonLeft = new TalonSRX(CAN_ARM_MOTOR_LEFT);
-	private TalonSRX armTalon = (ARM_FOLLOWER_IS_LEFT) ? armTalonRight: armTalonLeft;
-	private TalonSRX armTalonFollower = (ARM_FOLLOWER_IS_LEFT) ? armTalonLeft: armTalonRight;
-	private int currentPreset = 2;
-	private int currentGoalPos = FRAME_POS;
-	public Position[] positionFromInt = new Position[]{Position.BOTTOM, Position.MIDDLE, Position.TOP};
 	Log log = new Log(LOG_LEVEL, getName());
+	TalonSRX armTalonRight = new TalonSRX(CAN_ARM_MOTOR_RIGHT);
+	TalonSRX armTalonLeft = new TalonSRX(CAN_ARM_MOTOR_LEFT);
+	TalonSRX armTalon = (ARM_FOLLOWER_IS_LEFT) ? armTalonRight: armTalonLeft;
+	TalonSRX armTalonFollower = (ARM_FOLLOWER_IS_LEFT) ? armTalonLeft: armTalonRight;
+	int currentGoalPos = FRAME_POS;
+	
 	
 	public Arm(){
 		initMotor(armTalon);
@@ -80,22 +82,7 @@ public class Arm extends Subsystem {
 		default:
 			break;
     	}
-	}
-	
-	public void cyclePreset(int direction){
-		switch (direction) {
-		case POVButton.UP:
-			currentPreset = Math.min(currentPreset + 1, positionFromInt.length - 1);
-			setPosition(positionFromInt[currentPreset]);
-			break;
-		case POVButton.DOWN:
-			currentPreset = Math.max(currentPreset - 1, 0);
-			setPosition(positionFromInt[currentPreset]);
-			break;
-		default:
-			break;
-		}
-	}
+	}                                                    
 	/**
 	 * Returns the actual pos - not the enum one.
 	 * @return <code>armTalon.getSelectedSensorPosition(PIDIDX);</code>
@@ -109,20 +96,12 @@ public class Arm extends Subsystem {
 		return currentGoalPos;
 	}
 	
-	public int getCurrentPreset(){
-		return currentPreset;
-	}
-	
-	public static enum Position {
-		BOTTOM, MIDDLE, TOP;
-	}
-	
 	public void intoFrame(){
 		setTalonPosition(FRAME_POS);
 	}
 	
 	public void toIntake(){
-		setTalonPosition(BOT_POS);
+		setTalonPosition(INTAKE_POS);
 	}
     
     private void initMotor(TalonSRX motor) {
@@ -137,12 +116,12 @@ public class Arm extends Subsystem {
 			motor.configSelectedFeedbackSensor(FeedbackDevice.Analog, PIDIDX, TIMEOUT);
 	}
     
-    public void initMotionMagic(TalonSRX motor){
+    	private void initMotionMagic(TalonSRX motor){
 			motor.configMotionAcceleration(MAGIC_ACCEL, TIMEOUT);
 			motor.configMotionCruiseVelocity(MAGIC_CRUISE, TIMEOUT);
 	}
     
-	public int safetyCheck(int position) {
+	private int safetyCheck(int position) {
 		return Math.max(Math.min(MAX_POS, position), MIN_POS);
 	}
     
@@ -155,32 +134,42 @@ public class Arm extends Subsystem {
 	
 	public void setTalonPositionMagic(int position) {
 		armTalon.set(ControlMode.MotionMagic, safetyCheck(position));
-		log.add("Arm Pos (raw) 2 " + position, Log.Level.TRACE);
 		currentGoalPos = safetyCheck(position);
 	}
+	
+	public void setAdjustedPosition(int position) {
+		armTalon.set(ControlMode.MotionMagic, safetyCheck(position));
+	}
     
-    public void setPosition(Position position) {
+    	public void setPosition(Position_Control.Position position) {
 		switch (position) {
-			case BOTTOM:
-				setTalonPositionMagic(BOT_POS);
-				currentPreset = 0;
-        break;
-			case MIDDLE:
-				setTalonPositionMagic(MID_POS);
-				currentPreset = 1;
+			case FRAME:
+				setTalonPositionMagic(FRAME_POS);
 				break;
-			case TOP:
-				setTalonPositionMagic(TOP_POS);
-				currentPreset = 2;
+			case INTAKE:
+				setTalonPositionMagic(INTAKE_POS);
+				break;
+			case LOW_CARGO:
+				setTalonPositionMagic(LOW_CARGO_POS);
+        break;
+			case MID_PANEL:
+				setTalonPositionMagic(MID_PANEL_POS);
+				break;
+			case MID_CARGO:
+				setTalonPositionMagic(MID_CARGO_POS);
+				break;
+			case HIGH_PANEL:
+				setTalonPositionMagic(HIGH_PANEL_POS);
+				break;
+			case HIGH_CARGO:
+				setTalonPositionMagic(HIGH_CARGO_POS);
 				break;
 			default:
 				stop();
 				break;
 		}
-    }
-    public void setPreset(int preset){
-    	currentPreset = preset;
-    }
+		}
+		
     public void stop() {
 		setPower(armTalon, 0);
 	}

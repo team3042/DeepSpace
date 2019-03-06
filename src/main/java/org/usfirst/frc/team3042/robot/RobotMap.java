@@ -129,7 +129,7 @@ public class RobotMap {
 	/** Panel Intake Settings ****************************************************/
 	public static final boolean HAS_PANEL_SLIDER = true;
 	public static final boolean HAS_PANEL_GRIPPER = true;
-	public static final boolean PANNEL_SLIDER_STARTS_ACTIVE = false;
+	public static final boolean PANNEL_SLIDER_STARTS_ACTIVE = true;
 	public static final boolean PANNEL_GRIPPER_STARTS_ACTIVE = false;	
 
 	/** Cargo Roller Settings ****************************************************/
@@ -252,7 +252,6 @@ public class RobotMap {
 	public static final Log.Level	LOG_GYROSCOPE				= Log.Level.DEBUG;
 	public static final Log.Level	LOG_LIGHT_RING				= Log.Level.TRACE;
 	public static final Log.Level   LOG_LINE_TRACKER			= Log.Level.TRACE;
-	public static final Log.Level   LOG_ARM_WINCH			    = Log.Level.TRACE;
 	public static final Log.Level	LOG_EXAMPLE_SUBSYSTEM 		= Log.Level.TRACE;
 	public static final Log.Level	LOG_DSN_DRIVE               = Log.Level.TRACE;
 	public static final Log.Level   LOG_DSN_HOLDER              = Log.Level.TRACE;
@@ -260,7 +259,6 @@ public class RobotMap {
 	public static final Log.Level	LOG_ELEVATOR              	= Log.Level.TRACE;
 	public static final Log.Level   LOG_PANEL_SLIDER			= Log.Level.TRACE;
 	public static final Log.Level   LOG_PANEL_GRIPPER			= Log.Level.TRACE;
-	public static final Log.Level	LOG_HOOK_HOLDER 		    = Log.Level.TRACE;
 	public static final Log.Level	LOG_ARM              		= Log.Level.TRACE;
 	public static final Log.Level   LOG_ARM_POT                 = Log.Level.TRACE;
 	public static final Log.Level	LOG_CARGO_ROLLER            = Log.Level.TRACE;

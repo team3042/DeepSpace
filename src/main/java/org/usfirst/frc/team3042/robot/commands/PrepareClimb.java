@@ -30,11 +30,10 @@ public class PrepareClimb extends InstantCommand {
       //
       /*
       CommandGroup cmdGroup = new CommandGroup("GoToTarget");
-      cmdGroup.addParallel(new Arm_SetPosition(Position_Control.Position.INTAKE));
-      cmdGroup.addParallel(new Elevator_SetPosition(Position_Control.Position.INTAKE));
-      cmdGroup.addSequential(new Hook_Deploy());
       cmdGroup.addParallel(new Arm_SetPosition(Position_Control.Position.HIGH_CARGO));
       cmdGroup.addParallel(new Elevator_SetPosition(Position_Control.Position.MID_PANEL));
+      //Add some kind of timer in here?
+      cmdGroup.addParallel(new Elevator_SetPosition(Elevator.Position.LOW_CARGO));
       cmdGroup.start();
       */
 		} 

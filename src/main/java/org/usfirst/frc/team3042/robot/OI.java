@@ -6,8 +6,6 @@ import org.usfirst.frc.team3042.robot.commands.Arm_CyclePositions;
 import org.usfirst.frc.team3042.robot.commands.Arm_IntoFrame;
 import org.usfirst.frc.team3042.robot.commands.Arm_SetPosition;
 import org.usfirst.frc.team3042.robot.commands.Arm_Test;
-import org.usfirst.frc.team3042.robot.commands.Arm_Winch_WindOut;
-import org.usfirst.frc.team3042.robot.commands.Arm_Winch_WindUp;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Extake;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Intake;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Backward;
@@ -24,8 +22,6 @@ import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroTurn;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_Shift;
 import org.usfirst.frc.team3042.robot.commands.Elevator_SetPosition;
 import org.usfirst.frc.team3042.robot.commands.Elevator_Test;
-import org.usfirst.frc.team3042.robot.commands.Hook_Deploy;
-import org.usfirst.frc.team3042.robot.commands.Hook_Holder_Toggle;
 import org.usfirst.frc.team3042.robot.commands.LineTracker_PrintLines;
 import org.usfirst.frc.team3042.robot.commands.Panel_Gripper_Toggle;
 import org.usfirst.frc.team3042.robot.commands.Panel_Intake;
@@ -114,13 +110,10 @@ public class OI {
 				gamepad.LeftJoyDown.whenActive(new Elevator_Test());
 				gamepad.RightJoyUp.whenActive(new Arm_Test());
 				gamepad.RightJoyDown.whenActive(new Arm_Test());
-				gamepad.POVUp.whileActive(new Arm_Winch_WindOut());
-				gamepad.POVDown.whileActive(new Arm_Winch_WindUp());
 				gamepad.POVLeft.whileActive(new DSN_Winch_WindOut());
 				gamepad.POVRight.whileActive(new DSN_Winch_WindUp());
 				gamepad.A.whenPressed(new Panel_Slider_Toggle());
 				gamepad.B.whenPressed(new Panel_Gripper_Toggle());
-				gamepad.X.whenPressed(new Hook_Holder_Toggle());
 				gamepad.Y.whenPressed(new DSN_Holder_Toggle());
 			} else {
 				gamepad.POVUp.whenActive(new Position_Control_MoveIn(false));
@@ -150,13 +143,10 @@ public class OI {
 			gamepad.LeftJoyDown.whenActive(new Elevator_Test());
 			gamepad.RightJoyUp.whenActive(new Arm_Test());
 			gamepad.RightJoyDown.whenActive(new Arm_Test());
-			gamepad.POVUp.whileActive(new Arm_Winch_WindOut());
-			gamepad.POVDown.whileActive(new Arm_Winch_WindUp());
 			gamepad.POVLeft.whileActive(new DSN_Winch_WindOut());
 			gamepad.POVRight.whileActive(new DSN_Winch_WindUp());
 			gamepad.A.whenPressed(new Panel_Slider_Toggle());
 			gamepad.B.whenPressed(new Panel_Gripper_Toggle());
-			gamepad.X.whenPressed(new Hook_Holder_Toggle());
 			gamepad.Y.whenPressed(new DSN_Holder_Toggle());
 
 		}

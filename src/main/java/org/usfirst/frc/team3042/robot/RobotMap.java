@@ -108,7 +108,7 @@ public class RobotMap {
 	public static final int ARM_I_ZONE = IS_JUNO 	? 0 : 30;
 	public static final boolean ARM_REVERSE_SENSOR_PHASE = (IS_JUNO) ? false : true;
 	public static final int ARM_MANUAL_SPEED = IS_JUNO	? 0 : 1;
-	public static final int ARM_MIN_POS = IS_JUNO ? 100 : 100;
+	public static final int ARM_MIN_POS = IS_JUNO ? 180 : 180;
 	public static final int ARM_MAX_POS = IS_JUNO ? 632 + ARM_MIN_POS : 632 + ARM_MIN_POS;
 	public static final int ARM_FRAME_POS = IS_JUNO ? ARM_MIN_POS : ARM_MIN_POS;
 	public static final int ARM_INTAKE_POS = IS_JUNO ? 310 + ARM_MIN_POS : 310 + ARM_MIN_POS;

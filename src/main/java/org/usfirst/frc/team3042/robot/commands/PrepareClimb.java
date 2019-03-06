@@ -28,6 +28,6 @@ public class PrepareClimb extends InstantCommand {
       //
       Robot.arm.setPosition(Position.INTAKE);
       Robot.elevator.setPosition(Position.HIGH_PANEL);
-      Robot.bucket_pistons.engagePistons();
+      Robot.dsn_holder.dsnRelease();
 		} 
   }

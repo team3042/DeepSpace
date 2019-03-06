@@ -17,7 +17,7 @@ public class Chock extends Subsystem {
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	Solenoid chockSolenoid = new Solenoid(ID);
+	//Solenoid chockSolenoid = new Solenoid(ID);
 	
 	
 	/** Chock ******************************************************
@@ -28,11 +28,11 @@ public class Chock extends Subsystem {
 	}
 
 	public void engageChock() {
-		chockSolenoid.set(true);
+		//chockSolenoid.set(true);
 	}
 
 	public void disengageChock() {
-		chockSolenoid.set(false);
+		//chockSolenoid.set(false);
 	}
 	
 	/** initDefaultCommand ****************************************************

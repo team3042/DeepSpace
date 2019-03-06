@@ -79,7 +79,7 @@ public class Elevator extends Subsystem {
 		motor.configMotionAcceleration(MAGIC_ACCEL, TIMEOUT);
 		motor.configMotionCruiseVelocity(MAGIC_CRUISE, TIMEOUT);
 	}
-	public void changeCruisingSpeed(double speed) {
+	public void changeCruisingSpeed(int speed) {
 		elevatorTalon.configMotionCruiseVelocity(speed, TIMEOUT);
 	}
     

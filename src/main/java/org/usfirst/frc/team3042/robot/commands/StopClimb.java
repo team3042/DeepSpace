@@ -26,10 +26,12 @@ public class StopClimb extends InstantCommand {
       // ********** Construct our command group, and run it
       //
       CommandGroup cmdGroup = new CommandGroup("StopClimb");
+      cmdGroup.addParallel(new DSN_Winch_Stop());
+      cmdGroup.addParallel(new Arm_Stop());
       cmdGroup.addParallel(new BucketPistons_Disengage());
       cmdGroup.addParallel(new Drivetrain_TankDrive());
       cmdGroup.addParallel(new DSN_Drive_Stop());
       cmdGroup.addParallel(new Elevator_Stop());
       cmdGroup.start();
-		} 
+      } 
   }

@@ -33,8 +33,8 @@ public class ClimbHAB extends InstantCommand {
       cmdGroup.addSequential(new Elevator_ChangeCruisingSpeed());
       cmdGroup.addSequential(new Elevator_SetPosition(Position.INTAKE));
       cmdGroup.addSequential(new DSN_Winch_WindOut());
-      cmdGroup.addSequential(new Elevator_MonitorPosition());
       cmdGroup.addParallel(new Arm_Stop());
+      cmdGroup.addSequential(new Elevator_MonitorPosition());
       cmdGroup.addParallel(new DSN_Winch_Stop());
       cmdGroup.addParallel(new DSN_Drive_Forward());
       cmdGroup.addParallel(new Drivetrain_DriveForward());

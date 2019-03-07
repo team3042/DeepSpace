@@ -3,6 +3,7 @@ package org.usfirst.frc.team3042.robot.subsystems;
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
+import org.usfirst.frc.team3042.robot.commands.Arm_HoldAdjustedPosition;
 import org.usfirst.frc.team3042.robot.commands.Arm_HoldPosition;
 import org.usfirst.frc.team3042.robot.commands.Arm_Stop;
 import org.usfirst.frc.team3042.robot.triggers.POVButton;
@@ -64,7 +65,7 @@ public class Arm extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-    	setDefaultCommand(new Arm_HoldPosition());
+    	setDefaultCommand(new Arm_HoldAdjustedPosition());
     }
     
     public void manual(int direction){

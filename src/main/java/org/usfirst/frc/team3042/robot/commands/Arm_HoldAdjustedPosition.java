@@ -75,9 +75,6 @@ public class Arm_HoldAdjustedPosition extends Command {
 				int error = goalPosition - currentPosition;
 				int adjustment = (int) (error * ADJUSTMENT_SCALE);
 				adjustedGoal += adjustment;
-				log.add("Goal = "+goalPosition+"Adjusted Goal = "+
-					adjustedGoal+" Adjustment = "+adjustment, Log.Level.TRACE);
-
 				nextAdjustmentTime = time + TIME_INTERVAL;
 
 				Robot.arm.setAdjustedPosition(adjustedGoal);

@@ -18,7 +18,7 @@ public class Arm_HoldAdjustedPosition extends Command {
 	public static final int MAX_POSITION = RobotMap.ARM_MAX_POS;
 	public static final int INITIAL_ADJUSTMENT = 40;
 	public static final double ADJUSTMENT_SCALE = 0.5;
-	public static final double INITIAL_DELAY = 1.0;
+	public static final double INITIAL_DELAY = 0.5;
 	public static final double TIME_INTERVAL = 0.2;
 	
 	/** Instance Variables ****************************************************/

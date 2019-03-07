@@ -166,7 +166,7 @@ public class RobotMap {
 	public static final boolean ELEVATOR_REVERSE = (IS_JUNO) ? true: false;
 	public static final int ELEVATOR_SPROCKET_CIRCUMFERENCE = IS_JUNO ? 4 : 4;
 	public static final int ELEVATOR_TOLERANCE = IS_JUNO ? 500 : 500;
-	public static final int ELEVATOR_TIMEOUT = IS_JUNO ? 2 : 2;
+	public static final int ELEVATOR_TIMEOUT = IS_JUNO ? 5 : 5;
 
 	/** Drivetrain Settings ***************************************************/
 	public static final boolean HAS_DRIVETRAIN = true;

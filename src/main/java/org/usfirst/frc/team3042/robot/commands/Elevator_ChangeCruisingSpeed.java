@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  * Change the Motion Magic Cruising Speed
  */
-public class Elevator_Stop extends Command {
+public class Elevator_ChangeCruisingSpeed extends Command {
 	/** Configuration Constants ***********************************************/
 	public static final Log.Level LOG_LEVEL = RobotMap.LOG_ELEVATOR;
 	public static final int ELEVATOR_CLIMB_SPEED = 400;

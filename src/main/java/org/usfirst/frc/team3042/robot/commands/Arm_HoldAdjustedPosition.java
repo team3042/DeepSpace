@@ -20,6 +20,7 @@ public class Arm_HoldAdjustedPosition extends Command {
 	public static final double ADJUSTMENT_SCALE = 0.5;
 	public static final double INITIAL_DELAY = 0.5;
 	public static final double TIME_INTERVAL = 0.2;
+	public static final int ARM_TOLERANCE = 5;
 	
 	/** Instance Variables ****************************************************/
 	private Log log = new Log(LOG_LEVEL, getName());
@@ -73,11 +74,13 @@ public class Arm_HoldAdjustedPosition extends Command {
 			double time = timer.get();
 			if (time >= nextAdjustmentTime) {
 				int error = goalPosition - currentPosition;
-				int adjustment = (int) (error * ADJUSTMENT_SCALE);
-				adjustedGoal += adjustment;
-				nextAdjustmentTime = time + TIME_INTERVAL;
+				if (Math.abs(error) > ARM_TOLERANCE) {
+					int adjustment = (int) (error * ADJUSTMENT_SCALE);
+					adjustedGoal += adjustment;
+					nextAdjustmentTime = time + TIME_INTERVAL;
 
-				Robot.arm.setAdjustedPosition(adjustedGoal);
+					Robot.arm.setAdjustedPosition(adjustedGoal);
+				}
 			}
 		}
     	}

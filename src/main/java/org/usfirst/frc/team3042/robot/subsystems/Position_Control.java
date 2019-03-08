@@ -91,7 +91,7 @@ public class Position_Control extends Subsystem {
 		}
 
 		public void IncreaseHeight() {
-			if(currentPosition < 3 ) {//Position.values().length - 1){
+			if(currentPosition < Position.values().length - 1){
 				currentPosition++;
 			}
 		}

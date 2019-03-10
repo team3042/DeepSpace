@@ -31,7 +31,12 @@ public class Arm_HoldPosition extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 		SmartDashboard.putNumber("Pot", Robot.arm.getPosition());
-		SmartDashboard.putNumber("Goal Pos", Robot.arm.getCurrentGoalPos());
+		SmartDashboard.putNumber("Arm Right Output%", Robot.arm.armTalon.getMotorOutputPercent());
+		SmartDashboard.putNumber("Arm Left Output%", Robot.arm.armTalonFollower .getMotorOutputPercent());
+		SmartDashboard.putNumber("Current Draw Right", Robot.pdp.getCurrent(4));
+		SmartDashboard.putNumber("Current Draw Left", Robot.pdp.getCurrent(1));
+
+
     	if(Robot.armEmergencyMode){
         	if(Robot.oi.gamepad.getRawButton(4)){
         		Robot.arm.setPower(0.5);

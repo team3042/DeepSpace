@@ -18,7 +18,7 @@ public class Arm_HoldAdjustedPosition extends Command {
 	public static final int MAX_POSITION = RobotMap.ARM_MAX_POS;
 	public static final int INITIAL_ADJUSTMENT = 40;
 	public static final double ADJUSTMENT_SCALE = 0.5;
-	public static final double INITIAL_DELAY = 0.5;
+	public static final double INITIAL_DELAY = 0.8;
 	public static final double TIME_INTERVAL = 0.2;
 	public static final int ARM_TOLERANCE = 5;
 	
@@ -54,8 +54,13 @@ public class Arm_HoldAdjustedPosition extends Command {
     	// Called repeatedly when this Command is scheduled to run
     	protected void execute() {
 		int currentPosition = Robot.arm.getPosition();
-    		SmartDashboard.putNumber("Pot", currentPosition);
- 
+			SmartDashboard.putNumber("Pot", currentPosition);
+			SmartDashboard.putNumber("Arm Right Output%", Robot.arm.armTalon.getMotorOutputPercent());
+			SmartDashboard.putNumber("Arm Left Output%", Robot.arm.armTalonFollower .getMotorOutputPercent());
+			SmartDashboard.putNumber("Current Draw Right", Robot.pdp.getCurrent(4));
+			SmartDashboard.putNumber("Current Draw Left", Robot.pdp.getCurrent(1));
+
+
     		if(Robot.armEmergencyMode){
         		if(Robot.oi.gamepad.getRawButton(4)){
         			Robot.arm.setPower(0.5);

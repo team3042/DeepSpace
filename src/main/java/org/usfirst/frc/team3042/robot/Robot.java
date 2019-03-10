@@ -25,6 +25,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
+
 
 /**
  * Robot *********************************************************************
@@ -71,6 +73,7 @@ public class Robot extends TimedRobot {
 	public static final Chock chock = (HAS_CHOCK) ? new Chock() : null;
 	public static final BucketPistons bucket_pistons = (HAS_BUCKET_PISTONS) ? new BucketPistons() : null;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static final PowerDistributionPanel pdp = new PowerDistributionPanel();
 	
 	public static OI oi;
 
@@ -148,6 +151,8 @@ public class Robot extends TimedRobot {
 		log.add("Autonomous Init", Log.Level.TRACE);
 		
 		autonomousCommand = chooser.getSelected();
+
+		Robot.panel_gripper.toggle();
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)

@@ -34,6 +34,7 @@ public class Arm extends Subsystem {
 	private static final int INTAKE_POS = RobotMap.ARM_INTAKE_POS;
 	private static final int LOW_CARGO_POS = RobotMap.ARM_LOW_CARGO_POSITION;
 	private static final int MID_PANEL_POS = RobotMap.ARM_MID_PANEL_POSITION;
+	private static final int SHIP_CARGO_POS = RobotMap.ARM_SHIP_CARGO_POSITION;
 	private static final int MID_CARGO_POS = RobotMap.ARM_MID_CARGO_POSITION;
 	private static final int HIGH_PANEL_POS = RobotMap.ARM_HIGH_PANEL_POSITION;
 	private static final int HIGH_CARGO_POS = RobotMap.ARM_HIGH_CARGO_POSITION;
@@ -51,8 +52,8 @@ public class Arm extends Subsystem {
 	Log log = new Log(LOG_LEVEL, getName());
 	TalonSRX armTalonRight = new TalonSRX(CAN_ARM_MOTOR_RIGHT);
 	TalonSRX armTalonLeft = new TalonSRX(CAN_ARM_MOTOR_LEFT);
-	TalonSRX armTalon = (ARM_FOLLOWER_IS_LEFT) ? armTalonRight: armTalonLeft;
-	TalonSRX armTalonFollower = (ARM_FOLLOWER_IS_LEFT) ? armTalonLeft: armTalonRight;
+	public TalonSRX armTalon = (ARM_FOLLOWER_IS_LEFT) ? armTalonRight: armTalonLeft;
+	public TalonSRX armTalonFollower = (ARM_FOLLOWER_IS_LEFT) ? armTalonLeft: armTalonRight;
 	int currentGoalPos = FRAME_POS;
 	
 	
@@ -155,6 +156,9 @@ public class Arm extends Subsystem {
         break;
 			case MID_PANEL:
 				setTalonPositionMagic(MID_PANEL_POS);
+				break;
+			case SHIP_CARGO:
+				setTalonPositionMagic(SHIP_CARGO_POS);
 				break;
 			case MID_CARGO:
 				setTalonPositionMagic(MID_CARGO_POS);

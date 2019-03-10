@@ -40,6 +40,9 @@ public class Position_Control extends Subsystem {
 				case MID_PANEL:
 				positionLabel = "Mid Panel";
 				break;
+				case SHIP_CARGO:
+				positionLabel = "Ship Cargo";
+				break;
 				case MID_CARGO:
 				positionLabel = "Mid Cargo";
 				break;
@@ -103,6 +106,6 @@ public class Position_Control extends Subsystem {
 		}
 		
 		public static enum Position {
-			FRAME, INTAKE, LOW_CARGO, MID_PANEL, MID_CARGO, HIGH_PANEL, HIGH_CARGO;
+			FRAME, INTAKE, LOW_CARGO, MID_PANEL, SHIP_CARGO, MID_CARGO, HIGH_PANEL, HIGH_CARGO;
 		}
 }

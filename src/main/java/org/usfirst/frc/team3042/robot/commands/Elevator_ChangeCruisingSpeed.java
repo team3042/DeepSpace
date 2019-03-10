@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Elevator_ChangeCruisingSpeed extends Command {
 	/** Configuration Constants ***********************************************/
 	public static final Log.Level LOG_LEVEL = RobotMap.LOG_ELEVATOR;
-	public static final int ELEVATOR_CLIMB_SPEED = 500;
+	public static final int ELEVATOR_CLIMB_SPEED = 530;
 	
 	/** Instance Variables ****************************************************/
     Log log = new Log(LOG_LEVEL, getName());

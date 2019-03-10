@@ -29,6 +29,7 @@ public class Elevator extends Subsystem {
 	private final int HIGH_CARGO_POS = RobotMap.ELEVATOR_HIGH_CARGO_POSITION;
 	private final int LOW_CARGO_POS = RobotMap.ELEVATOR_LOW_CARGO_POSITION;
 	private final int MID_CARGO_POS = RobotMap.ELEVATOR_MID_CARGO_POSITION;
+	private final int SHIP_CARGO_POS = RobotMap.ELEVATOR_SHIP_CARGO_POSITION;
 	private int MAX_POS = RobotMap.ELEVATOR_MAX_POSITION;
 	private int MIN_POS = RobotMap.ELEVATOR_MIN_POSITION;
 	private final int MANUAL_SPEED = RobotMap.ELEVATOR_MANUAL_SPEED;
@@ -144,6 +145,11 @@ public class Elevator extends Subsystem {
 				log.add("Mid PANEL", Log.Level.DEBUG);
 				currentGoalPos = MID_PANEL_POS + elevatorZero; //setTalonPositionMagic(MID_PANEL_POS - elevatorZero);
 				log.add("Mid PANEL position: " + MID_PANEL_POS, Log.Level.DEBUG);
+				break;
+			case SHIP_CARGO:
+				log.add("SHIP CARGO", Log.Level.DEBUG);
+				currentGoalPos = SHIP_CARGO_POS + elevatorZero; //setTalonPositionMagic(SHIPCARGO_POS - elevatorZero);
+				log.add("SHIPCARGO position: " + SHIP_CARGO_POS, Log.Level.DEBUG);
 				break;
 			case MID_CARGO:
 				log.add("Mid CARGO", Log.Level.DEBUG);

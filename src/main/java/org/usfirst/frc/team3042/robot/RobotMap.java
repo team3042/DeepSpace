@@ -88,8 +88,8 @@ public class RobotMap {
 	public static final boolean DSN_WINCH_ISREVERSED = (IS_JUNO) ? false: true;
 	public static final double FORWARDPOWER = 0.75;
 	public static final double BACKWARDPOWER = 0.75;
-	public static final double DSNWINDUPPOWER = 0.75;
-	public static final double DSNWINDOUTPOWER = 0.75;
+	public static final double DSNWINDUPPOWER = 0.8;
+	public static final double DSNWINDOUTPOWER = 0.8;
 
 	/** Arm Settings ****************************************************/
 	public static final boolean HAS_CHOCK = true;
@@ -111,12 +111,13 @@ public class RobotMap {
 	public static final int ARM_MIN_POS = IS_JUNO ? 170 : 170;
 	public static final int ARM_MAX_POS = IS_JUNO ? 632 + ARM_MIN_POS : 632 + ARM_MIN_POS;
 	public static final int ARM_FRAME_POS = IS_JUNO ? ARM_MIN_POS : ARM_MIN_POS;
-	public static final int ARM_INTAKE_POS = IS_JUNO ? 255 + ARM_MIN_POS : 255 + ARM_MIN_POS;
+	public static final int ARM_INTAKE_POS = IS_JUNO ? 235 + ARM_MIN_POS : 235 + ARM_MIN_POS;
 	public static final int ARM_LOW_CARGO_POSITION = IS_JUNO 	? 205 + ARM_MIN_POS : 205 + ARM_MIN_POS;
 	public static final int ARM_MID_PANEL_POSITION = IS_JUNO    ? 290 + ARM_MIN_POS : 290 + ARM_MIN_POS;
-	public static final int ARM_MID_CARGO_POSITION = IS_JUNO 	? 370 + ARM_MIN_POS : 370 + ARM_MIN_POS;
-	public static final int ARM_HIGH_PANEL_POSITION = IS_JUNO 	? 370 + ARM_MIN_POS : 370 + ARM_MIN_POS;
-	public static final int ARM_HIGH_CARGO_POSITION = IS_JUNO 	? 370 + ARM_MIN_POS : 370 + ARM_MIN_POS;
+	public static final int ARM_SHIP_CARGO_POSITION = IS_JUNO    ? 370 + ARM_MIN_POS: 370 + ARM_MIN_POS;
+	public static final int ARM_MID_CARGO_POSITION = IS_JUNO 	? 445 + ARM_MIN_POS : 445 + ARM_MIN_POS;
+	public static final int ARM_HIGH_PANEL_POSITION = IS_JUNO 	? 445 + ARM_MIN_POS : 445 + ARM_MIN_POS;
+	public static final int ARM_HIGH_CARGO_POSITION = IS_JUNO 	? 445 + ARM_MIN_POS : 445 + ARM_MIN_POS;
 	public static final int ARM_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 200 : 100;
 	public static final int ARM_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 170 : 100; 
 	public static final int ARM_POSITION_CONTROL_RANGE = IS_JUNO	? 30 : 20;
@@ -151,6 +152,7 @@ public class RobotMap {
 	public static final int ELEVATOR_INTAKE_POSITION = IS_JUNO 		? ELEVATOR_MIN_POSITION : ELEVATOR_MIN_POSITION;
 	public static final int ELEVATOR_LOW_CARGO_POSITION = IS_JUNO 	? 0 : 0;
 	public static final int ELEVATOR_MID_PANEL_POSITION = IS_JUNO    ? 0 : 0;
+	public static final int ELEVATOR_SHIP_CARGO_POSITION = IS_JUNO    ? 0 : 0;
 	public static final int ELEVATOR_MID_CARGO_POSITION = IS_JUNO 	? 0 : 0;
 	public static final int ELEVATOR_HIGH_PANEL_POSITION = IS_JUNO 	? ELEVATOR_MAX_POSITION : ELEVATOR_MAX_POSITION;
 	public static final int ELEVATOR_HIGH_CARGO_POSITION = IS_JUNO 	? ELEVATOR_MAX_POSITION : ELEVATOR_MAX_POSITION;

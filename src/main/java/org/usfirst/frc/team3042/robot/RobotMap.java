@@ -115,9 +115,9 @@ public class RobotMap {
 	public static final int ARM_LOW_CARGO_POSITION = IS_JUNO 	? 205 + ARM_MIN_POS : 205 + ARM_MIN_POS;
 	public static final int ARM_MID_PANEL_POSITION = IS_JUNO    ? 290 + ARM_MIN_POS : 290 + ARM_MIN_POS;
 	public static final int ARM_SHIP_CARGO_POSITION = IS_JUNO    ? 370 + ARM_MIN_POS: 370 + ARM_MIN_POS;
-	public static final int ARM_MID_CARGO_POSITION = IS_JUNO 	? 445 + ARM_MIN_POS : 445 + ARM_MIN_POS;
-	public static final int ARM_HIGH_PANEL_POSITION = IS_JUNO 	? 445 + ARM_MIN_POS : 445 + ARM_MIN_POS;
-	public static final int ARM_HIGH_CARGO_POSITION = IS_JUNO 	? 445 + ARM_MIN_POS : 445 + ARM_MIN_POS;
+	public static final int ARM_MID_CARGO_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS : 535 + ARM_MIN_POS;
+	public static final int ARM_HIGH_PANEL_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS : 535 + ARM_MIN_POS;
+	public static final int ARM_HIGH_CARGO_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS : 535 + ARM_MIN_POS;
 	public static final int ARM_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 200 : 100;
 	public static final int ARM_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 170 : 100; 
 	public static final int ARM_POSITION_CONTROL_RANGE = IS_JUNO	? 30 : 20;
@@ -156,6 +156,7 @@ public class RobotMap {
 	public static final int ELEVATOR_MID_CARGO_POSITION = IS_JUNO 	? 0 : 0;
 	public static final int ELEVATOR_HIGH_PANEL_POSITION = IS_JUNO 	? ELEVATOR_MAX_POSITION : ELEVATOR_MAX_POSITION;
 	public static final int ELEVATOR_HIGH_CARGO_POSITION = IS_JUNO 	? ELEVATOR_MAX_POSITION : ELEVATOR_MAX_POSITION;
+	public static final int ELEVATOR_MID = IS_JUNO 	? -13000 : -13000;
 	public static final int ELEVATOR_MANUAL_SPEED = IS_JUNO 	? 5 : 5;
 	public static final double ELEVATOR_MAX_SPEED = IS_JUNO			? 1000 : 1000;
 	public static final double ELEVATOR_KP = IS_JUNO 	? 0.5 : 0.5;

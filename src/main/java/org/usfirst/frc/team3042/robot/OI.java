@@ -9,6 +9,7 @@ import org.usfirst.frc.team3042.robot.commands.Arm_Test;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Extake;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Intake;
 import org.usfirst.frc.team3042.robot.commands.ClimbHAB;
+import org.usfirst.frc.team3042.robot.commands.ClimbHabLevel2;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Backward;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Forward;
 import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Engage;
@@ -33,6 +34,7 @@ import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Toggle;
 import org.usfirst.frc.team3042.robot.commands.Position_Control_MoveIn;
 import org.usfirst.frc.team3042.robot.commands.Position_Control_MoveOut;
 import org.usfirst.frc.team3042.robot.commands.PrepareClimb;
+import org.usfirst.frc.team3042.robot.commands.PrepareClimbLevel2;
 import org.usfirst.frc.team3042.robot.commands.StopClimb;
 import org.usfirst.frc.team3042.robot.commands.Test_printSensorRaw;
 import org.usfirst.frc.team3042.robot.subsystems.Arm;
@@ -131,8 +133,10 @@ public class OI {
 				gamepad.X.whenPressed(new Panel_Gripper_Toggle());
 				gamepad.RT.whenInactive(new Panel_Slider_Toggle());
 				gamepad.RT.whenActive(new Panel_Slider_Toggle());
-				gamepad.Back.whenPressed(new PrepareClimb());
-				gamepad.Start.whenPressed(new ClimbHAB());
+				//gamepad.Back.whenPressed(new PrepareClimb());
+				gamepad.Back.whenPressed(new PrepareClimbLevel2());
+				//gamepad.Start.whenPressed(new ClimbHAB());
+				gamepad.Start.whenPressed(new ClimbHabLevel2());
 				gamepad.Y.whenPressed(new StopClimb());
 			}
 		}

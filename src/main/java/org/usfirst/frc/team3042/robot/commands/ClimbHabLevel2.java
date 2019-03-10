@@ -7,13 +7,14 @@
 
 package org.usfirst.frc.team3042.robot.commands;
 
-import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.lib.Log;
+import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.subsystems.Position_Control.Position;
 
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class PrepareClimb extends InstantCommand {
+public class ClimbHabLevel2 extends InstantCommand {
 
   Log log = new Log(Log.Level.DEBUG, getName());
 
@@ -26,7 +27,18 @@ public class PrepareClimb extends InstantCommand {
       //
       // ********** Construct our command group, and run it
       //
-      Robot.arm.setPosition(Position.INTAKE);
-      Robot.elevator.setPosition(Position.HIGH_PANEL);
+      CommandGroup cmdGroup = new CommandGroup("ClimbHAB");
+      cmdGroup.addSequential(new BucketPistons_Engage());
+      cmdGroup.addSequential(new DSN_Holder_Release());
+      cmdGroup.addSequential(new Elevator_ChangeCruisingSpeed());
+      cmdGroup.addSequential(new Elevator_SetPosition(Position.INTAKE));
+      cmdGroup.addSequential(new DSN_Winch_WindOut());
+      cmdGroup.addParallel(new Arm_Stop());
+      cmdGroup.addParallel(new DSN_Holder_Engage());
+      cmdGroup.addSequential(new Elevator_MonitorPosition());
+      cmdGroup.addParallel(new DSN_Winch_Stop());
+      cmdGroup.addParallel(new DSN_Drive_Forward());
+      cmdGroup.addParallel(new Drivetrain_DriveForward());
+      cmdGroup.start();
 		} 
   }

@@ -1,5 +1,6 @@
- package org.usfirst.frc.team3042.robot.commands;
+package org.usfirst.frc.team3042.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team3042.lib.Log;
@@ -19,6 +20,8 @@ public class DSN_Winch_WindOut extends Command {
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
 	DSN_Winch dsn_winch = Robot.dsn_winch;
+	boolean finished = false;
+	Timer timer = new Timer();
 	
 	
 	/** DSN_Winch_WindOut ********************************************************
@@ -36,6 +39,9 @@ public class DSN_Winch_WindOut extends Command {
 	protected void initialize() {
 		log.add("Initialize", Log.Level.TRACE);
 		dsn_winch.windout();
+		finished = false;
+		timer.reset();
+		timer.start();
 	}
 
 	
@@ -43,6 +49,7 @@ public class DSN_Winch_WindOut extends Command {
 	 * Called repeatedly when this Command is scheduled to run
 	 */
 	protected void execute() {
+		 if (timer.get() > 0.1) finished = true;
 	}
 	
 	
@@ -50,7 +57,7 @@ public class DSN_Winch_WindOut extends Command {
 	 * Make this return true when this Command no longer needs to run execute()
 	 */
 	protected boolean isFinished() {
-		return true;
+		return finished;
 	}
 
 	

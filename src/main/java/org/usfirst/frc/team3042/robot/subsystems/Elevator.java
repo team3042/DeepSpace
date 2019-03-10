@@ -30,6 +30,7 @@ public class Elevator extends Subsystem {
 	private final int LOW_CARGO_POS = RobotMap.ELEVATOR_LOW_CARGO_POSITION;
 	private final int MID_CARGO_POS = RobotMap.ELEVATOR_MID_CARGO_POSITION;
 	private final int SHIP_CARGO_POS = RobotMap.ELEVATOR_SHIP_CARGO_POSITION;
+	private final int ELEVATOR_MID = RobotMap.ELEVATOR_MID;
 	private int MAX_POS = RobotMap.ELEVATOR_MAX_POSITION;
 	private int MIN_POS = RobotMap.ELEVATOR_MIN_POSITION;
 	private final int MANUAL_SPEED = RobotMap.ELEVATOR_MANUAL_SPEED;
@@ -117,6 +118,10 @@ public class Elevator extends Subsystem {
 	
 	public int safetyCheck(int position) {
 		return Math.max(Math.min(MAX_POS, position), MIN_POS);
+	}
+
+	public void gotoMid() {
+		currentGoalPos = ELEVATOR_MID + elevatorZero;
 	}
 	
 	/**

@@ -16,7 +16,7 @@ import org.usfirst.frc.team3042.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class OI_ShiftCommand_ClimbHabLevel2 extends InstantCommand {
+public class OI_ShiftCommand_ClimbHabLevel3 extends InstantCommand {
 /** Configuration Constants ***********************************************/
 private static final Log.Level LOG_LEVEL = RobotMap.LOG_DSN_HOLDER;
 	
@@ -28,7 +28,7 @@ Log log = new Log(LOG_LEVEL, getName());
   /**
    * Add your docs here.
    */
-  public OI_ShiftCommand_ClimbHabLevel2() {
+  public OI_ShiftCommand_ClimbHabLevel3() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -38,8 +38,8 @@ Log log = new Log(LOG_LEVEL, getName());
   @Override
   protected void initialize() {
     log.add("Initialize", Log.Level.TRACE);
-    Robot.oi.currentClimbPrep = new PrepareClimbLevel2();
-    Robot.oi.currentClimbStart = new ClimbHabLevel2();
+    Robot.oi.currentClimbPrep = new PrepareClimb();
+    Robot.oi.currentClimbStart = new ClimbHAB();
   }
 
 }

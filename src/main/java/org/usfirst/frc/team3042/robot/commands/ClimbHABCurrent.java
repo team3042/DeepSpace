@@ -7,28 +7,22 @@
 
 package org.usfirst.frc.team3042.robot.commands;
 
-import edu.wpi.first.wpilibj.command.InstantCommand;
-
-import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
-import org.usfirst.frc.team3042.robot.RobotMap;
+import org.usfirst.frc.team3042.lib.Log;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 
 /**
  * Add your docs here.
  */
-public class OI_ShiftCommand_ClimbHabLevel2 extends InstantCommand {
-/** Configuration Constants ***********************************************/
-private static final Log.Level LOG_LEVEL = RobotMap.LOG_DSN_HOLDER;
-	
-	
-/** Instance Variables ****************************************************/
-Log log = new Log(LOG_LEVEL, getName());
+public class ClimbHABCurrent extends InstantCommand {
 
-//SendableChooser
+  Log log = new Log(Log.Level.DEBUG, getName());
+
   /**
    * Add your docs here.
    */
-  public OI_ShiftCommand_ClimbHabLevel2() {
+  public ClimbHABCurrent() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -37,9 +31,9 @@ Log log = new Log(LOG_LEVEL, getName());
   // Called once when the command executes
   @Override
   protected void initialize() {
-    log.add("Initialize", Log.Level.TRACE);
-    Robot.oi.currentClimbPrep = new PrepareClimbLevel2();
-    Robot.oi.currentClimbStart = new ClimbHabLevel2();
+    log.add("Initialize", Log.Level.DEBUG);
+    Command command = Robot.oi.getCurentHabStart();
+    command.start();
   }
 
 }

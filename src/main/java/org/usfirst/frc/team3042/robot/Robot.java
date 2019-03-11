@@ -91,8 +91,6 @@ public class Robot extends TimedRobot {
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<Command>();
-	SendableChooser<Command> HabPrepChooser = new SendableChooser<Command>();
-	SendableChooser<Command> HabClimbChooser = new SendableChooser<Command>();
 
 	Preferences prefs;
 
@@ -117,16 +115,9 @@ public class Robot extends TimedRobot {
 		}
 
 		oi = new OI();
-
 		chooser.setDefaultOption("Default Auto", new ExampleCommand());
 		chooser.addOption("My Auto", new ExampleCommand());
 		SmartDashboard.putData("Auto Mode", chooser);
-
-		HabPrepChooser.setDefaultOption("Hab level 3 prep", new PrepareClimb());
-		HabPrepChooser.addOption("Hab level 2 prep", new PrepareClimbLevel2());
-
-		HabClimbChooser.setDefaultOption("Hab level 3 climb", new ClimbHAB());
-		HabClimbChooser.addOption("Hab level 2 climb", new ClimbHabLevel2());
 
 		prefs = Preferences.getInstance();
 		kP_Elevator = prefs.getDouble("kP_Elevator", RobotMap.ELEVATOR_KP);

@@ -9,6 +9,7 @@ import org.usfirst.frc.team3042.robot.commands.Arm_Test;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Extake;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Intake;
 import org.usfirst.frc.team3042.robot.commands.ClimbHAB;
+import org.usfirst.frc.team3042.robot.commands.ClimbHABCurrent;
 import org.usfirst.frc.team3042.robot.commands.ClimbHabLevel2;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Backward;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Forward;
@@ -25,6 +26,8 @@ import org.usfirst.frc.team3042.robot.commands.Drivetrain_Shift;
 import org.usfirst.frc.team3042.robot.commands.Elevator_SetPosition;
 import org.usfirst.frc.team3042.robot.commands.Elevator_Test;
 import org.usfirst.frc.team3042.robot.commands.LineTracker_PrintLines;
+import org.usfirst.frc.team3042.robot.commands.OI_ShiftCommand_ClimbHabLevel2;
+import org.usfirst.frc.team3042.robot.commands.OI_ShiftCommand_ClimbHabLevel3;
 import org.usfirst.frc.team3042.robot.commands.Panel_Gripper_Toggle;
 import org.usfirst.frc.team3042.robot.commands.Panel_Intake;
 import org.usfirst.frc.team3042.robot.commands.Panel_Release;
@@ -34,12 +37,15 @@ import org.usfirst.frc.team3042.robot.commands.Panel_Slider_Toggle;
 import org.usfirst.frc.team3042.robot.commands.Position_Control_MoveIn;
 import org.usfirst.frc.team3042.robot.commands.Position_Control_MoveOut;
 import org.usfirst.frc.team3042.robot.commands.PrepareClimb;
+import org.usfirst.frc.team3042.robot.commands.PrepareClimbCurrent;
 import org.usfirst.frc.team3042.robot.commands.PrepareClimbLevel2;
 import org.usfirst.frc.team3042.robot.commands.StopClimb;
 import org.usfirst.frc.team3042.robot.commands.Test_printSensorRaw;
 import org.usfirst.frc.team3042.robot.subsystems.Arm;
 import org.usfirst.frc.team3042.robot.subsystems.Elevator;
 import org.usfirst.frc.team3042.robot.triggers.POVButton;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * OI ************************************************************************
@@ -72,6 +78,8 @@ public class OI {
 	int driveAxisLeft, driveAxisRight;
 	public static double CURRENT_DRIVE_SCALE = JOYSTICK_DRIVE_SCALE;
 	public static boolean isHighScale = SCALE_STARTS_HIGH;
+	public Command currentClimbPrep = new PrepareClimb();
+	public Command currentClimbStart = new ClimbHAB();
 
 	/**
 	 * OI ********************************************************************
@@ -123,6 +131,8 @@ public class OI {
 			} else {
 				gamepad.POVUp.whenActive(new Position_Control_MoveIn(false));
 				gamepad.POVDown.whenActive(new Position_Control_MoveOut(false));
+				gamepad.POVLeft.whenActive(new OI_ShiftCommand_ClimbHabLevel3());
+				gamepad.POVRight.whenActive(new OI_ShiftCommand_ClimbHabLevel2());
 				gamepad.A.whenPressed(new Position_Control_MoveOut(true));
 				gamepad.B.whenPressed(new Position_Control_MoveIn(true));
 				joyRight.button1.whenPressed(new Drivetrain_Shift());
@@ -133,12 +143,8 @@ public class OI {
 				gamepad.X.whenPressed(new Panel_Gripper_Toggle());
 				gamepad.RT.whenInactive(new Panel_Slider_Toggle());
 				gamepad.RT.whenActive(new Panel_Slider_Toggle());
-
-				gamepad.Back.whenPressed(new PrepareClimb());
-				//gamepad.Back.whenPressed(new PrepareClimbLevel2());
-				gamepad.Start.whenPressed(new ClimbHAB());
-				//gamepad.Start.whenPressed(new ClimbHabLevel2());
-
+				gamepad.Back.whenPressed(new PrepareClimbCurrent());
+				gamepad.Start.whenPressed(new ClimbHABCurrent());
 				gamepad.Y.whenPressed(new StopClimb());
 			}
 		}
@@ -217,5 +223,13 @@ public class OI {
 		double leftTrigger = gamepad.getRawAxis(GAMEPAD_LEFT_TRIGGER);
 		double rightTrigger = gamepad.getRawAxis(GAMEPAD_RIGHT_TRIGGER);
 		return (rightTrigger - leftTrigger) * TRIGGER_SPINNER_SCALE;
+	}
+
+	public Command getCurentHabPrep() {
+		return currentClimbPrep;
+	}
+
+	public Command getCurentHabStart() {
+		return currentClimbStart;
 	}
 }

@@ -271,5 +271,5 @@ public class RobotMap {
 	public static final Log.Level	LOG_CARGO_ROLLER            = Log.Level.TRACE;
 	public static final Log.Level	LOG_POSITION_CONTROL        = Log.Level.TRACE;
 	public static final Log.Level	LOG_CHOCK                   = Log.Level.TRACE;
-	public static final Log.Level	LOG_BUCKET_PISTONS           = Log.Level.TRACE;
+	public static final Log.Level	LOG_BUCKET_PISTONS          = Log.Level.TRACE;
 }

@@ -8,6 +8,7 @@
 package org.usfirst.frc.team3042.robot.commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3042.lib.Log;
 import org.usfirst.frc.team3042.robot.Robot;
@@ -40,6 +41,7 @@ Log log = new Log(LOG_LEVEL, getName());
     log.add("Initialize", Log.Level.TRACE);
     Robot.oi.currentClimbPrep = new PrepareClimb();
     Robot.oi.currentClimbStart = new ClimbHAB();
+    SmartDashboard.putString("HAB Climb", "Level 3");
   }
 
 }

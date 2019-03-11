@@ -133,10 +133,12 @@ public class OI {
 				gamepad.X.whenPressed(new Panel_Gripper_Toggle());
 				gamepad.RT.whenInactive(new Panel_Slider_Toggle());
 				gamepad.RT.whenActive(new Panel_Slider_Toggle());
-				//gamepad.Back.whenPressed(new PrepareClimb());
-				gamepad.Back.whenPressed(new PrepareClimbLevel2());
-				//gamepad.Start.whenPressed(new ClimbHAB());
-				gamepad.Start.whenPressed(new ClimbHabLevel2());
+
+				gamepad.Back.whenPressed(new PrepareClimb());
+				//gamepad.Back.whenPressed(new PrepareClimbLevel2());
+				gamepad.Start.whenPressed(new ClimbHAB());
+				//gamepad.Start.whenPressed(new ClimbHabLevel2());
+
 				gamepad.Y.whenPressed(new StopClimb());
 			}
 		}

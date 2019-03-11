@@ -114,7 +114,7 @@ public class RobotMap {
 	public static final int ARM_INTAKE_POS = IS_JUNO ? 235 + ARM_MIN_POS : 235 + ARM_MIN_POS;
 	public static final int ARM_LOW_CARGO_POSITION = IS_JUNO 	? 205 + ARM_MIN_POS : 205 + ARM_MIN_POS;
 	public static final int ARM_MID_PANEL_POSITION = IS_JUNO    ? 290 + ARM_MIN_POS : 290 + ARM_MIN_POS;
-	public static final int ARM_SHIP_CARGO_POSITION = IS_JUNO    ? 370 + ARM_MIN_POS: 370 + ARM_MIN_POS;
+	public static final int ARM_SHIP_CARGO_POSITION = IS_JUNO   ? 370 + ARM_MIN_POS : 370 + ARM_MIN_POS;
 	public static final int ARM_MID_CARGO_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS : 535 + ARM_MIN_POS;
 	public static final int ARM_HIGH_PANEL_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS : 535 + ARM_MIN_POS;
 	public static final int ARM_HIGH_CARGO_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS : 535 + ARM_MIN_POS;

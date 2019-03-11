@@ -1,7 +1,11 @@
 package org.usfirst.frc.team3042.robot;
 
 import org.usfirst.frc.team3042.lib.Log;
+import org.usfirst.frc.team3042.robot.commands.ClimbHAB;
+import org.usfirst.frc.team3042.robot.commands.ClimbHabLevel2;
 import org.usfirst.frc.team3042.robot.commands.ExampleCommand;
+import org.usfirst.frc.team3042.robot.commands.PrepareClimb;
+import org.usfirst.frc.team3042.robot.commands.PrepareClimbLevel2;
 import org.usfirst.frc.team3042.robot.subsystems.DSN_Drive;
 import org.usfirst.frc.team3042.robot.subsystems.DSN_Winch;
 import org.usfirst.frc.team3042.robot.subsystems.Drivetrain;
@@ -26,7 +30,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
-
 
 /**
  * Robot *********************************************************************
@@ -74,7 +77,7 @@ public class Robot extends TimedRobot {
 	public static final BucketPistons bucket_pistons = (HAS_BUCKET_PISTONS) ? new BucketPistons() : null;
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final PowerDistributionPanel pdp = new PowerDistributionPanel();
-	
+
 	public static OI oi;
 
 	public static boolean elevatorEmergencyMode = false;
@@ -88,15 +91,18 @@ public class Robot extends TimedRobot {
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<Command>();
+	SendableChooser<Command> HabPrepChooser = new SendableChooser<Command>();
+	SendableChooser<Command> HabClimbChooser = new SendableChooser<Command>();
 
 	Preferences prefs;
 
 	CameraServer camera1;
 	CameraServer camera2;
 
-	/** robotInit *************************************************************
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
+	/**
+	 * robotInit ************************************************************* This
+	 * function is run when the robot is first started up and should be used for any
+	 * initialization code.
 	 */
 	public void robotInit() {
 		log.add("Robot Init", Log.Level.TRACE);
@@ -109,12 +115,18 @@ public class Robot extends TimedRobot {
 			camera2 = CameraServer.getInstance();
 			camera2.startAutomaticCapture();
 		}
-			
-		
+
 		oi = new OI();
+
 		chooser.setDefaultOption("Default Auto", new ExampleCommand());
 		chooser.addOption("My Auto", new ExampleCommand());
 		SmartDashboard.putData("Auto Mode", chooser);
+
+		HabPrepChooser.setDefaultOption("Hab level 3 prep", new PrepareClimb());
+		HabPrepChooser.addOption("Hab level 2 prep", new PrepareClimbLevel2());
+
+		HabClimbChooser.setDefaultOption("Hab level 3 climb", new ClimbHAB());
+		HabClimbChooser.addOption("Hab level 2 climb", new ClimbHabLevel2());
 
 		prefs = Preferences.getInstance();
 		kP_Elevator = prefs.getDouble("kP_Elevator", RobotMap.ELEVATOR_KP);

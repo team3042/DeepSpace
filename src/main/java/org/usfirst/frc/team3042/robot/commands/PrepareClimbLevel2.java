@@ -38,7 +38,7 @@ public class PrepareClimbLevel2 extends Command {
   }
 
   protected void execute() {
-    if ( Robot.arm.getPosition() <= ARM_INTAKE_POS - ARM_TOLERANCE || timeOut.get() >= RobotMap.ARM_TIMEOUT) {
+    if ( ((RobotMap.IS_JUNO) ? Robot.arm.getPosition() >= ARM_INTAKE_POS - ARM_TOLERANCE : Robot.arm.getPosition() <= ARM_INTAKE_POS) || timeOut.get() >= RobotMap.ARM_TIMEOUT) {
       finished = true;
       Robot.elevator.gotoMid();
     }

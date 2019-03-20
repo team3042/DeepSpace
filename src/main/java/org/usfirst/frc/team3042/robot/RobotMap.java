@@ -124,7 +124,7 @@ public class RobotMap {
 	public static final int ARM_POSITION_WAIT_TOLLERANCE = IS_JUNO ? 30 : 30;
 	public static final int ARM_TOLERANCE = IS_JUNO ? 10 : 10;
 	public static final int ARM_MAGIC_GRAVITY_OFFSET = IS_JUNO ? 40 : 40;
-	public static final int ARM_TIMEOUT = IS_JUNO ? 2 : 2;
+	public static final int ARM_TIMEOUT = IS_JUNO ? 1 : 1;
 	public static final int DELTA_POT = IS_JUNO ? 400 : 400; //Units: per second
 
 	/** Hook Holder Settings ****************************************************/

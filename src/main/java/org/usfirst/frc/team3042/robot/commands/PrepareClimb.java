@@ -26,6 +26,7 @@ public class PrepareClimb extends InstantCommand {
       //
       // ********** Construct our command group, and run it
       //
+      Robot.chock.toggle();
       Robot.arm.setPosition(Position.INTAKE);
       Robot.elevator.setPosition(Position.HIGH_PANEL);
 		} 

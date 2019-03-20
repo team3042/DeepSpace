@@ -11,7 +11,7 @@ public class RobotMap {
 	/** Robot selector ********************************************************/
 	public static enum Bot {JUNO, JUPITER;}
 	// Set the bot to which you intend to push code.
-	private static Bot currentBot = Bot.JUNO;
+	private static Bot currentBot = Bot.JUPITER;
 
 	public static final boolean IS_JUPITER = (currentBot == Bot.JUPITER);
 	public static final boolean IS_JUNO = (currentBot == Bot.JUNO);
@@ -26,7 +26,7 @@ public class RobotMap {
 	
 
 	/** USB Host ports ********************************************************/
-	public static final boolean HAS_CAMERA1 = (IS_JUNO) ? true: false;
+	public static final boolean HAS_CAMERA1 = (IS_JUNO) ? true: true;
 	public static final boolean HAS_CAMERA2 = (IS_JUNO) ? false: false;
 	
 	/** USB ports *************************************************************/					
@@ -62,8 +62,8 @@ public class RobotMap {
 	public static final int SLIDER_SOLENOID =		(IS_JUNO)? 0 : 0;
 	public static final int GRIPPER_SOLENOID =		(IS_JUNO)? 1 : 1;
 	public static final int DRIVETRAIN_SOLENOID = 	(IS_JUNO)? 3 : 7;
-	public static final int CHOCK_SOLENOID = 	(IS_JUNO)? 8 : 8;
-	public static final int BUCKETPISTONS_SOLENOID = 	(IS_JUNO)? 4 : 9;
+	public static final int CHOCK_SOLENOID = 		(IS_JUNO)? 8 : 6;
+	public static final int BUCKETPISTONS_SOLENOID =(IS_JUNO)? 4 : 5;
 	
 
 	/** SPI ports *************************************************************/
@@ -89,7 +89,7 @@ public class RobotMap {
 	public static final double FORWARDPOWER = 0.75;
 	public static final double BACKWARDPOWER = 0.75;
 	public static final double DSNWINDUPPOWER = 0.8;
-	public static final double DSNWINDOUTPOWER = 0.8;
+	public static final double DSNWINDOUTPOWER = 0.6;
 
 	/** Arm Settings ****************************************************/
 	public static final boolean HAS_CHOCK = true;
@@ -101,31 +101,31 @@ public class RobotMap {
 	public static final boolean ARM_FOLLOWER_IS_LEFT = (IS_JUNO) ? true: true;
 	public static final boolean ARM_IS_REVERSED = false;
 	public static final boolean ARM_RIGHT_AND_LEFT_ARE_OPPOSITE = true;
-	public static final double ARM_KP = IS_JUNO 	? 5d : 10.0;
-	public static final double ARM_KI = IS_JUNO 	? 0.0 : 0.015;
-	public static final double ARM_KD = IS_JUNO 	? 100d : 50.0;
+	public static final double ARM_KP = IS_JUNO 	? 5d : 5d;
+	public static final double ARM_KI = IS_JUNO 	? 0.0 : 0d;
+	public static final double ARM_KD = IS_JUNO 	? 100d : 100d;
 	public static final double ARM_KF = IS_JUNO 	? 0d : 0;
-	public static final int ARM_I_ZONE = IS_JUNO 	? 100 : 30;
+	public static final int ARM_I_ZONE = IS_JUNO 	? 100 : 100;
 	public static final boolean ARM_REVERSE_SENSOR_PHASE = (IS_JUNO) ? false : true;
-	public static final int ARM_MANUAL_SPEED = IS_JUNO	? 0 : 1;
-	public static final int ARM_MIN_POS = IS_JUNO ? 170 : 170;
-	public static final int ARM_MAX_POS = IS_JUNO ? 632 + ARM_MIN_POS : 632 + ARM_MIN_POS;
-	public static final int ARM_FRAME_POS = IS_JUNO ? ARM_MIN_POS : ARM_MIN_POS;
-	public static final int ARM_INTAKE_POS = IS_JUNO ? 235 + ARM_MIN_POS : 235 + ARM_MIN_POS;
-	public static final int ARM_LOW_CARGO_POSITION = IS_JUNO 	? 205 + ARM_MIN_POS : 205 + ARM_MIN_POS;
-	public static final int ARM_MID_PANEL_POSITION = IS_JUNO    ? 290 + ARM_MIN_POS : 290 + ARM_MIN_POS;
-	public static final int ARM_SHIP_CARGO_POSITION = IS_JUNO   ? 370 + ARM_MIN_POS : 370 + ARM_MIN_POS;
-	public static final int ARM_MID_CARGO_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS : 535 + ARM_MIN_POS;
-	public static final int ARM_HIGH_PANEL_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS : 535 + ARM_MIN_POS;
-	public static final int ARM_HIGH_CARGO_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS : 535 + ARM_MIN_POS;
-	public static final int ARM_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 200 : 100;
-	public static final int ARM_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 170 : 100; 
-	public static final int ARM_POSITION_CONTROL_RANGE = IS_JUNO	? 30 : 20;
+	public static final int ARM_MANUAL_SPEED = IS_JUNO	? 0 : 0;
+	public static final int ARM_MIN_POS = IS_JUNO ? 170 :  -240 - 632;
+	public static final int ARM_MAX_POS = IS_JUNO ? 632 + ARM_MIN_POS : -240;
+	public static final int ARM_FRAME_POS = IS_JUNO ? ARM_MIN_POS : ARM_MAX_POS;
+	public static final int ARM_INTAKE_POS = IS_JUNO ? 235 + ARM_MIN_POS : ARM_MAX_POS - 235;
+	public static final int ARM_LOW_CARGO_POSITION = IS_JUNO 	? 205 + ARM_MIN_POS :  ARM_MAX_POS - 205;
+	public static final int ARM_MID_PANEL_POSITION = IS_JUNO    ? 290 + ARM_MIN_POS : ARM_MAX_POS - 290;
+	public static final int ARM_SHIP_CARGO_POSITION = IS_JUNO   ? 370 + ARM_MIN_POS :ARM_MAX_POS - 370;
+	public static final int ARM_MID_CARGO_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS : ARM_MAX_POS - 535;
+	public static final int ARM_HIGH_PANEL_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS :ARM_MAX_POS - 535;
+	public static final int ARM_HIGH_CARGO_POSITION = IS_JUNO 	? 535 + ARM_MIN_POS :ARM_MAX_POS - 535;
+	public static final int ARM_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 200 : 200;
+	public static final int ARM_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 170 : 170; 
+	public static final int ARM_POSITION_CONTROL_RANGE = IS_JUNO	? 30 : 30;
 	public static final int ARM_POSITION_WAIT_TOLLERANCE = IS_JUNO ? 30 : 30;
 	public static final int ARM_TOLERANCE = IS_JUNO ? 10 : 10;
 	public static final int ARM_MAGIC_GRAVITY_OFFSET = IS_JUNO ? 40 : 40;
 	public static final int ARM_TIMEOUT = IS_JUNO ? 2 : 2;
-	public static final int DELTA_POT = IS_JUNO ? 400 : 100; //Units: per second
+	public static final int DELTA_POT = IS_JUNO ? 400 : 400; //Units: per second
 
 	/** Hook Holder Settings ****************************************************/
 	public static final boolean HAS_HOOK_HOLDER = true;
@@ -135,7 +135,10 @@ public class RobotMap {
 	public static final boolean HAS_PANEL_SLIDER = true;
 	public static final boolean HAS_PANEL_GRIPPER = true;
 	public static final boolean PANNEL_SLIDER_STARTS_ACTIVE = true;
-	public static final boolean PANNEL_GRIPPER_STARTS_ACTIVE = false;	
+	public static final boolean PANNEL_GRIPPER_STARTS_ACTIVE = false;
+	
+	/** Chock Settings ***********************************************************/
+	public static final boolean CHOCK_STARTS_ACTIVE = true;
 
 	/** Cargo Roller Settings ****************************************************/
 	public static final boolean HAS_CARGO_ROLLER = true;
@@ -164,9 +167,9 @@ public class RobotMap {
 	public static final double ELEVATOR_KD = IS_JUNO 	? 15.0 : 15.0;
 	public static final double ELEVATOR_KF = IS_JUNO 	? 0.5 : 0.5;
 	public static final int ELEVATOR_I_ZONE = IS_JUNO 	? 0 : 0;
-	public static final int ELEVATOR_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 3500 : 8000;
-	public static final int ELEVATOR_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 4000 : 8000;
-	public static final boolean ELEVATOR_REVERSE = (IS_JUNO) ? true: false;
+	public static final int ELEVATOR_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 3500 : 3500;
+	public static final int ELEVATOR_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 4000 : 4000;
+	public static final boolean ELEVATOR_REVERSE = (IS_JUNO) ? true: true;
 	public static final int ELEVATOR_SPROCKET_CIRCUMFERENCE = IS_JUNO ? 4 : 4;
 	public static final int ELEVATOR_TOLERANCE = IS_JUNO ? 500 : 500;
 	public static final int ELEVATOR_TIMEOUT = IS_JUNO ? 5 : 5;

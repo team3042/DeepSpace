@@ -14,10 +14,13 @@ public class Chock extends Subsystem {
 	/** Configuration Constants ***********************************************/
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_CHOCK;
 	private static final int ID = RobotMap.CHOCK_SOLENOID;
+	private static final boolean open = RobotMap.CHOCK_STARTS_ACTIVE;
+	private static final boolean close = !open;
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
-	//Solenoid chockSolenoid = new Solenoid(ID);
+	Solenoid chockSolenoid = new Solenoid(ID);
+	boolean isOpen = open;
 	
 	
 	/** Chock ******************************************************
@@ -34,6 +37,23 @@ public class Chock extends Subsystem {
 	public void disengageChock() {
 		//chockSolenoid.set(false);
 	}
+
+	public void setOpen(){
+    	chockSolenoid.set(!open);
+    	isOpen = true;
+    }
+    public void setClose(){
+    	chockSolenoid.set(open);
+    	isOpen = false;
+    }
+    public void toggle(){
+    	if (isOpen){
+    		setClose();
+    	}
+    	else {
+    		setOpen();
+    	}
+    }
 	
 	/** initDefaultCommand ****************************************************
 	 * Set the default command for the subsystem.

@@ -66,7 +66,8 @@ public class Arm extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-    	setDefaultCommand(new Arm_HoldAdjustedPosition());
+		//setDefaultCommand(new Arm_Stop());
+		setDefaultCommand(new Arm_HoldAdjustedPosition());
     }
     
     public void manual(int direction){

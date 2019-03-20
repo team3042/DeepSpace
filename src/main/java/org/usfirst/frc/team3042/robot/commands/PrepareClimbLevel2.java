@@ -12,6 +12,7 @@ import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Position_Control.Position;
 import org.usfirst.frc.team3042.lib.Log;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class PrepareClimbLevel2 extends Command {
@@ -22,6 +23,7 @@ public class PrepareClimbLevel2 extends Command {
 
   Log log = new Log(LOG_LEVEL, getName());
   boolean finished = false;
+  Timer timeOut = new Timer();
 
   public PrepareClimbLevel2() {
   }
@@ -29,11 +31,14 @@ public class PrepareClimbLevel2 extends Command {
   protected void initialize() {
     log.add("INITIALIZE", LOG_LEVEL.TRACE);
     finished = false;
+    Robot.chock.toggle();
     Robot.arm.setPosition(Position.INTAKE);
+    timeOut.reset();
+    timeOut.start();
   }
 
   protected void execute() {
-    if ( Robot.arm.getPosition() >= ARM_INTAKE_POS - ARM_TOLERANCE) {
+    if ( Robot.arm.getPosition() <= ARM_INTAKE_POS - ARM_TOLERANCE || timeOut.get() >= RobotMap.ARM_TIMEOUT) {
       finished = true;
       Robot.elevator.gotoMid();
     }

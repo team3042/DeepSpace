@@ -22,6 +22,8 @@ import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
 import org.usfirst.frc.team3042.robot.subsystems.Arm;
 import org.usfirst.frc.team3042.robot.subsystems.BucketPistons;
 
+import edu.wpi.cscore.MjpegServer;
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -94,8 +96,8 @@ public class Robot extends TimedRobot {
 
 	Preferences prefs;
 
-	CameraServer camera1;
-	CameraServer camera2;
+	UsbCamera camera1;
+	MjpegServer mjpegServer;
 
 	/**
 	 * robotInit ************************************************************* This
@@ -106,13 +108,17 @@ public class Robot extends TimedRobot {
 		log.add("Robot Init", Log.Level.TRACE);
 
 		if (HAS_CAMERA1) {
-			camera1 = CameraServer.getInstance();
-			camera1.startAutomaticCapture();
+			camera1 = CameraServer.getInstance().startAutomaticCapture(0);
+			// mjpegServer = CameraServer.getInstance().startAutomaticCapture(camera1);
+			camera1.setResolution(320, 240);
+			camera1.setFPS(15);
+			// mjpegServer.setCompression(30);
+			
 		}
-		if (HAS_CAMERA2) {
-			camera2 = CameraServer.getInstance();
-			camera2.startAutomaticCapture();
-		}
+		// if (HAS_CAMERA2) {
+		// 	camera2 = CameraServer.getInstance();
+		// 	camera2.startAutomaticCapture();
+		// }
 
 		oi = new OI();
 		chooser.setDefaultOption("Default Auto", new ExampleCommand());
@@ -155,11 +161,14 @@ public class Robot extends TimedRobot {
 		
 		autonomousCommand = chooser.getSelected();
 
+		/*
 		Robot.panel_gripper.toggle();
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+			*/
+		panel_gripper.toggle();
 	}
 
 	

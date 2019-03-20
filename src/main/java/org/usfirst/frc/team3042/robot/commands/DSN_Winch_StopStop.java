@@ -15,62 +15,48 @@ import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.DSN_Winch;
 
-public class DSN_Winch_Stop extends Command {
+public class DSN_Winch_StopStop extends Command {
   /** Configuration Constants ***********************************************/
   private static final Log.Level LOG_LEVEL = RobotMap.LOG_DSN_WINCH;
   
   /** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());
   DSN_Winch dsn_winch = Robot.dsn_winch;
-  boolean hasDelay = false;
-  Timer timeOut = new Timer();
-  boolean hasFinished = true;
   
   /**
    * <b> DSN_Winch_Stop </b>
    * <p> Stops the {@link DSN_Winch}.
    */
-  public DSN_Winch_Stop() {
+  public DSN_Winch_StopStop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(dsn_winch);
-  }
-
-  public DSN_Winch_Stop(boolean hasDelay) {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(dsn_winch);
-    this.hasDelay = hasDelay;
-    hasFinished = false;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
     log.add("Initialize", Log.Level.TRACE);
-    timeOut.reset();
-    timeOut.start();
+    dsn_winch.stop();
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (timeOut.get() >= 2) {
-      hasFinished = true;
-    }
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return hasFinished;
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
     log.add("End", Log.Level.TRACE);
-    dsn_winch.stop();
   }
 
   // Called when another command which requires one or more of the same
@@ -78,6 +64,5 @@ public class DSN_Winch_Stop extends Command {
   @Override
   protected void interrupted() {
     log.add("Interrupted", Log.Level.TRACE);
-    dsn_winch.stop();
   }
 }

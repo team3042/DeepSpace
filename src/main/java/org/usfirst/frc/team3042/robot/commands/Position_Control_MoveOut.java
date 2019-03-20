@@ -64,7 +64,7 @@ public class Position_Control_MoveOut extends Command {
 
   protected void execute() {
     if (shouldMove) {
-    if ( (Robot.arm.getPosition() + MAGIC_GRAVITY_OFFSET >= ARM_INTAKE_POS - ARM_TOLERANCE) || 
+    if ( (Robot.arm.getPosition() + MAGIC_GRAVITY_OFFSET <= ARM_INTAKE_POS - ARM_TOLERANCE) || 
     timer.get() > ARM_TIMEOUT) {
       log.add("Arm Moved", LOG_LEVEL.TRACE);
       finished = true;

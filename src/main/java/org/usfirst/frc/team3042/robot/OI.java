@@ -6,8 +6,11 @@ import org.usfirst.frc.team3042.robot.commands.Arm_CyclePositions;
 import org.usfirst.frc.team3042.robot.commands.Arm_IntoFrame;
 import org.usfirst.frc.team3042.robot.commands.Arm_SetPosition;
 import org.usfirst.frc.team3042.robot.commands.Arm_Test;
+import org.usfirst.frc.team3042.robot.commands.BucketPistons_Disengage;
+import org.usfirst.frc.team3042.robot.commands.BucketPistons_Engage;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Extake;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Intake;
+import org.usfirst.frc.team3042.robot.commands.Chock_Toggle;
 import org.usfirst.frc.team3042.robot.commands.ClimbHAB;
 import org.usfirst.frc.team3042.robot.commands.ClimbHABCurrent;
 import org.usfirst.frc.team3042.robot.commands.ClimbHabLevel2;
@@ -151,22 +154,43 @@ public class OI {
 
 		/** JUPITER Controls **************************************************/
 		if (IS_JUPITER) {
-			//gamepad.Start.whenPressed(new Test_printSensorRaw()); 
-			joyRight.button1.whenPressed(new Drivetrain_Shift());
-			gamepad.RT.whileActive(new DSN_Drive_Forward());
-			gamepad.LT.whileActive(new DSN_Drive_Backward());
-			gamepad.RB.whileHeld(new Cargo_Roller_Intake());
-			gamepad.LB.whileHeld(new Cargo_Roller_Extake());
-			gamepad.LeftJoyUp.whenActive(new Elevator_Test());
-			gamepad.LeftJoyDown.whenActive(new Elevator_Test());
-			gamepad.RightJoyUp.whenActive(new Arm_Test());
-			gamepad.RightJoyDown.whenActive(new Arm_Test());
-			gamepad.POVLeft.whileActive(new DSN_Winch_WindOut());
-			gamepad.POVRight.whileActive(new DSN_Winch_WindUp());
-			gamepad.A.whenPressed(new Panel_Slider_Toggle());
-			gamepad.B.whenPressed(new Panel_Gripper_Toggle());
-			gamepad.Y.whenPressed(new DSN_Holder_Toggle());
-
+			boolean test = false;
+			if (test) {
+				// gamepad.Start.whenPressed(new Test_printSensorRaw());
+				joyRight.button1.whenPressed(new Drivetrain_Shift());
+				gamepad.RT.whileActive(new DSN_Drive_Forward());
+				gamepad.LT.whileActive(new DSN_Drive_Backward());
+				gamepad.RB.whileHeld(new Cargo_Roller_Intake());
+				gamepad.LB.whileHeld(new Cargo_Roller_Extake());
+				gamepad.LeftJoyUp.whenActive(new Elevator_Test());
+				gamepad.LeftJoyDown.whenActive(new Elevator_Test());
+				gamepad.RightJoyUp.whenActive(new Arm_Test());
+				gamepad.RightJoyDown.whenActive(new Arm_Test());
+				gamepad.POVLeft.whileActive(new DSN_Winch_WindOut());
+				gamepad.POVRight.whileActive(new DSN_Winch_WindUp());
+				gamepad.A.whenPressed(new Panel_Slider_Toggle());
+				gamepad.B.whenPressed(new Panel_Gripper_Toggle());
+				gamepad.Y.whenPressed(new DSN_Holder_Toggle());
+			} else {
+				gamepad.POVUp.whenActive(new Position_Control_MoveIn(false));
+				gamepad.POVDown.whenActive(new Position_Control_MoveOut(false));
+				gamepad.POVLeft.whenActive(new OI_ShiftCommand_ClimbHabLevel3());
+				gamepad.POVRight.whenActive(new OI_ShiftCommand_ClimbHabLevel2());
+				gamepad.A.whenPressed(new Position_Control_MoveOut(true));
+				gamepad.B.whenPressed(new Position_Control_MoveIn(true));
+				joyRight.button1.whenPressed(new Drivetrain_Shift());
+				joyLeft.button1.whenPressed(new DriveTrainScale_Toggle());
+				joyLeft.button1.whenReleased(new DriveTrainScale_Toggle());
+				gamepad.LB.whileHeld(new Cargo_Roller_Intake());
+				gamepad.RB.whileHeld(new Cargo_Roller_Extake());
+				gamepad.X.whenPressed(new Panel_Gripper_Toggle());
+				gamepad.RT.whenInactive(new Panel_Slider_Toggle());
+				//gamepad.RT.whenActive(new DSN_Drive_Forward());
+				gamepad.RT.whenActive(new Panel_Slider_Toggle());
+				gamepad.Back.whenPressed(new PrepareClimbCurrent());
+				gamepad.Start.whenPressed(new ClimbHABCurrent());
+				gamepad.Y.whenPressed(new StopClimb());
+			}
 		}
 	}
 	

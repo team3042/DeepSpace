@@ -107,6 +107,8 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		log.add("Robot Init", Log.Level.TRACE);
 
+		SmartDashboard.putString("HAB Climb", "Level 3");
+
 		if (HAS_CAMERA1) {
 			camera1 = CameraServer.getInstance().startAutomaticCapture(0);
 			// mjpegServer = CameraServer.getInstance().startAutomaticCapture(camera1);
@@ -123,7 +125,7 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		chooser.setDefaultOption("Default Auto", new ExampleCommand());
 		chooser.addOption("My Auto", new ExampleCommand());
-		SmartDashboard.putData("Auto Mode", chooser);
+		// SmartDashboard.putData("Auto Mode", chooser);
 
 		prefs = Preferences.getInstance();
 		kP_Elevator = prefs.getDouble("kP_Elevator", RobotMap.ELEVATOR_KP);

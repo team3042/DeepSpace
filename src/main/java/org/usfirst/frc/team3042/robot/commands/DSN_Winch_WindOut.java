@@ -22,6 +22,7 @@ public class DSN_Winch_WindOut extends Command {
 	DSN_Winch dsn_winch = Robot.dsn_winch;
 	boolean finished = false;
 	Timer timer = new Timer();
+	double time = 0.1;
 	
 	
 	/** DSN_Winch_WindOut ********************************************************
@@ -30,6 +31,11 @@ public class DSN_Winch_WindOut extends Command {
 	public DSN_Winch_WindOut() {
 		log.add("Constructor", Log.Level.TRACE);
 		requires(dsn_winch);
+	}
+
+	public DSN_Winch_WindOut(double time) {
+		this();
+		this.time = time;
 	}
 
 	
@@ -49,7 +55,7 @@ public class DSN_Winch_WindOut extends Command {
 	 * Called repeatedly when this Command is scheduled to run
 	 */
 	protected void execute() {
-		 if (timer.get() > 0.1) finished = true;
+		 if (timer.get() > time) finished = true;
 	}
 	
 	

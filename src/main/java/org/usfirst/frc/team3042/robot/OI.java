@@ -21,6 +21,8 @@ import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Release;
 import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Toggle;
 import org.usfirst.frc.team3042.robot.commands.DSN_Winch_WindOut;
 import org.usfirst.frc.team3042.robot.commands.DSN_Winch_WindUp;
+import org.usfirst.frc.team3042.robot.commands.DriveTrainScale_High;
+import org.usfirst.frc.team3042.robot.commands.DriveTrainScale_Slow;
 import org.usfirst.frc.team3042.robot.commands.DriveTrainScale_Toggle;
 import org.usfirst.frc.team3042.robot.commands.DrivetrainAuton_Drive;
 import org.usfirst.frc.team3042.robot.commands.Drivetrain_GyroStraight;
@@ -171,6 +173,9 @@ public class OI {
 				gamepad.A.whenPressed(new Panel_Slider_Toggle());
 				gamepad.B.whenPressed(new Panel_Gripper_Toggle());
 				gamepad.Y.whenPressed(new DSN_Holder_Toggle());
+				gamepad.POVDown.whenActive(new BucketPistons_Engage());
+				gamepad.POVUp.whenActive(new BucketPistons_Disengage());
+
 			} else {
 				gamepad.POVUp.whenActive(new Position_Control_MoveIn(false));
 				gamepad.POVDown.whenActive(new Position_Control_MoveOut(false));
@@ -179,14 +184,14 @@ public class OI {
 				gamepad.A.whenPressed(new Position_Control_MoveOut(true));
 				gamepad.B.whenPressed(new Position_Control_MoveIn(true));
 				joyRight.button1.whenPressed(new Drivetrain_Shift());
-				joyLeft.button1.whenPressed(new DriveTrainScale_Toggle());
-				joyLeft.button1.whenReleased(new DriveTrainScale_Toggle());
+				joyLeft.button1.whenPressed(new DriveTrainScale_Slow());
+				joyLeft.button1.whenReleased(new DriveTrainScale_High());
 				gamepad.LB.whileHeld(new Cargo_Roller_Intake());
 				gamepad.RB.whileHeld(new Cargo_Roller_Extake());
 				gamepad.X.whenPressed(new Panel_Gripper_Toggle());
-				gamepad.RT.whenInactive(new Panel_Slider_Toggle());
+				gamepad.RT.whenInactive(new Panel_Slider_Backward());
 				//gamepad.RT.whenActive(new DSN_Drive_Forward());
-				gamepad.RT.whenActive(new Panel_Slider_Toggle());
+				gamepad.RT.whenActive(new Panel_Slider_Forward());
 				gamepad.Back.whenPressed(new PrepareClimbCurrent());
 				gamepad.Start.whenPressed(new ClimbHABCurrent());
 				gamepad.Y.whenPressed(new StopClimb());

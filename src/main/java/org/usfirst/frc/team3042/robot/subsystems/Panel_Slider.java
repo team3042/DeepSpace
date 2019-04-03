@@ -48,11 +48,11 @@ public class Panel_Slider extends Subsystem {
     }
 
 	public void engageSlider() {
-		sliderSolenoid.set(open);
+		sliderSolenoid.set(true);
 	}
 
 	public void disengageSlider() {
-		sliderSolenoid.set(close);
+		sliderSolenoid.set(false);
 	}
 	
 	/** initDefaultCommand ****************************************************

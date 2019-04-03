@@ -86,11 +86,11 @@ public class Position_Control_MoveIn extends Command {
           double currentTime = timer.get();
           double deltaTime = currentTime - previousTime;
           int offset = (int) (DELTA_POT * deltaTime);
-          int newGoal = Robot.arm.getCurrentGoalPos() - offset;
+          int newGoal = Robot.arm.getCurrentGoalPos() + offset;
           //log.add("newgoal "+newGoal+" offset "+offset, Log.Level.TRACE);
           Robot.arm.setTalonPositionMagic(newGoal);
           previousTime = currentTime;
-          armMoved = (newGoal <= ARM_FRAME_POS + ARM_TOLERANCE || (timer.get() - startTime) > ARM_TIMEOUT);
+          armMoved = (newGoal >= ARM_FRAME_POS - ARM_TOLERANCE || (timer.get() - startTime) > ARM_TIMEOUT);
 
           if (armMoved) {
             position_control.moveArm();

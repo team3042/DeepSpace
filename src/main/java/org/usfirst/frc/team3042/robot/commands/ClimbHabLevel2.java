@@ -32,11 +32,15 @@ public class ClimbHabLevel2 extends InstantCommand {
       cmdGroup.addSequential(new DSN_Holder_Release());
       cmdGroup.addSequential(new Elevator_ChangeCruisingSpeed());
       cmdGroup.addSequential(new Elevator_SetPosition(Position.INTAKE));
-      cmdGroup.addSequential(new DSN_Winch_WindOut());
+      cmdGroup.addSequential(new DSN_Winch_WindOut(0.5));
       cmdGroup.addParallel(new Arm_Stop());
-      cmdGroup.addParallel(new DSN_Holder_Engage());
-      cmdGroup.addSequential(new Elevator_MonitorPosition());
+      // cmdGroup.addParallel(new DSN_Holder_Engage());
       cmdGroup.addParallel(new DSN_Winch_Stop());
+      cmdGroup.addParallel(new DSN_Holder_Engage());
+
+      cmdGroup.addSequential(new Elevator_MonitorPosition());
+      // cmdGroup.addSequential(new Elevator_MonitorPosition());
+      // cmdGroup.addParallel(new DSN_Winch_Stop());
       cmdGroup.addParallel(new DSN_Drive_Forward());
       cmdGroup.addParallel(new Drivetrain_DriveForward());
       cmdGroup.start();

@@ -24,7 +24,6 @@ public class Encoder_Zero extends Command {
     /** Instance Variables ****************************************************/
     Log log = new Log(LOG_LEVEL, getName());
     Elevator elevator = Robot.elevator;
-    DigitalInput limitSwitch = new DigitalInput(30);
 
     /**
      * Encoder_Zero
@@ -42,24 +41,18 @@ public class Encoder_Zero extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        elevator.setPower(0.25f);
+        elevator.setPower(0.1f);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (limitSwitch.get()){
-          return true;
-        }
-        else {
-          return false;
-        }
+        return elevator.getforwardlimitstatus();
     }
 
     // Called once after isFinished returns true
     protected void end() {
         log.add("End", Log.Level.TRACE);
         elevator.stop();
-        elevatorTalon.setSelectedSensorPosition(0, PIDIDX, 0);
     }
 
     // Called when another command which requires one or more of the same

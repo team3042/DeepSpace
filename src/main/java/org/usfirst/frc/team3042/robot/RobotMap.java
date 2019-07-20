@@ -151,7 +151,7 @@ public class RobotMap {
 	public static final double ELEVATOR_LOWER_VELOCITY = IS_JUNO ? -0.1 : -0.1;
 	public static final double ELEVATOR_POSITION_CONTROL_RANGE =IS_JUNO ? 300 : 300;
 	public static final int ELEVATOR_MAX_POSITION = IS_JUNO          ? 0 : 0;
-	public static final int ELEVATOR_MIN_POSITION = IS_JUNO          ? -22500 : -22000;
+	public static final int ELEVATOR_MIN_POSITION = IS_JUNO          ? -22500 : 22000;
 	public static final int ELEVATOR_INTAKE_POSITION = IS_JUNO 		? ELEVATOR_MIN_POSITION : ELEVATOR_MIN_POSITION;
 	public static final int ELEVATOR_LOW_CARGO_POSITION = IS_JUNO 	? 0 : 0;
 	public static final int ELEVATOR_MID_PANEL_POSITION = IS_JUNO    ? 0 : 0;
@@ -169,7 +169,7 @@ public class RobotMap {
 	public static final int ELEVATOR_I_ZONE = IS_JUNO 	? 0 : 0;
 	public static final int ELEVATOR_MOTION_MAGIC_ACCELERATION = IS_JUNO ? 3500 : 3500;
 	public static final int ELEVATOR_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 4000 : 4000;
-	public static final boolean ELEVATOR_REVERSE = (IS_JUNO) ? true: true;
+	public static final boolean ELEVATOR_REVERSE = (IS_JUNO) ? true: false;
 	public static final int ELEVATOR_SPROCKET_CIRCUMFERENCE = IS_JUNO ? 4 : 4;
 	public static final int ELEVATOR_TOLERANCE = IS_JUNO ? 500 : 500;
 	public static final int ELEVATOR_TIMEOUT = IS_JUNO ? 5 : 5;

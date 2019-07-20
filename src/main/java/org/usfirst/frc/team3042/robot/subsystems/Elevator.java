@@ -73,7 +73,9 @@ public class Elevator extends Subsystem {
 		motor.config_kF(SLOTIDX_1, kF, TIMEOUT);
 		motor.config_IntegralZone(SLOTIDX_1, I_ZONE, TIMEOUT);
 		motor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PIDIDX, TIMEOUT);
+		motor.configClearPositionOnLimitF(true, TIMEOUT);
 		motor.setInverted(RobotMap.ELEVATOR_REVERSE);
+		motor.setSensorPhase(true);
 	}
     
     public void initMotionMagic(TalonSRX motor){
@@ -129,6 +131,7 @@ public class Elevator extends Subsystem {
 	 */
 	public void setPosition(Position_Control.Position position) {
 		log.add("Elevator Zero " + this.elevatorZero, Log.Level.TRACE);
+		System.out.println("position: " + position);
 		switch (position) {
 			case FRAME:
 				log.add("FRAME", Log.Level.DEBUG);
@@ -231,5 +234,9 @@ public class Elevator extends Subsystem {
 	
 	public int getCurrentGoalPos(){
 		return currentGoalPos;
+	}
+
+	public boolean getforwardlimitstatus() {
+		return elevatorTalon.getSensorCollection().isFwdLimitSwitchClosed();
 	}
 }

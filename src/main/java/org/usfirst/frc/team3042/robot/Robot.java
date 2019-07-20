@@ -1,11 +1,7 @@
 package org.usfirst.frc.team3042.robot;
 
 import org.usfirst.frc.team3042.lib.Log;
-import org.usfirst.frc.team3042.robot.commands.ClimbHAB;
-import org.usfirst.frc.team3042.robot.commands.ClimbHabLevel2;
 import org.usfirst.frc.team3042.robot.commands.ExampleCommand;
-import org.usfirst.frc.team3042.robot.commands.PrepareClimb;
-import org.usfirst.frc.team3042.robot.commands.PrepareClimbLevel2;
 import org.usfirst.frc.team3042.robot.subsystems.DSN_Drive;
 import org.usfirst.frc.team3042.robot.subsystems.DSN_Winch;
 import org.usfirst.frc.team3042.robot.subsystems.Drivetrain;

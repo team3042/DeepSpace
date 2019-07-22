@@ -44,12 +44,14 @@ public class Position_Control_MoveOut extends Command {
       position_control.setStowNotTrue();
       shouldMove = true;
       finished = false;
-    } else {
+    }
+    else {
       position_control.DecreaseHeight();
       if (position_control.getStowed()) {
         shouldMove = false;
         finished = true;
-      } else {
+      }
+      else {
         shouldMove = true;
         finished = false;
       }
@@ -62,14 +64,13 @@ public class Position_Control_MoveOut extends Command {
 
   protected void execute() {
     if (shouldMove) {
-      if (((RobotMap.IS_JUNO) ? (Robot.arm.getPosition() + MAGIC_GRAVITY_OFFSET >= ARM_INTAKE_POS - ARM_TOLERANCE)
-          : (Robot.arm.getPosition() + MAGIC_GRAVITY_OFFSET <= ARM_INTAKE_POS - ARM_TOLERANCE))
-          || timer.get() > ARM_TIMEOUT) {
-        log.add("Arm Moved", LOG_LEVEL.TRACE);
-        finished = true;
-        position_control.moveElevator();
-      }
+    if ( ((RobotMap.IS_JUNO) ? (Robot.arm.getPosition() + MAGIC_GRAVITY_OFFSET >= ARM_INTAKE_POS - ARM_TOLERANCE) : (Robot.arm.getPosition() + MAGIC_GRAVITY_OFFSET <= ARM_INTAKE_POS - ARM_TOLERANCE) )|| 
+    timer.get() > ARM_TIMEOUT) {
+      log.add("Arm Moved", LOG_LEVEL.TRACE);
+      finished = true;
+      position_control.moveElevator();
     }
+  }
   }
 
   protected boolean isFinished() {

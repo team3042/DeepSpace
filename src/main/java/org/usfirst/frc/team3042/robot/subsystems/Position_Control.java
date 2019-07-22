@@ -60,13 +60,10 @@ public class Position_Control extends Subsystem {
 		}
 
 		public void moveElevator() {
-			System.out.println("Moving Elevator, stowed = " + stowed);
 			if(stowed) {
-				System.out.println("Stowed");
 				Robot.elevator.setPosition(Position.FRAME);
 			}
 			else {
-				System.out.println("Not Stowed");
 				Robot.elevator.setPosition(Position.values()[currentPosition]);
 			}
 		}

@@ -151,7 +151,7 @@ public class RobotMap {
 	public static final double ELEVATOR_LOWER_VELOCITY = IS_JUNO ? -0.1 : -0.1;
 	public static final double ELEVATOR_POSITION_CONTROL_RANGE =IS_JUNO ? 300 : 300;
 	public static final int ELEVATOR_MAX_POSITION = IS_JUNO          ? 0 : 0;
-	public static final int ELEVATOR_MIN_POSITION = IS_JUNO          ? -22500 : -22000;
+	public static final int ELEVATOR_MIN_POSITION = IS_JUNO          ? -22500 : -22500;
 	public static final int ELEVATOR_INTAKE_POSITION = IS_JUNO 		? ELEVATOR_MIN_POSITION : ELEVATOR_MIN_POSITION;
 	public static final int ELEVATOR_LOW_CARGO_POSITION = IS_JUNO 	? 0 : 0;
 	public static final int ELEVATOR_MID_PANEL_POSITION = IS_JUNO    ? 0 : 0;

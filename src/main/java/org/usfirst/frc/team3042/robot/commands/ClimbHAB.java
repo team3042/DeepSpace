@@ -8,7 +8,6 @@
 package org.usfirst.frc.team3042.robot.commands;
 
 import org.usfirst.frc.team3042.lib.Log;
-import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.subsystems.Position_Control.Position;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;

@@ -11,7 +11,6 @@ import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Position_Control;
 import org.usfirst.frc.team3042.robot.subsystems.Position_Control.Position;
-import org.usfirst.frc.team3042.robot.subsystems.Arm;
 import org.usfirst.frc.team3042.lib.Log;
 
 import edu.wpi.first.wpilibj.Timer;

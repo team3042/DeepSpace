@@ -5,21 +5,14 @@ import org.usfirst.frc.team3042.robot.Robot;
 import org.usfirst.frc.team3042.robot.RobotMap;
 import org.usfirst.frc.team3042.robot.subsystems.Elevator;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Our last hope 
+ * Our last hope (Zeroes the elevator encoder with a limit switch)
  */
 public class Encoder_Zero extends Command {
     /** Configuration Constants ***********************************************/
     public static final Log.Level LOG_LEVEL = RobotMap.LOG_ELEVATOR;
-
-    private TalonSRX elevatorTalon = new TalonSRX(RobotMap.CAN_ELEVATOR_TALON);
-
-    private static final int PIDIDX = RobotMap.PIDIDX;
 
     /** Instance Variables ****************************************************/
     Log log = new Log(LOG_LEVEL, getName());

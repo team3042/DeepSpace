@@ -6,6 +6,7 @@ import org.usfirst.frc.team3042.robot.commands.BucketPistons_Disengage;
 import org.usfirst.frc.team3042.robot.commands.BucketPistons_Engage;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Extake;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Intake;
+import org.usfirst.frc.team3042.robot.commands.Chock_Toggle;
 import org.usfirst.frc.team3042.robot.commands.ClimbHAB;
 import org.usfirst.frc.team3042.robot.commands.ClimbHABCurrent;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Backward;
@@ -171,6 +172,7 @@ public class OI {
 				gamepad.X.whenPressed(new Panel_Gripper_Toggle());
 				gamepad.RT.whenInactive(new Panel_Slider_Backward());
 				//gamepad.RT.whenActive(new DSN_Drive_Forward());
+				//gamepad.LT.whenActive(new Chock_Toggle());
 				gamepad.RT.whenActive(new Panel_Slider_Forward());
 				gamepad.Back.whenPressed(new PrepareClimbCurrent());
 				gamepad.Start.whenPressed(new ClimbHABCurrent());

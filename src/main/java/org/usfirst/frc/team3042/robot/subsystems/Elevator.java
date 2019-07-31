@@ -73,6 +73,7 @@ public class Elevator extends Subsystem {
 		motor.config_kF(SLOTIDX_1, kF, TIMEOUT);
 		motor.config_IntegralZone(SLOTIDX_1, I_ZONE, TIMEOUT);
 		motor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, PIDIDX, TIMEOUT);
+		//motor.setSensorPhase(false); //This value is stored in the talon once deployed, reverses encoder
 		motor.setInverted(RobotMap.ELEVATOR_REVERSE);
 	}
     

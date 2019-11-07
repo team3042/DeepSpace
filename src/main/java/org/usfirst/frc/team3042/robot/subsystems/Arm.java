@@ -188,5 +188,5 @@ public class Arm extends Subsystem {
     }
     private void setPower(TalonSRX talon, double power){
     	talon.set(ControlMode.PercentOutput, power);
-    }
+	}
 }

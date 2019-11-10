@@ -41,7 +41,7 @@ public class Position_Control_MoveIn extends Command {
   }
 
   protected void initialize() {
-    log.add("INITIALIZE", LOG_LEVEL.TRACE);
+    log.add("INITIALIZE", Log.Level.TRACE);
 
     // Determine how we want to move the robot
     if (sendToStow) {
@@ -103,7 +103,7 @@ public class Position_Control_MoveIn extends Command {
       }
       else if (Math.abs(Robot.elevator.getPosition() - Robot.elevator.getCurrentGoalPos()) < ELEVATOR_TOLERANCE || 
               timer.get() > ELEVATOR_TIMEOUT) {
-        log.add("Elevator Moved", LOG_LEVEL.TRACE);
+        log.add("Elevator Moved", Log.Level.TRACE);
         elevatorMoved = true;
         startTime = timer.get();
         previousTime = startTime;
@@ -116,10 +116,10 @@ public class Position_Control_MoveIn extends Command {
   }
 
   protected void end() {
-    log.add("END", LOG_LEVEL.TRACE);
+    log.add("END", Log.Level.TRACE);
   }
 
   protected void interrupted() {
-    log.add("Interrupted", LOG_LEVEL.TRACE);
+    log.add("Interrupted", Log.Level.TRACE);
   }
 }

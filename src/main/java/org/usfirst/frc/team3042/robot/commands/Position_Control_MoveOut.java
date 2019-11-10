@@ -37,7 +37,7 @@ public class Position_Control_MoveOut extends Command {
   }
 
   protected void initialize() {
-    log.add("INITIALIZE", LOG_LEVEL.TRACE);
+    log.add("INITIALIZE", Log.Level.TRACE);
 
     // Determine how we want to move the robot
     if (sendFromStow) {
@@ -66,7 +66,7 @@ public class Position_Control_MoveOut extends Command {
     if (shouldMove) {
     if ( ((RobotMap.IS_JUNO) ? (Robot.arm.getPosition() + MAGIC_GRAVITY_OFFSET >= ARM_INTAKE_POS - ARM_TOLERANCE) : (Robot.arm.getPosition() + MAGIC_GRAVITY_OFFSET <= ARM_INTAKE_POS - ARM_TOLERANCE) )|| 
     timer.get() > ARM_TIMEOUT) {
-      log.add("Arm Moved", LOG_LEVEL.TRACE);
+      log.add("Arm Moved", Log.Level.TRACE);
       finished = true;
       position_control.moveElevator();
     }
@@ -78,7 +78,7 @@ public class Position_Control_MoveOut extends Command {
   }
 
   protected void end() {
-    log.add("END", LOG_LEVEL.TRACE);
+    log.add("END", Log.Level.TRACE);
   }
 
   protected void interrupted() {

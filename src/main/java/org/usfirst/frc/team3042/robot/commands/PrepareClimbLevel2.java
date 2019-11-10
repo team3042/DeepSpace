@@ -29,7 +29,7 @@ public class PrepareClimbLevel2 extends Command {
   }
 
   protected void initialize() {
-    log.add("INITIALIZE", LOG_LEVEL.TRACE);
+    log.add("INITIALIZE", Log.Level.TRACE);
     finished = false;
     Robot.chock.toggle();
     Robot.arm.setPosition(Position.INTAKE);
@@ -49,7 +49,7 @@ public class PrepareClimbLevel2 extends Command {
   }
 
   protected void end() {
-    log.add("END", LOG_LEVEL.TRACE);
+    log.add("END", Log.Level.TRACE);
   }
 
   protected void interrupted() {

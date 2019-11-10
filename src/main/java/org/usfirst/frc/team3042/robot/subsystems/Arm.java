@@ -39,6 +39,7 @@ public class Arm extends Subsystem {
 	private static final int MIN_POS = RobotMap.ARM_MIN_POS;
 	private static final int MAGIC_ACCEL = RobotMap.ARM_MOTION_MAGIC_ACCELERATION;
 	private static final int MAGIC_CRUISE = RobotMap.ARM_MOTION_MAGIC_CRUISE_VELOCITY;
+	private static final int DESCENT_MAGIC_CRUISE = RobotMap.ARM_MOTION_MAGIC_DESCENT_CRUISE_VELOCITY;
 	public static final Log.Level LOG_LEVEL = RobotMap.LOG_ARM;
 	public static final boolean REVERSE_PHASE = RobotMap.ARM_REVERSE_SENSOR_PHASE;
 	public static final boolean ARM_FOLLOWER_IS_LEFT = RobotMap.ARM_FOLLOWER_IS_LEFT;
@@ -133,6 +134,12 @@ public class Arm extends Subsystem {
 	}
 	
 	public void setTalonPositionMagic(int position) {
+		if(position == FRAME_POS) {
+			armTalon.configMotionCruiseVelocity(DESCENT_MAGIC_CRUISE, TIMEOUT);
+		}
+		else {
+			armTalon.configMotionCruiseVelocity(MAGIC_CRUISE, TIMEOUT);
+		}
 		armTalon.set(ControlMode.MotionMagic, safetyCheck(position));
 		currentGoalPos = safetyCheck(position);
 	}
@@ -181,5 +188,5 @@ public class Arm extends Subsystem {
     }
     private void setPower(TalonSRX talon, double power){
     	talon.set(ControlMode.PercentOutput, power);
-    }
+	}
 }

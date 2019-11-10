@@ -32,9 +32,9 @@ public class Arm_HoldPosition extends Command {
     protected void execute() {
 		SmartDashboard.putNumber("Pot", Robot.arm.getPosition());
 		SmartDashboard.putNumber("Arm Right Output%", Robot.arm.armTalon.getMotorOutputPercent());
-		SmartDashboard.putNumber("Arm Left Output%", Robot.arm.armTalonFollower .getMotorOutputPercent());
+		SmartDashboard.putNumber("Arm Left Output%", Robot.arm.armTalonFollower.getMotorOutputPercent());
 		SmartDashboard.putNumber("Current Draw Right", Robot.pdp.getCurrent(4));
-		SmartDashboard.putNumber("Current Draw Left", Robot.pdp.getCurrent(1));
+		SmartDashboard.putNumber("Current Draw Left", Robot.pdp.getCurrent(5));
 
 
     	if(Robot.armEmergencyMode){

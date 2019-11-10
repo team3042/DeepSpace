@@ -15,7 +15,7 @@ public class Chock extends Subsystem {
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_CHOCK;
 	private static final int ID = RobotMap.CHOCK_SOLENOID;
 	private static final boolean open = RobotMap.CHOCK_STARTS_ACTIVE;
-	private static final boolean close = !open;
+	//private static final boolean close = !open;
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());

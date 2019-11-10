@@ -25,7 +25,7 @@ public class Arm_HoldAdjustedPosition extends Command {
 	/** Instance Variables ****************************************************/
 	private Log log = new Log(LOG_LEVEL, getName());
 	private int goalPosition, adjustedGoal;
-        private Timer timer = new Timer();
+    private Timer timer = new Timer();
 	private double nextAdjustmentTime;
 	
 	public Arm_HoldAdjustedPosition() {
@@ -55,10 +55,11 @@ public class Arm_HoldAdjustedPosition extends Command {
     	protected void execute() {
 		int currentPosition = Robot.arm.getPosition();
 			SmartDashboard.putNumber("Pot", currentPosition);
+			SmartDashboard.putNumber("Adjusted Goal", adjustedGoal);
 			SmartDashboard.putNumber("Arm Right Output%", Robot.arm.armTalon.getMotorOutputPercent());
 			SmartDashboard.putNumber("Arm Left Output%", Robot.arm.armTalonFollower .getMotorOutputPercent());
 			SmartDashboard.putNumber("Current Draw Right", Robot.pdp.getCurrent(4));
-			SmartDashboard.putNumber("Current Draw Left", Robot.pdp.getCurrent(1));
+			SmartDashboard.putNumber("Current Draw Left", Robot.pdp.getCurrent(5));
 
 
     		if(Robot.armEmergencyMode){
@@ -88,8 +89,8 @@ public class Arm_HoldAdjustedPosition extends Command {
 				}
 			}
 		}
-    	}
-
+		}
+	
     	// Make this return true when this Command no longer needs to run execute()
     	protected boolean isFinished() {
         	return false;
@@ -104,5 +105,5 @@ public class Arm_HoldAdjustedPosition extends Command {
     	// subsystems is scheduled to run
     	protected void interrupted() {
     		log.add("Interrupted", Log.Level.TRACE);
-    	}
+		}
 }

@@ -15,7 +15,7 @@ public class Panel_Slider extends Subsystem {
 	private static final Log.Level LOG_LEVEL = RobotMap.LOG_PANEL_SLIDER;
 	private static final int ID = RobotMap.SLIDER_SOLENOID;
 	private static final boolean open = RobotMap.PANNEL_SLIDER_STARTS_ACTIVE;
-	private static final boolean close = !open;
+	//private static final boolean close = !open;
 	
 	/** Instance Variables ****************************************************/
 	Log log = new Log(LOG_LEVEL, getName());

@@ -6,6 +6,7 @@ import org.usfirst.frc.team3042.robot.commands.BucketPistons_Disengage;
 import org.usfirst.frc.team3042.robot.commands.BucketPistons_Engage;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Extake;
 import org.usfirst.frc.team3042.robot.commands.Cargo_Roller_Intake;
+import org.usfirst.frc.team3042.robot.commands.Chock_Toggle;
 import org.usfirst.frc.team3042.robot.commands.ClimbHAB;
 import org.usfirst.frc.team3042.robot.commands.ClimbHABCurrent;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Backward;
@@ -54,8 +55,9 @@ public class OI {
 	private static final int JOYSTICK_Y_AXIS = Gamepad.JOY_Y_AXIS;
 	private static final int GAMEPAD_LEFT_TRIGGER = Gamepad.LEFT_TRIGGER;
 	private static final int GAMEPAD_RIGHT_TRIGGER = Gamepad.RIGHT_TRIGGER;
-	private static final double ROBOT_WIDTH = RobotMap.ROBOT_WIDTH;
 	private static final boolean SCALE_STARTS_HIGH = RobotMap.JOYSTICK_DRIVE_SCALE_STARTS_HIGH;
+	//private static final double ROBOT_WIDTH = RobotMap.ROBOT_WIDTH;
+
 
 	/** Instance Variables ****************************************************/
 	Log log = new Log(RobotMap.LOG_OI, "OI");

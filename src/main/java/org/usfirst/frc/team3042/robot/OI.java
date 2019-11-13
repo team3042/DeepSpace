@@ -10,6 +10,7 @@ import org.usfirst.frc.team3042.robot.commands.ClimbHAB;
 import org.usfirst.frc.team3042.robot.commands.ClimbHABCurrent;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Backward;
 import org.usfirst.frc.team3042.robot.commands.DSN_Drive_Forward;
+import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Release;
 import org.usfirst.frc.team3042.robot.commands.DSN_Holder_Toggle;
 import org.usfirst.frc.team3042.robot.commands.DSN_Winch_WindOut;
 import org.usfirst.frc.team3042.robot.commands.DSN_Winch_WindUp;
@@ -173,6 +174,7 @@ public class OI {
 				gamepad.RT.whenInactive(new Panel_Slider_Backward());
 				//gamepad.RT.whenActive(new DSN_Drive_Forward());
 				//gamepad.LT.whenActive(new Chock_Toggle());
+				gamepad.LT.whenActive(new DSN_Holder_Toggle());
 				gamepad.RT.whenActive(new Panel_Slider_Forward());
 				gamepad.Back.whenPressed(new PrepareClimbCurrent());
 				gamepad.Start.whenPressed(new ClimbHABCurrent());

@@ -174,7 +174,7 @@ public class OI {
 				gamepad.RT.whenInactive(new Panel_Slider_Backward());
 				//gamepad.RT.whenActive(new DSN_Drive_Forward());
 				//gamepad.LT.whenActive(new Chock_Toggle());
-				gamepad.LT.whenActive(new DSN_Holder_Toggle());
+				//gamepad.LT.whenActive(new DSN_Holder_Toggle());
 				gamepad.RT.whenActive(new Panel_Slider_Forward());
 				gamepad.Back.whenPressed(new PrepareClimbCurrent());
 				gamepad.Start.whenPressed(new ClimbHABCurrent());

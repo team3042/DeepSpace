@@ -53,9 +53,10 @@ public class DSN_Winch_Stop extends Command {
   }
 
   // Called repeatedly when this Command is scheduled to run
+  // 2.15 is in seconds!
   @Override
   protected void execute() {
-    if (timeOut.get() >= 2) {
+    if (timeOut.get() >= 2.15) {
       hasFinished = true;
     }
   }

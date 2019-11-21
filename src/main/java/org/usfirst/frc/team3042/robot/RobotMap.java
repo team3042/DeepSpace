@@ -122,7 +122,7 @@ public class RobotMap {
 	public static final int ARM_MOTION_MAGIC_CRUISE_VELOCITY = IS_JUNO ? 170 : 170; 
 	public static final int ARM_MOTION_MAGIC_DESCENT_CRUISE_VELOCITY = IS_JUNO ? 70 : 70; 
 	public static final int ARM_POSITION_CONTROL_RANGE = IS_JUNO	? 30 : 30;
-	public static final int ARM_POSITION_WAIT_TOLLERANCE = IS_JUNO ? 30 : 30;
+	public static final int ARM_POSITION_WAIT_TOLLERANCE = IS_JUNO ? 10 : 10;
 	public static final int ARM_TOLERANCE = IS_JUNO ? 10 : 10;
 	public static final int ARM_MAGIC_GRAVITY_OFFSET = IS_JUNO ? 40 : 40;
 	public static final int ARM_TIMEOUT = IS_JUNO ? 1 : 1;
